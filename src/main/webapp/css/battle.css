@@ -3,33 +3,52 @@
 /* バトルメッセージのスタイル設定 */
 /* バトル中のメッセージの見た目を設定する部分です。黒い背景に白い文字を使っています。 */
 .battle-message {
-    background-color: black; /* メッセージの背景色を黒にする */
-    color: white; /* 文字の色を白にする */
-    padding: 20px; /* メッセージの周りに余白をつける */
-    margin-top: 20px; /* メッセージの上に余白をつける */
-    border: 2px solid white; /* 白い枠線をつける */
-    text-align: left; /* 文字を左寄せにする */
+	background-color: black;
+	/* メッセージの背景色を黒にする */
+	color: white;
+	/* 文字の色を白にする */
+	padding: 20px;
+	/* メッセージの周りに余白をつける */
+	margin-top: 20px;
+	/* メッセージの上に余白をつける */
+	border: 2px solid white;
+	/* 白い枠線をつける */
+	text-align: left;
+	/* 文字を左寄せにする */
 }
 
 /* ボタンの基本スタイル（黒背景・白文字に統一） */
 /* 全てのボタンを黒い背景に白文字にして、少しふくらみのあるボタンに見せるスタイルです。 */
-button, .btn {
-    background-color: #000; /* ボタンの背景色を黒にする */
-    color: #fff; /* 文字の色を白にする */
-    border: 2px solid #fff; /* 白い枠線をつける */
-    padding: 10px 20px; /* ボタンの周りに余白をつける */
-    font-size: 1.5rem; /* 文字の大きさを設定する */
-    border-radius: 5px; /* ボタンの角を丸くする */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* ボタンの背景色や位置が変わるときの動きをなめらかにする */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* ボタンの下に影をつけて少し浮かんでいるように見せる */
-    cursor: pointer; /* カーソルを手の形にする（クリックできることを示す） */
+button,
+.btn {
+	background-color: #000;
+	/* ボタンの背景色を黒にする */
+	color: #fff;
+	/* 文字の色を白にする */
+	border: 2px solid #fff;
+	/* 白い枠線をつける */
+	padding: 10px 20px;
+	/* ボタンの周りに余白をつける */
+	font-size: 1.5rem;
+	/* 文字の大きさを設定する */
+	border-radius: 5px;
+	/* ボタンの角を丸くする */
+	transition: background-color 0.3s ease, transform 0.2s ease;
+	/* ボタンの背景色や位置が変わるときの動きをなめらかにする */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+	/* ボタンの下に影をつけて少し浮かんでいるように見せる */
+	cursor: pointer;
+	/* カーソルを手の形にする（クリックできることを示す） */
 }
 
 /* ボタンホバー時のスタイル（黒背景に薄い白がかかる） */
 /* ボタンにカーソルを乗せたときに少し浮き上がって色が変わります。 */
-button:hover, .btn:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* ホバーしたときに背景色が薄い白に変わる */
-    transform: translateY(-3px); /* ボタンが少し上に浮かぶようにする */
+button:hover,
+.btn:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+	/* ホバーしたときに背景色が薄い白に変わる */
+	transform: translateY(-3px);
+	/* ボタンが少し上に浮かぶようにする */
 }
 
 /* 特定のボタン（バトルコントロールやマイページに戻るボタンなど）も統一 */
@@ -37,306 +56,511 @@ button:hover, .btn:hover {
 .battle-controls .btn,
 .result-back-button,
 .result-buttons .btn {
-    background-color: #000; /* ボタンの背景色を黒にする */
-    color: #fff; /* 文字の色を白にする */
-    border: 2px solid #fff; /* 白い枠線をつける */
+	background-color: #000;
+	/* ボタンの背景色を黒にする */
+	color: #fff;
+	/* 文字の色を白にする */
+	border: 2px solid #fff;
+	/* 白い枠線をつける */
 }
 
 /* 特定のボタンにホバーしたときのスタイル */
 .battle-controls .btn:hover,
 .result-back-button:hover,
 .result-buttons .btn:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* ホバーしたときに背景色が薄い白に変わる */
-    transform: translateY(-3px); /* ボタンが少し上に浮かぶようにする */
+	background-color: rgba(255, 255, 255, 0.1);
+	/* ホバーしたときに背景色が薄い白に変わる */
+	transform: translateY(-3px);
+	/* ボタンが少し上に浮かぶようにする */
 }
 
 /* バトルオプションのスタイル */
 /* バトル中に「こうげき」や「にげる」などのオプションを表示する部分の見た目を設定しています。 */
 .battle-options {
-    display: flex; /* ボタンを横並びに配置する */
-    justify-content: space-around; /* ボタン同士の間隔を均等にする */
-    margin-bottom: 20px; /* ボタンの下に余白をつける */
-    gap: 10px; /* ボタン同士の間に隙間を作る */
+	display: flex;
+	/* ボタンを横並びに配置する */
+	justify-content: space-around;
+	/* ボタン同士の間隔を均等にする */
+	margin-bottom: 20px;
+	/* ボタンの下に余白をつける */
+	gap: 10px;
+	/* ボタン同士の間に隙間を作る */
 }
 
 /* バトル中に選べる行動のボタン（攻撃、防御、必殺技など）のスタイルです。 */
 .battle-option {
-    flex: 1; /* ボタンが均等に広がるようにする設定 */
-    text-align: center; /* テキストを中央に配置します */
-    padding: 20px; /* ボタンの内側に余白を設定 */
-    border: 1px solid white; /* ボタンの周りに白い枠線を設定 */
-    font-size: 1.5rem; /* 文字の大きさを設定 */
-    background-color: rgba(0, 0, 0, 0.8); /* 背景は少し透明な黒に設定 */
-    color: white; /* 文字の色を白に設定 */
-    transition: background-color 0.3s ease; /* 背景色が変わるときの動きをなめらかにする */
-    cursor: pointer; /* カーソルが手の形になるようにする（クリック可能であることを示す） */
+	flex: 1;
+	/* ボタンが均等に広がるようにする設定 */
+	text-align: center;
+	/* テキストを中央に配置します */
+	padding: 20px;
+	/* ボタンの内側に余白を設定 */
+	border: 1px solid white;
+	/* ボタンの周りに白い枠線を設定 */
+	font-size: 1.5rem;
+	/* 文字の大きさを設定 */
+	background-color: rgba(0, 0, 0, 0.8);
+	/* 背景は少し透明な黒に設定 */
+	color: white;
+	/* 文字の色を白に設定 */
+	transition: background-color 0.3s ease;
+	/* 背景色が変わるときの動きをなめらかにする */
+	cursor: pointer;
+	/* カーソルが手の形になるようにする（クリック可能であることを示す） */
 }
 
 /* バトルオプションのボタンにホバーしたときのスタイル */
 .battle-option:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* ホバーしたときに背景が少し白くなる */
+	background-color: rgba(255, 255, 255, 0.1);
+	/* ホバーしたときに背景が少し白くなる */
 }
 
 /* バトルログのスタイル */
 /* バトルの経過（攻撃したりダメージを受けたり）を表示する部分の見た目です。 */
 .battle-log {
-    padding: 10px; /* バトルログの内側に余白をつける */
-    background-color: black; /* バトルログの背景色を黒にする */
-    border: 1px solid white; /* バトルログの枠線を白にする */
-    max-height: 200px; /* バトルログの高さを最大200pxに制限する */
-    overflow-y: auto; /* 高さを超える部分をスクロールできるようにする */
+	padding: 10px;
+	/* バトルログの内側に余白をつける */
+	background-color: black;
+	/* バトルログの背景色を黒にする */
+	border: 1px solid white;
+	/* バトルログの枠線を白にする */
+	max-height: 200px;
+	/* バトルログの高さを最大200pxに制限する */
+	overflow-y: auto;
+	/* 高さを超える部分をスクロールできるようにする */
 }
 
 /* バトルログのリスト全体のスタイル */
 .battle-log ul {
-    list-style: none; /* リストのスタイルをなくす */
-    padding-left: 0; /* 左側の余白をなくす */
-    margin: 0; /* リスト全体の余白をなくす */
+	list-style: none;
+	/* リストのスタイルをなくす */
+	padding-left: 0;
+	/* 左側の余白をなくす */
+	margin: 0;
+	/* リスト全体の余白をなくす */
 }
 
 /* バトルログの各項目のスタイル */
 .battle-log li {
-    padding: 5px 0; /* 各項目の上下に余白をつける */
-    font-size: 1.2rem; /* 文字の大きさを設定する */
+	padding: 5px 0;
+	/* 各項目の上下に余白をつける */
+	font-size: 1.2rem;
+	/* 文字の大きさを設定する */
 }
 
 /* コンテナの横幅設定 */
 /* コンテナの横幅を設定して、画面の中央に配置します。 */
 .container.text-center {
-    width: 90%; /* コンテナの幅を画面の90%にする */
-    max-width: 1400px; /* コンテナの最大幅を1400pxにする */
-    margin: 0 auto; /* コンテナを中央に配置する */
-    padding: 0 30px; /* コンテナの左右に30pxの余白をつける */
+	width: 90%;
+	/* コンテナの幅を画面の90%にする */
+	max-width: 1400px;
+	/* コンテナの最大幅を1400pxにする */
+	margin: 0 auto;
+	/* コンテナを中央に配置する */
+	padding: 0 30px;
+	/* コンテナの左右に30pxの余白をつける */
 }
 
 /* キャラクターのヘッダー設定 */
 /* キャラクターの名前や体力を表示する部分のスタイルです。 */
 .character-header {
-    display: flex; /* 要素を縦に並べる */
-    flex-direction: column; /* 要素を縦方向に並べる */
-    align-items: center; /* 要素を中央に配置する */
-    margin-bottom: 10px; /* 下に余白をつける */
+	display: flex;
+	/* 要素を縦に並べる */
+	flex-direction: column;
+	/* 要素を縦方向に並べる */
+	align-items: center;
+	/* 要素を中央に配置する */
+	margin-bottom: 10px;
+	/* 下に余白をつける */
 }
 
 /* 画像のボックス設定 */
 /* キャラクターの画像を囲むボックスの設定です。 */
 .character-img-box {
-    margin-left: 20px; /* ボックスの左側に余白をつける */
-    text-align: center; /* 画像を中央に配置する */
+	margin-left: 20px;
+	/* ボックスの左側に余白をつける */
+	text-align: center;
+	/* 画像を中央に配置する */
 }
 
 /* 背景カスタム設定 */
 /* ゲームの背景画像を設定しています。 */
 .bg-custom {
-    background: url('../画像/ネオン.png') center/cover no-repeat; /* 背景画像を画面全体に広げて表示する */
-    height: 100vh; /* 高さを画面全体の高さにする */
-    display: flex; /* フレックスボックスを使って要素を配置する */
-    justify-content: center; /* 要素を中央に配置する */
-    align-items: center; /* 要素を縦方向の中央に配置する */
-    flex-direction: column; /* 要素を縦に並べる */
-    position: relative; /* 要素の位置を親要素に対して相対的にする */
+	background: url('../画像/ネオン.png') center/cover no-repeat;
+	/* 背景画像を画面全体に広げて表示する */
+	height: 100vh;
+	/* 高さを画面全体の高さにする */
+	display: flex;
+	/* フレックスボックスを使って要素を配置する */
+	justify-content: center;
+	/* 要素を中央に配置する */
+	align-items: center;
+	/* 要素を縦方向の中央に配置する */
+	flex-direction: column;
+	/* 要素を縦に並べる */
+	position: relative;
+	/* 要素の位置を親要素に対して相対的にする */
 }
 
 /* 音楽コントロールボタンの位置 */
 /* 音楽を再生・停止するボタンを画面の右上に配置します。 */
 .music-control {
-    position: absolute; /* ボタンを絶対位置で配置する */
-    top: 10px; /* 画面の上から10pxの位置に配置する */
-    right: 10px; /* 画面の右から10pxの位置に配置する */
-    z-index: 1; /* 音楽ボタンが背景に隠れないようにする */
+	position: absolute;
+	/* ボタンを絶対位置で配置する */
+	top: 10px;
+	/* 画面の上から10pxの位置に配置する */
+	right: 10px;
+	/* 画面の右から10pxの位置に配置する */
+	z-index: 1;
+	/* 音楽ボタンが背景に隠れないようにする */
 }
 
 /* タイトルとキャラクター名のスタイル設定 */
 /* 階層タイトルやキャラクター名の見た目を設定しています。 */
 .level-title {
-    font-size: 3rem; /* タイトルの文字の大きさを設定する */
-    color: #fff; /* 文字の色を白にする */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* 文字に影をつけて見やすくする */
-    margin-bottom: 20px; /* タイトルの下に余白をつける */
-    padding: 10px; /* タイトルの周りに余白をつける */
-    background-color: rgba(0, 0, 0, 0.6); /* タイトルの背景に少し透明な黒をつける */
-    border-radius: 5px; /* タイトルの角を丸くする */
+	font-size: 3rem;
+	/* タイトルの文字の大きさを設定する */
+	color: #fff;
+	/* 文字の色を白にする */
+	text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+	/* 文字に影をつけて見やすくする */
+	margin-bottom: 20px;
+	/* タイトルの下に余白をつける */
+	padding: 10px;
+	/* タイトルの周りに余白をつける */
+	background-color: rgba(0, 0, 0, 0.6);
+	/* タイトルの背景に少し透明な黒をつける */
+	border-radius: 5px;
+	/* タイトルの角を丸くする */
 }
 
 /* キャラクターの名前のスタイル設定 */
 .character-name {
-    font-size: 1.5rem; /* キャラクター名の文字の大きさを設定する */
-    color: #fff; /* 文字の色を白にする */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* 文字に影をつけて見やすくする */
-    margin-bottom: 10px; /* キャラクター名の下に余白をつける */
-    padding: 5px; /* キャラクター名の周りに余白をつける */
-    background-color: rgba(0, 0, 0, 0.6); /* 背景に少し透明な黒をつける */
-    border-radius: 5px; /* キャラクター名の枠の角を丸くする */
+	font-size: 1.5rem;
+	/* キャラクター名の文字の大きさを設定する */
+	color: #fff;
+	/* 文字の色を白にする */
+	text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+	/* 文字に影をつけて見やすくする */
+	margin-bottom: 10px;
+	/* キャラクター名の下に余白をつける */
+	padding: 5px;
+	/* キャラクター名の周りに余白をつける */
+	background-color: rgba(0, 0, 0, 0.6);
+	/* 背景に少し透明な黒をつける */
+	border-radius: 5px;
+	/* キャラクター名の枠の角を丸くする */
 }
+
 /* キャラクター情報のレイアウト */
 /* プレイヤーと敵のキャラクター情報を横に並べて表示する部分です。 */
 .character-info {
-    display: flex; /* 要素を横並びにします。 */
-    justify-content: space-between; /* 要素同士の間にスペースを空けます。 */
-    align-items: center; /* 要素を上下の中央に揃えます。 */
-    width: 100%; /* 横幅を画面いっぱいにします。 */
-    max-width: 1400px; /* 横幅の最大値を1400pxに設定します。 */
-    margin-top: 5px; /* 上に5pxの余白を空けます。 */
-    padding: 0 50px; /* 左右に50pxの余白を設定します。 */
-    gap: 150px; /* 要素間の間隔を150pxに設定します。 */
+	display: flex;
+	/* 要素を横並びにします。 */
+	justify-content: space-between;
+	/* 要素同士の間にスペースを空けます。 */
+	align-items: center;
+	/* 要素を上下の中央に揃えます。 */
+	width: 100%;
+	/* 横幅を画面いっぱいにします。 */
+	max-width: 1400px;
+	/* 横幅の最大値を1400pxに設定します。 */
+	margin-top: 5px;
+	/* 上に5pxの余白を空けます。 */
+	padding: 0 50px;
+	/* 左右に50pxの余白を設定します。 */
+	gap: 150px;
+	/* 要素間の間隔を150pxに設定します。 */
 }
 
 /* キャラクター情報のスタイル設定 */
 /* キャラクター（プレイヤーまたは敵）の見た目を設定しています。 */
 .character {
-    display: flex; /* 要素を横並びにします。 */
-    justify-content: space-between; /* 要素同士の間にスペースを空けます。 */
-    align-items: center; /* 要素を上下の中央に揃えます。 */
-    width: 50%; /* キャラクター要素の横幅を全体の50%にします。 */
-    background: rgba(0, 0, 0, 0.7); /* 背景を少し透明な黒にします。 */
-    padding: 20px; /* 内側に20pxの余白を設定します。 */
-    border-radius: 15px; /* 要素の角を15pxの丸みにします。 */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* 要素に影を付けて浮き上がらせます。 */
-    border: 3px solid #fff; /* 白い枠線を3pxの太さで追加します。 */
+	display: flex;
+	/* 要素を横並びにします。 */
+	justify-content: space-between;
+	/* 要素同士の間にスペースを空けます。 */
+	align-items: center;
+	/* 要素を上下の中央に揃えます。 */
+	width: 50%;
+	/* キャラクター要素の横幅を全体の50%にします。 */
+	background: rgba(0, 0, 0, 0.7);
+	/* 背景を少し透明な黒にします。 */
+	padding: 20px;
+	/* 内側に20pxの余白を設定します。 */
+	border-radius: 15px;
+	/* 要素の角を15pxの丸みにします。 */
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+	/* 要素に影を付けて浮き上がらせます。 */
+	border: 3px solid #fff;
+	/* 白い枠線を3pxの太さで追加します。 */
 }
 
 /* キャラクター画像のスタイル設定 */
 /* キャラクターの画像の大きさや配置を設定しています。 */
 .character-img {
-    width: 200px; /* 画像の幅を200pxに設定します。 */
-    height: auto; /* 画像の高さは自動調整します。 */
-    margin: 15px auto; /* 上下に15px、左右は中央に配置します。 */
-    display: block; /* ブロック要素として表示します。 */
+	width: 200px;
+	/* 画像の幅を200pxに設定します。 */
+	height: auto;
+	/* 画像の高さは自動調整します。 */
+	margin: 15px auto;
+	/* 上下に15px、左右は中央に配置します。 */
+	display: block;
+	/* ブロック要素として表示します。 */
 }
 
 /* キャラクターのステータス表示部分のスタイル設定 */
 /* キャラクターの体力や攻撃力などの情報を表示する部分です。 */
 .character-stats {
-    background-color: rgba(0, 0, 0, 0.9); /* 背景を少し透明な黒にします。 */
-    color: #fff; /* 文字の色を白に設定します。 */
-    padding: 10px; /* 内側に10pxの余白を設定します。 */
-    border-radius: 10px; /* 要素の角を10pxの丸みにします。 */
-    text-align: left; /* テキストを左揃えにします。 */
-    font-size: 1rem; /* 文字の大きさを標準に設定します。 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* 要素に影を付けて浮き上がらせます。 */
-    border: 2px solid #fff; /* 白い枠線を2pxの太さで追加します。 */
+	background-color: rgba(0, 0, 0, 0.9);
+	/* 背景を少し透明な黒にします。 */
+	color: #fff;
+	/* 文字の色を白に設定します。 */
+	padding: 10px;
+	/* 内側に10pxの余白を設定します。 */
+	border-radius: 10px;
+	/* 要素の角を10pxの丸みにします。 */
+	text-align: left;
+	/* テキストを左揃えにします。 */
+	font-size: 1rem;
+	/* 文字の大きさを標準に設定します。 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+	/* 要素に影を付けて浮き上がらせます。 */
+	border: 2px solid #fff;
+	/* 白い枠線を2pxの太さで追加します。 */
 }
 
 /* バトルコントロールボタンの設定（黒と白で統一） */
 /* バトル開始ボタンや再戦ボタンの見た目を設定しています。 */
 .battle-controls {
-    margin-top: 40px; /* 上に40pxの余白を空けます。 */
-    display: flex; /* 要素を横並びにします。 */
-    justify-content: center; /* 要素を中央に配置します。 */
-    gap: 20px; /* 要素間の間隔を20pxに設定します。 */
+	margin-top: 40px;
+	/* 上に40pxの余白を空けます。 */
+	display: flex;
+	/* 要素を横並びにします。 */
+	justify-content: center;
+	/* 要素を中央に配置します。 */
+	gap: 20px;
+	/* 要素間の間隔を20pxに設定します。 */
 }
 
 /* バトルコントロールボタンのスタイル設定 */
 .battle-controls .btn {
-    background-color: #000; /* ボタンの背景を黒にします。 */
-    color: #fff; /* ボタンの文字を白にします。 */
-    border: 2px solid #fff; /* 白い枠線を2pxの太さで追加します。 */
+	background-color: #000;
+	/* ボタンの背景を黒にします。 */
+	color: #fff;
+	/* ボタンの文字を白にします。 */
+	border: 2px solid #fff;
+	/* 白い枠線を2pxの太さで追加します。 */
 }
 
 /* バトルコントロールボタンのホバー時のスタイル設定 */
 .battle-controls .btn:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* ホバー時に背景を少し白くします。 */
-    transform: translateY(-3px); /* ボタンを少し上に浮かせます。 */
+	background-color: rgba(255, 255, 255, 0.1);
+	/* ホバー時に背景を少し白くします。 */
+	transform: translateY(-3px);
+	/* ボタンを少し上に浮かせます。 */
 }
 
 /* バトルログの設定 */
 /* バトル中の出来事を記録するログの部分のスタイルです。 */
 .battle-log {
-    padding: 10px; /* 内側に10pxの余白を設定します。 */
-    background-color: black; /* 背景を黒にします。 */
-    border: 1px solid white; /* 白い枠線を1pxの太さで追加します。 */
-    height: 150px; /* 高さを150pxに設定します。 */
-    overflow-y: auto; /* 高さを超える場合に縦にスクロールできるようにします。 */
+	padding: 10px;
+	/* 内側に10pxの余白を設定します。 */
+	background-color: black;
+	/* 背景を黒にします。 */
+	border: 1px solid white;
+	/* 白い枠線を1pxの太さで追加します。 */
+	height: 150px;
+	/* 高さを150pxに設定します。 */
+	overflow-y: auto;
+	/* 高さを超える場合に縦にスクロールできるようにします。 */
 }
 
 /* バトル結果表示オーバーレイ */
 /* バトルの結果を画面全体に表示するためのオーバーレイのスタイルです。 */
 .battle-result-overlay {
-    position: fixed; /* 画面に固定されるようにします。 */
-    top: 0; /* 画面の上端に配置します。 */
-    left: 0; /* 画面の左端に配置します。 */
-    right: 0; /* 画面の右端に配置します。 */
-    bottom: 0; /* 画面の下端に配置します。 */
-    background-color: rgba(0, 0, 0, 0.8); /* 背景を少し透明な黒にします。 */
-    display: flex; /* 要素を横並びにします。 */
-    justify-content: center; /* 要素を中央に配置します。 */
-    align-items: center; /* 要素を上下の中央に揃えます。 */
-    flex-direction: column; /* 要素を縦に並べます。 */
-    gap: 20px; /* 要素間の間隔を20pxに設定します。 */
-    z-index: 1000; /* 他の要素よりも手前に表示されるようにします。 */
+	position: fixed;
+	/* 画面に固定されるようにします。 */
+	top: 0;
+	/* 画面の上端に配置します。 */
+	left: 0;
+	/* 画面の左端に配置します。 */
+	right: 0;
+	/* 画面の右端に配置します。 */
+	bottom: 0;
+	/* 画面の下端に配置します。 */
+	background-color: rgba(0, 0, 0, 0.8);
+	/* 背景を少し透明な黒にします。 */
+	display: flex;
+	/* 要素を横並びにします。 */
+	justify-content: center;
+	/* 要素を中央に配置します。 */
+	align-items: center;
+	/* 要素を上下の中央に揃えます。 */
+	flex-direction: column;
+	/* 要素を縦に並べます。 */
+	gap: 20px;
+	/* 要素間の間隔を20pxに設定します。 */
+	z-index: 1000;
+	/* 他の要素よりも手前に表示されるようにします。 */
 }
+
 /* バトル結果メッセージのスタイル設定 */
 .result-message {
-    font-size: 4rem; /* 文字サイズを大きくします。 */
-    color: #fff; /* 文字の色を白にします。 */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1); /* 文字に黒の影をつけて見やすくします。 */
-    padding: 20px; /* 内側に20pxの余白を設定します。 */
-    background-color: rgba(255, 255, 255, 0.2); /* 少し透明な白い背景を設定します。 */
-    border-radius: 15px; /* 要素の角を15pxの丸みにします。 */
-    border: 3px solid #fff; /* 白い枠線を3pxの太さでつけます。 */
-    text-align: center; /* 文字を中央揃えにします。 */
+	font-size: 4rem;
+	/* 文字サイズを大きくします。 */
+	color: #fff;
+	/* 文字の色を白にします。 */
+	text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
+	/* 文字に黒の影をつけて見やすくします。 */
+	padding: 20px;
+	/* 内側に20pxの余白を設定します。 */
+	background-color: rgba(255, 255, 255, 0.2);
+	/* 少し透明な白い背景を設定します。 */
+	border-radius: 15px;
+	/* 要素の角を15pxの丸みにします。 */
+	border: 3px solid #fff;
+	/* 白い枠線を3pxの太さでつけます。 */
+	text-align: center;
+	/* 文字を中央揃えにします。 */
 }
 
 /* バトル結果ボタンのグループ設定 */
 .result-buttons {
-    position: absolute; /* 絶対位置で配置します。 */
-    bottom: 20px; /* 画面下から20pxの位置に配置します。 */
-    left: 20px; /* 画面左から20pxの位置に配置します。 */
-    display: flex; /* フレックスボックスでボタンを並べます。 */
-    justify-content: space-between; /* ボタンの間に均等にスペースを空けます。 */
-    width: calc(100% - 40px); /* 全体の横幅から40pxを引いた幅を設定します。 */
-    gap: 20px; /* ボタン同士の間に20pxの余白をつけます。 */
+	position: absolute;
+	/* 絶対位置で配置します。 */
+	bottom: 20px;
+	/* 画面下から20pxの位置に配置します。 */
+	left: 20px;
+	/* 画面左から20pxの位置に配置します。 */
+	display: flex;
+	/* フレックスボックスでボタンを並べます。 */
+	justify-content: space-between;
+	/* ボタンの間に均等にスペースを空けます。 */
+	width: calc(100% - 40px);
+	/* 全体の横幅から40pxを引いた幅を設定します。 */
+	gap: 20px;
+	/* ボタン同士の間に20pxの余白をつけます。 */
 }
 
 /* マイページに戻るボタンのスタイル設定 */
 .result-back-button {
-    background-color: #000; /* 背景色を黒に設定します。 */
-    color: #fff; /* 文字の色を白に設定します。 */
-    border: 2px solid #fff; /* 白い枠線を2pxの太さでつけます。 */
+	background-color: #000;
+	/* 背景色を黒に設定します。 */
+	color: #fff;
+	/* 文字の色を白に設定します。 */
+	border: 2px solid #fff;
+	/* 白い枠線を2pxの太さでつけます。 */
 }
 
 /* マイページに戻るボタンのホバー時のスタイル設定 */
 .result-back-button:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* ホバー時に背景を少し白くします。 */
-    transform: translateY(-3px); /* ボタンを少し上に浮かせます。 */
+	background-color: rgba(255, 255, 255, 0.1);
+	/* ホバー時に背景を少し白くします。 */
+	transform: translateY(-3px);
+	/* ボタンを少し上に浮かせます。 */
 }
 
 /* バトル結果ボタンのスタイル設定 */
 .result-buttons .btn {
-    background-color: #000; /* 背景色を黒に設定します。 */
-    color: #fff; /* 文字の色を白に設定します。 */
-    border: 2px solid #fff; /* 白い枠線を2pxの太さでつけます。 */
+	background-color: #000;
+	/* 背景色を黒に設定します。 */
+	color: #fff;
+	/* 文字の色を白に設定します。 */
+	border: 2px solid #fff;
+	/* 白い枠線を2pxの太さでつけます。 */
 }
 
 /* バトル結果ボタンのホバー時のスタイル設定 */
 .result-buttons .btn:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* ホバー時に背景を少し白くします。 */
-    transform: translateY(-3px); /* ボタンを少し上に浮かせます。 */
+	background-color: rgba(255, 255, 255, 0.1);
+	/* ホバー時に背景を少し白くします。 */
+	transform: translateY(-3px);
+	/* ボタンを少し上に浮かせます。 */
 }
 
 /* 揺れのアニメーション設定 */
 @keyframes shake {
-    0%, 100% { transform: translateX(0); } /* 最初と最後は元の位置にします。 */
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); } /* 左に10px動かします。 */
-    20%, 40%, 60%, 80% { transform: translateX(10px); } /* 右に10px動かします。 */
+
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+
+	/* 最初と最後は元の位置にします。 */
+	10%,
+	30%,
+	50%,
+	70%,
+	90% {
+		transform: translateX(-10px);
+	}
+
+	/* 左に10px動かします。 */
+	20%,
+	40%,
+	60%,
+	80% {
+		transform: translateX(10px);
+	}
+
+	/* 右に10px動かします。 */
 }
 
 /* ダメージを受けたときに揺れるアニメーションを適用するクラス */
 .shake {
-    animation: shake 0.5s; /* 0.5秒間、揺れるアニメーションを適用します。 */
+	animation: shake 0.5s;
+	/* 0.5秒間、揺れるアニメーションを適用します。 */
 }
 
-/* ビームのスタイル設定 */
-#beam {
-    width: 0; /* 初期状態ではビームは表示されないように幅を0に設定します。 */
-    height: 70px; /* ビームの太さを70pxに設定します。 */
-    background-color: rgba(255, 255, 0, 0.8); /* ビームの色を黄色っぽく設定します。 */
-    position: absolute; /* 絶対位置で配置します。 */
-    top: 50%; /* 画面の縦の中央に配置します。 */
-    left: 50px; /* 発射地点を左から50pxの位置に設定します。 */
-    transform: translateY(-50%) scaleX(0); /* 縦方向に中央に移動し、横方向は縮めた状態にします。 */
-    opacity: 0; /* 初期状態でビームを見えなくします。 */
-    box-shadow: 0 0 20px 10px rgba(255, 255, 0, 0.5); /* ビームに光の効果を追加します。 */
-    transform-origin: left; /* ビームが左端から伸びたり縮んだりするように設定します。 */
-    z-index: 1000; /* ビームが他の要素の上に表示されるようにします。 */
+/* 必殺技のスタイル設定 */
+.rasengan {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;/* 円形にする */
+	background: radial-gradient(circle, #00f, #00a, #004);
+	box-shadow: 0 0 30px 15px rgba(0, 100, 255, 0.6);
+	display: none;
+	opacity: 1;
+}
+
+/* 中央の円のスタイル */
+.rasengan-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: rgba(0, 150, 255, 0.8);
+	transform: translate(-50%, -50%);
+}
+
+/* 棒のスタイル設定 */
+.particle {
+	position: absolute;
+	width: 90%;
+	height: 10%;
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 2px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	/* 螺旋丸の中央に配置 */
+}
+
+.particle.horizontal {
+	transform: translate(-50%, -50%) rotate(90deg);
+	/* 横向きに配置 */
+}
+
+.particle.diagonal {
+	transform: translate(-50%, -50%) rotate(45deg);
+	/* 斜めに配置 */
+}
+
+.particle.diagonal-opposite {
+	transform: translate(-50%, -50%) rotate(-45deg);
+	/* 反対方向の斜めに配置 */
 }
