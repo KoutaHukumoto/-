@@ -1,6 +1,6 @@
 package model;
 
-import Dao.UserDao;
+import dao.UserDao;
 
 /*
  * ログイン機能
@@ -11,7 +11,7 @@ public class loginLogic {
 	 * ログイン認証
 	 */
 	
-	public boolean execute(account account) {
+	public boolean execute(Account account) {
 		UserDao userDao = new UserDao();
 		
 		boolean isLogin = userDao.findByIdAndPassword(account);

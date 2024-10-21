@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.account;
+import model.Account;
 import model.loginLogic;
 
 
@@ -56,7 +56,7 @@ public class loginServlet extends HttpServlet {
       		String hash = DigestUtils.sha256Hex(pass);
 
       		//JavaBeansを生成
-      		account account = new account();
+      		Account account = new Account();
 
       		//BOを生成
       		loginLogic loginLogic = new loginLogic();

@@ -7,10 +7,12 @@ import java.io.Serializable;
  * userテーブルのデータを保持するクラス
 */
 
-public class account implements Serializable{
+public class Account implements Serializable{
 	private int accountId;
 	
 	private String password;
+	
+	private String hash;
 
 	public int getAccountId() {
 		return accountId;
@@ -26,5 +28,13 @@ public class account implements Serializable{
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getHash() {
+		return hash;
+	}
+
+	public void setHash(String hash) {
+		this.hash = hash;
 	}
 }
