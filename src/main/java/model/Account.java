@@ -8,17 +8,17 @@ import java.io.Serializable;
 */
 
 public class Account implements Serializable{
-	private int accountId;
+	private String accountId;
 	
 	private String password;
 	
 	private String hash;
 
-	public int getAccountId() {
+	public String getAccountId() {
 		return accountId;
 	}
 
-	public void setAccountId(int accountId) {
+	public void setAccountId(String accountId) {
 		this.accountId = accountId;
 	}
 

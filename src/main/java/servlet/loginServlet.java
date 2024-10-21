@@ -2,21 +2,18 @@ package servlet;
 
 import java.io.IOException;
 
-import org.apache.commons.codec.digest.DigestUtils;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Account;
 import model.loginLogic;
 
-
+@WebServlet("/loginServlet")
 public class loginServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 1L;
 
 	public loginServlet() {
 		super();
@@ -46,52 +43,27 @@ public class loginServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // フォームからのデータを取得
-        String pass = request.getParameter("pass");
-        String id = request.getParameter("id");
-        
-      //パスワードをSHA256でハッシュ化
-      		String hash = DigestUtils.sha256Hex(pass);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String pass = request.getParameter("pass");
+		String id = request.getParameter("id");
+		
+		
 
-      		//JavaBeansを生成
-      		Account account = new Account();
+		// loginLogicクラスでログイン処理を実行
+		loginLogic loginLogic = new loginLogic();
+		boolean isLogin = loginLogic.execute(id,pass);
 
-      		//BOを生成
-      		loginLogic loginLogic = new loginLogic();
-
-      		//ログイン認証
-      		boolean isLogin = loginLogic.execute(account);
-
-      		//フォワード先
-      		String forward = null;
-
-      		if (isLogin) {
-      			//認証OK
-
-      			//セッション開始
-      			HttpSession session = request.getSession();
-
-      			//セッションスコープにユーザー情報を保存
-      			session.setAttribute("loginUser", account);
-
-      			//フォワード先を設定
-      			forward = "loginResult.jsp";
-      		} else {
-      			//認証NG
-
-      			//リクエストスコープエラーメッセージ設定
-      			request.setAttribute("errorMessage", "入力に誤りがあります");
-
-      			//フォワード先を設定
-      			forward = "index.jsp";
-      		}
-        
-        
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/Top_Page.jsp");
-        dispatcher.forward(request, response);
-    }
+		// ログイン結果によるリダイレクト
+		if (isLogin) {
+			// ログイン成功時のリダイレクト先
+			RequestDispatcher dispatcher = request.getRequestDispatcher("mypage.html");
+			dispatcher.forward(request, response);
+		} else {
+			// ログイン失敗時、エラーメッセージをセットしてログインページに戻す
+			request.setAttribute("errorMessage", "ログインに失敗しました。IDまたはパスワードが間違っています。");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("toppage.html");
+			dispatcher.forward(request, response);
+		}
+	}
 }
-

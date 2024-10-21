@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>新規登録</title>
+</head>
+<body>
+
+    <p>パスワードのルール​<br>・5文字以上8文字以下<br>・英数字であること​<br>・特殊記号は使用できません​</p>
+
+    <form action="RegisterServlet" method="POST" onsubmit="return check()">
+        <label>ニックネーム:</label>
+        <input type="text" name="name" class="form-control"><br>
+
+        <label>パスワード:</label>
+        <input type="password" name="pass" class="form-control"><br>
+        
+        <label>もう一度入力:</label>
+        <input type="password" name="pass" class="form-control"><br>
+
+        <p id="error-message" style="color:red;"></p>
+        
+        
+
+        <button type="submit">新規登録</button>
+    </form>
+
+    <br>
+
+    <button onclick="location.href='toppage.html'">戻る</button>
+
+    <script>
+        function check() {
+            const id = document.querySelector('input[name="id"]').value;
+            const pass = document.querySelector('input[name="pass"]').value;
+            const errorMessage = document.getElementById('error-message');
+
+            if (id.length < 5) {
+                errorMessage.textContent = "IDは最低5文字必要です。";
+                return false;
+            } else if (pass.length < 8) {
+                errorMessage.textContent = "パスワードは最低8文字必要です。";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
