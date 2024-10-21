@@ -175,12 +175,11 @@ body {
 
 #msg a {
 	width: 50%;
-	display: inline-block;
 	color: white;
 	background: black;
 	border: 2px solid white;
 	padding: 0.5em 1.5em;
-	margin: 50px 0 30px 80px;
+	margin: 43px auto;
 	text-decoration: none;
 	font-size: 1.5em;
 }
