@@ -11,7 +11,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.loginLogic;
 
-@WebServlet("/loginServlet")
+
+@WebServlet("/loginServlet") 
 public class loginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
