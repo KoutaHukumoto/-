@@ -13,8 +13,9 @@ public class UserDao extends BaseDao {
 	 */
 
 	public boolean find(String id, String pass) {
-		boolean isLogin = false;
 
+		boolean isLogin = false;
+		int idInt =Integer.parseInt(id);
 		try {
 			// パスワードをハッシュ化 (必要に応じて変更)
 			String hashedPass = DigestUtils.sha256Hex(pass);
@@ -27,7 +28,7 @@ public class UserDao extends BaseDao {
 
 			try (PreparedStatement ps = con.prepareStatement(sql)) {
 				// 検索条件を設定
-				ps.setString(1, id);
+				ps.setInt(1, idInt);
 				ps.setString(2, hashedPass); // ハッシュ化されたパスワードを使う
 
 				// 検索実行

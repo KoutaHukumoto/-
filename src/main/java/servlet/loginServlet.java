@@ -47,9 +47,9 @@ public class loginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String pass = request.getParameter("pass");
-		String id = request.getParameter("id");
+		String id = request.getParameter("name");
 		
-		
+		System.out.println(id);
 
 		// loginLogicクラスでログイン処理を実行
 		loginLogic loginLogic = new loginLogic();
