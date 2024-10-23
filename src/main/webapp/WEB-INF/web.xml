@@ -17,24 +17,4 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>logoutServlet</display-name>
-    <servlet-name>logoutServlet</servlet-name>
-    <servlet-class>servlet.logoutServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>logoutServlet</servlet-name>
-    <url-pattern>/logoutServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>loginServlet</display-name>
-    <servlet-name>loginServlet</servlet-name>
-    <servlet-class>servlet.loginServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>loginServlet</servlet-name>
-    <url-pattern>/loginServlet</url-pattern>
-  </servlet-mapping>
 </web-app>
