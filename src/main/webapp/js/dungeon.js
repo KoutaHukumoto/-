@@ -1,6 +1,3 @@
-/**
- * 
- */
 
 document.addEventListener('DOMContentLoaded', function() {
 	// バトル開始ボタンのイベントリスナー
@@ -23,8 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	document.querySelectorAll('.battle-option')[2].addEventListener('click', function() {
 		specialAttack();
 	});
-
-
 
 	// 音楽ボタンのイベントリスナー
 	document.getElementById('playMusicBtn').addEventListener('click', function() {
@@ -70,10 +65,13 @@ function battleRound() {
 	const playerImgElement = document.querySelector('.character.pc .character-img');
 	const npcImgElement = document.querySelector('.character.npc .character-img');
 	const battleLog = document.getElementById('battleLog');
-	let playerHP = parseInt(playerHPElement.getAttribute('value'));
+
+	// プレイヤーとNPCのHPをstatusDataから取得
+	let playerHP = statusData.hp;  // ここでstatusDataを使用
 	let npcHP = parseInt(npcHPElement.getAttribute('value'));
-	const playerAttack = 15; // プレイヤーの攻撃力
-	const npcAttack = 10; // 敵の攻撃力
+
+	const playerAttack = statusData.attack; // プレイヤーの攻撃力をstatusDataから取得
+	const npcAttack = 10; // 敵の攻撃力は固定値
 
 	// プレイヤーが攻撃する
 	if (playerHP > 0 && npcHP > 0) {
@@ -124,115 +122,103 @@ function battleRound() {
 
 // 必殺技機能
 function specialAttack() {
-    // NPCキャラクターのHPと要素の取得
-    const npcHPElement = document.querySelector('.character.npc .character-header meter');
-    const npcImgElement = document.querySelector('.character.npc .character-img');
-    const battleLog = document.getElementById('battleLog');
-    let npcHP = parseInt(npcHPElement.getAttribute('value'));
-    const playerAttack = 150;
+	const npcHPElement = document.querySelector('.character.npc .character-header meter');
+	const npcImgElement = document.querySelector('.character.npc .character-img');
+	const battleLog = document.getElementById('battleLog');
+	let npcHP = parseInt(npcHPElement.getAttribute('value'));
+	const playerAttack = 150; // 必殺技の攻撃力は固定値
 
-    // 螺旋丸のアニメーション要素を作成
-    var rasengan = document.createElement('div');
-    rasengan.id = 'rasengan';
-    rasengan.classList.add('rasengan-center');
+	// 螺旋丸のアニメーション要素を作成
+	var rasengan = document.createElement('div');
+	rasengan.id = 'rasengan';
+	rasengan.classList.add('rasengan-center');
 
-    // 中央の円のスタイル要素を追加
-    const rasenganCenter = document.createElement('div');
-    rasenganCenter.classList.add('rasengan-center');
-    rasengan.appendChild(rasenganCenter);
+	const rasenganCenter = document.createElement('div');
+	rasenganCenter.classList.add('rasengan-center');
+	rasengan.appendChild(rasenganCenter);
 
-    // 螺旋丸の周囲に棒のパーティクルを追加
-    const particleClasses = ['particle', 'horizontal', 'diagonal', 'diagonal-opposite'];
-    particleClasses.forEach((particleClass) => {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        if (particleClass !== 'particle') {
-            particle.classList.add(particleClass);
-        }
-        rasengan.appendChild(particle);
-    });
+	const particleClasses = ['particle', 'horizontal', 'diagonal', 'diagonal-opposite'];
+	particleClasses.forEach((particleClass) => {
+		const particle = document.createElement('div');
+		particle.classList.add('particle');
+		if (particleClass !== 'particle') {
+			particle.classList.add(particleClass);
+		}
+		rasengan.appendChild(particle);
+	});
 
-    document.body.appendChild(rasengan);
+	document.body.appendChild(rasengan);
 
-    // ヒーロー画像の右端に螺旋丸の位置を設定
-    const heroImgElement = document.querySelector('.character.pc .character-img');
-    const heroRect = heroImgElement.getBoundingClientRect();
-    const heroRight = heroRect.right;
-    const heroTop = heroRect.top;
+	const heroImgElement = document.querySelector('.character.pc .character-img');
+	const heroRect = heroImgElement.getBoundingClientRect();
+	const heroRight = heroRect.right;
+	const heroTop = heroRect.top;
 
-    rasengan.style.left = heroRight + 'px';
-    rasengan.style.top = heroTop + (heroRect.height / 2 - 35) + 'px';
+	rasengan.style.left = heroRight + 'px';
+	rasengan.style.top = heroTop + (heroRect.height / 2 - 35) + 'px';
 
-    // 螺旋丸のアニメーション
-    rasenganAnimation = anime({
-        targets: "#rasengan",
-        scale: [0, 3], // 小さい状態から元の大きさに拡大
-        duration: 20, // 2秒かけて拡大
-        easing: "easeOutElastic(1, 0.5)", // 弾むような効果を設定
-        complete: function() {
-            // 拡大後に螺旋丸を回転させるアニメーション
-            rasenganAnimation = anime({
-                targets: "#rasengan",
-                rotate: 36000,
-                duration: 2000, // 2秒で1回転
-                easing: "linear", // 一定の速度で回転
-                loop: true // 回転を繰り返す
-            });
-        }
-    });
+	rasenganAnimation = anime({
+		targets: "#rasengan",
+		scale: [0, 3],
+		duration: 20,
+		easing: "easeOutElastic(1, 0.5)",
+		complete: function() {
+			rasenganAnimation = anime({
+				targets: "#rasengan",
+				rotate: 36000,
+				duration: 2000,
+				easing: "linear",
+				loop: true
+			});
+		}
+	});
 
-    setTimeout(function() {
-        anime({
-            targets: "#rasengan",
-            translateX: -130, 
-            translatey: 100,
-            duration: 700, 
-        });
-    }, 1000);
+	setTimeout(function() {
+		anime({
+			targets: "#rasengan",
+			translateX: -130,
+			translatey: 100,
+			duration: 700,
+		});
+	}, 1000);
 
+	setTimeout(function() {
+		anime({
+			targets: "#rasengan",
+			opacity: [1, 0],
+			scale: [1, 0.5],
+			duration: 1000,
+			easing: "easeInOutQuad",
+			complete: function() {
+				rasengan.style.display = "none";
+				if (rasenganAnimation) rasenganAnimation.pause();
+			}
+		});
+	}, 2000);
 
-    setTimeout(function() {
-        anime({
-            targets: "#rasengan",
-            opacity: [1, 0], // 徐々に透明にする
-            scale: [1, 0.5], // 徐々に縮小する
-            duration: 1000, // 1秒かけて消える
-            easing: "easeInOutQuad", // なめらかな消失効果
-            complete: function() {
-                rasengan.style.display = "none"; // 螺旋丸を非表示にする
-                // アニメーションを停止
-                if (rasenganAnimation) rasenganAnimation.pause();
-            }
-        });
-    }, 2000);
-
-    setTimeout(function() {
-
-        npcHP -= playerAttack;
-        const specialAttackLog = document.createElement('li');
-        battleLog.appendChild(specialAttackLog);
-        displayTextOneByOne(specialAttackLog, `あなたの必殺技！ スライムに ${playerAttack} のダメージ！`, function() {
-            npcImgElement.classList.add('shake');
-            setTimeout(function() {
-                npcImgElement.classList.remove('shake');
-                if (npcHP <= 0) {
-                    npcHP = 0;
-                    const winLog = document.createElement('li');
-                    battleLog.appendChild(winLog);
-                    displayTextOneByOne(winLog, 'スライムは倒れた！！！', function() {
-                        npcHPElement.setAttribute('value', npcHP);
-                        displayBattleResult('勝利！！');
-                    });
-                    return;
-                }
-                npcHPElement.setAttribute('value', npcHP);
-            }, 500);
-        });
-    }, 2000);
+	setTimeout(function() {
+		npcHP -= playerAttack;
+		const specialAttackLog = document.createElement('li');
+		battleLog.appendChild(specialAttackLog);
+		displayTextOneByOne(specialAttackLog, `あなたの必殺技！ スライムに ${playerAttack} のダメージ！`, function() {
+			npcImgElement.classList.add('shake');
+			setTimeout(function() {
+				npcImgElement.classList.remove('shake');
+				if (npcHP <= 0) {
+					npcHP = 0;
+					const winLog = document.createElement('li');
+					battleLog.appendChild(winLog);
+					displayTextOneByOne(winLog, 'スライムは倒れた！！！', function() {
+						npcHPElement.setAttribute('value', npcHP);
+						displayBattleResult('勝利！！');
+					});
+					return;
+				}
+				npcHPElement.setAttribute('value', npcHP);
+			}, 500);
+		});
+	}, 2000);
 }
-
-
-
 
 // 一文字ずつ表示する関数
 function displayTextOneByOne(element, text, callback) {
@@ -248,4 +234,3 @@ function displayTextOneByOne(element, text, callback) {
 	}
 	typeChar();
 }
-
