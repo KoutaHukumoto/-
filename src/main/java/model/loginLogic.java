@@ -11,7 +11,7 @@ public class loginLogic {
 	 * ログイン認証
 	 */
 
-	public boolean execute(String id, String pass) {
+	public boolean execute(int id, String pass) {
 		UserDao userDao = new UserDao();
 
 		boolean isLogin = userDao.find(id, pass);

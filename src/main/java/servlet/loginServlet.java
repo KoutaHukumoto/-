@@ -2,6 +2,9 @@ package servlet;
 
 import java.io.IOException;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
+import dao.UserDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,6 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.Status;
 import model.loginLogic;
 
 
@@ -47,18 +51,21 @@ public class loginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String pass = request.getParameter("pass");
-		String id = request.getParameter("id");
+		int id = Integer.parseInt(request.getParameter("id"));
 		
-		
+		String hashdpass = DigestUtils.sha256Hex(pass);
 
 		// loginLogicクラスでログイン処理を実行
 		loginLogic loginLogic = new loginLogic();
-		boolean isLogin = loginLogic.execute(id,pass);
+		boolean isLogin = loginLogic.execute(id,hashdpass);
 
 		// ログイン結果によるリダイレクト
 		if (isLogin) {
 			// ログイン成功時のリダイレクト先
-			RequestDispatcher dispatcher = request.getRequestDispatcher("mypage.html");
+			UserDao userdao = new UserDao();
+			Status status = userdao.find(id);
+			request.setAttribute("status", status);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/mypage.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			// ログイン失敗時、エラーメッセージをセットしてログインページに戻す

@@ -10,15 +10,15 @@
 
 	<p>パスワードのルール<br>・5文字以上8文字以下<br>・英数字であること<br>・特殊記号は使用できません</p>
 
-	<form action="RegisterServlet" method="POST" onsubmit="return check()">
+	<form action="/Dosukoi-Analytics/RegisterServlet" method="POST" onsubmit="return check()">
 		<label>ニックネーム:</label>
 		<input type="text" name="name" class="form-control"><br>
 
 		<label>パスワード:</label>
-		<input type="password" name="pass1" class="form-control"><br>
+		<input type="password" name="pass" class="form-control"><br>
 
 		<label>もう一度入力:</label>
-		<input type="password" name="pass2" class="form-control"><br>
+		<input type="password" name="Password again" class="form-control"><br>
 
 		<p id="error-message" style="color:red;"></p>
 
@@ -32,8 +32,8 @@
 	<script>
 		function check() {
 			const id = document.querySelector('input[name="name"]').value;
-			const pass1 = document.querySelector('input[name="pass1"]').value;
-			const pass2 = document.querySelector('input[name="pass2"]').value;
+			const pass1 = document.querySelector('input[name="pass"]').value;
+			const pass2 = document.querySelector('input[name="Password again"]').value;
 			const errorMessage = document.getElementById('error-message');
 
 			// パスワードの長さを確認（5～8文字）

@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.apache.commons.codec.digest.DigestUtils;
+import model.Status;
 
 public class UserDao extends BaseDao {
 
@@ -12,23 +12,21 @@ public class UserDao extends BaseDao {
 	 * ユーザーとHash値で検索し検索結果あるか否かをチェックする
 	 */
 
-	public boolean find(String id, String pass) {
+	public boolean find(int id, String pass) {
 		boolean isLogin = false;
 
 		try {
-			// パスワードをハッシュ化 (必要に応じて変更)
-			String hashedPass = DigestUtils.sha256Hex(pass);
 
 			// DB接続
 			this.connect();
 
 			// SQL文
-			String sql = "SELECT id FROM account_table WHERE id = ? AND password = ?";
+			String sql = "SELECT accountid FROM account_table WHERE accountid = ? AND password = ?";
 
 			try (PreparedStatement ps = con.prepareStatement(sql)) {
 				// 検索条件を設定
-				ps.setString(1, id);
-				ps.setString(2, hashedPass); // ハッシュ化されたパスワードを使う
+				ps.setInt(1, id);
+				ps.setString(2, pass);
 
 				// 検索実行
 				try (ResultSet rs = ps.executeQuery()) {
@@ -53,30 +51,38 @@ public class UserDao extends BaseDao {
 	}
 
 	/*
-	 *  IDを取り出す
+	 *  データをすべて取り出す
 	 */
 
-	public int findID(String pass) {
-		int accountId = -1; // IDが見つからなかった場合の値を設定
+	public Status find(int id) {
+		
+		Status status = null;
 
-		try {
-			// パスワードをSHA256でハッシュ化
-			String hashedPass = DigestUtils.sha256Hex(pass);
+        try {
+            // DB接続
+            this.connect();
 
-			// DB接続
-			this.connect();
+            String sql = "SELECT * FROM character_table WHERE accountid = ?";
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setInt(1, id);
 
-			String sql = "SELECT id FROM account_table WHERE password = ?";
-			try (PreparedStatement ps = con.prepareStatement(sql)) {
-				ps.setString(1, hashedPass);
-
-				// 検索処理の実行
-				try (ResultSet rs = ps.executeQuery()) {
-					if (rs.next()) {
-						accountId = rs.getInt("id");
-					}
-				}
-			}
+                // 検索処理の実行
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        // データが見つかった場合、Characterオブジェクトにセットして返す
+                        status = new Status(
+                        	rs.getString("charactername"),
+                            rs.getInt("characterid"),       
+                            rs.getInt("hp"),        
+                            rs.getInt("attack"),    
+                            rs.getInt("defence"),  
+                            rs.getInt("speed"),
+                            rs.getString("itemid")
+                        );
+                    }
+                }
+            }
+          return status;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -86,8 +92,7 @@ public class UserDao extends BaseDao {
 				e.printStackTrace();
 			}
 		}
-
-		return accountId; // IDを返す。見つからなければ-1を返す。
+		return status;
 	}
 
 }

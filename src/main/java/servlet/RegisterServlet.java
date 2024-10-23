@@ -2,20 +2,23 @@ package servlet;
 
 import java.io.IOException;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import dao.RegisterDao;
-import dao.UserDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.Status;
 
 /**
  * Servlet implementation class Registration
  */
 
-@WebServlet("/RegisterServlet") 
+@WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -47,18 +50,19 @@ public class RegisterServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String pass = request.getParameter("pass");
 
+		String hashdpass = DigestUtils.sha256Hex(pass);
+
 		// RegisterDaoを使ってユーザーをDBに登録
 		RegisterDao register = new RegisterDao();
-		boolean Registered = register.registerUser(pass);
-		boolean newcharacter = register.registerUser(name);
+		int id = register.registerUser(hashdpass);
+		boolean newcharacter = register.registercharacter(id,name);
 
-		UserDao user = new UserDao();
-		int id = user.findID(pass);
-
-		request.setAttribute("name", name);
-		request.setAttribute("id", id);
-		request.setAttribute("pass", pass);
-
+		Status status = new Status(name, id, pass);
+		
+		// セッションにStatusオブジェクトを保存
+		HttpSession session = request.getSession();
+		session.setAttribute("status", status);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/Register.jsp");
 		dispatcher.forward(request, response);
 
