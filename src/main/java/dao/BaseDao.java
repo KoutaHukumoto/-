@@ -17,11 +17,11 @@ public class BaseDao {
 	
 	// コネクション
 	protected Connection con = null;
-	
 	// DB接続する
 	protected void connect() throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		con = DriverManager.getConnection(URL, USER, PASSWORD);
+		
 	}
 	
 	// DB切断する
