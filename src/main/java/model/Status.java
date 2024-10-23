@@ -10,7 +10,6 @@ public class Status {
 	private String item;
 	private String itemEffect;
 
-	// コンストラクタ
 	public Status(String name, int id, int hp, int attack, int defense, int speed, String item, String itemEffect) {
 		this.name = name;
 		this.id = id;
@@ -22,7 +21,7 @@ public class Status {
 		this.itemEffect = itemEffect;
 	}
 
-	// ゲッター
+
 	public String getName() {
 		return name;
 	}
