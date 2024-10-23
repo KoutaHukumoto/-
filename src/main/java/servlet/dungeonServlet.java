@@ -31,6 +31,7 @@ public class dungeonServlet extends HttpServlet {
         String speed = request.getParameter("speed");
         String item = request.getParameter("item");
         String itemEffect = request.getParameter("itemEffect");
+        
 
         request.setAttribute("name", name);
         request.setAttribute("id", id);

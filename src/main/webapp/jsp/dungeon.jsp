@@ -254,7 +254,7 @@ function specialAttack() {
 				<div class="character pc" style = "margin-right: 150px">
 					<div class="character-stats">
 						<p>HP: ${hp}</p>
-						<p>攻撃: ${attack}</p>
+						<p>攻撃: ${hp}</p>
 						<p>防御: ${defense}</p>
 						<p>すばやさ: ${speed}</p>
 						<p>装備品: 「${item}」</p>
