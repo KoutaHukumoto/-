@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<title>道場</title>
 	<link rel="stylesheet" href="css/dojyo.css">
+	<script src="js/dojyo.js"></script>
 </head>
 
 <body>
@@ -32,26 +33,26 @@
 				</div>
 			</div>
 		</div>
-		<div class="subject">
-			<input type="checkbox" id="popup">
-			<div id="overlay">
-				<label for="popup" id="bg_gray"></label>
-				<div id="window">
-					<label for="popup" id="btn_cloth">
-						<span></span>
-					</label>
-					<div id="msg">
-						<a href="#">初級</a>
-						<a href="#">中級</a>
-						<a href="#">上級</a>
-					</div>
+		<input type="checkbox" id="popup">
+		<div id="overlay">
+			<label for="popup" id="bg_gray"></label>
+			<div id="window">
+				<label for="popup" id="btn_cloth">
+					<span></span>
+				</label>
+				<div id="msg">
+					<a id="link1" href="#">初級</a>
+					<a id="link2" href="#">中級</a>
+					<a id="link3" href="#">上級</a>
 				</div>
 			</div>
-			<label for="popup" id="txt_label">国語</label>
-			<label for="popup" id="txt_label">数学</label>
-			<label for="popup" id="txt_label">英語</label>
-			<label for="popup" id="txt_label">理科</label>
-			<label for="popup" id="txt_label">社会</label>
+		</div>
+		<div class="subject">
+			<label for="popup" onclick="national_language()">国語</label>
+			<label for="popup" onclick="mathematics()">数学</label>
+			<label for="popup" onclick="english()">英語</label>
+			<label for="popup" onclick="science()">理科</label>
+			<label for="popup" onclick="society()">社会</label>
 		</div>
 
 		<div class="mypage">
