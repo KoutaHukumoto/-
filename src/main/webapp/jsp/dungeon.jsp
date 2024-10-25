@@ -1,19 +1,41 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="model.Status"%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ダンジョン</title>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	rel="stylesheet">
 <link rel="stylesheet" href="css/battle.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
 <body>
-	<script src="js/dungeon.js"></script>
+    <script src="js/dungeon.js"></script>
+
+    <%
+        Status status = (Status) session.getAttribute("status");
+    %>
+    <script>
+        var statusData = {
+            name: "<%= status.getName() %>",
+            id: <%= status.getId() %>,
+            hp: <%= status.getHp() %>,
+            attack: <%= status.getAttack() %>,
+            defense: <%= status.getDefense() %>,
+            speed: <%= status.getSpeed() %>,
+            item: "<%= status.getItem() %>",
+            itemEffect: "<%= status.getItemEffect() %>"
+        };
+    </script>
+
 	<div class="bg-custom">
 		<div class="music-control">
-			<button id="playMusicBtn" class="btn btn-info" aria-label="音楽を再生または停止">🎵 音楽を停止</button>
+			<button id="playMusicBtn" class="btn btn-info"
+				aria-label="音楽を再生または停止">🎵 音楽を停止</button>
 		</div>
 
 		<audio id="backgroundMusic" autoplay>
@@ -27,17 +49,19 @@
 			<div class="character-info">
 				<div class="character pc" style="margin-right: 50px">
 					<div class="character-stats">
-						<p>HP: ${hp}</p>
-						<p>攻撃: ${attack}</p>
-						<p>防御: ${defense}</p>
-						<p>すばやさ: ${speed}</p>
-						<p>装備品: 「${item}」</p>
-						<p>「${itemEffect}」</p>
+
+						<p>HP:<%= status.getHp() %></p>
+						<p>攻撃:<%= status.getAttack() %></p>
+						<p>防御:<%= status.getDefense() %></p>
+						<p>すばやさ:<%= status.getSpeed() %></p>
+						<p>装備品: 「<%= status.getItem() %>」</p>
+						<p>「<%= status.getItemEffect() %>」</p>
 					</div>
 					<div class="character-img-box">
 						<div class="character-header">
-							<p class="character-name">${name}</p>
-							<meter max="100" low="20" high="80" optimum="90" value="${hp}"></meter>
+							<p class="character-name"><%= status.getName()%></p>
+							<meter max="100" low="20" high="80" optimum="90"
+								value="<%=status.getHp()%>"></meter>
 						</div>
 						<img src="画像/avater.jpg" alt="Hero" class="character-img">
 					</div>
@@ -82,8 +106,10 @@
 		</div>
 	</div>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </body>
 </html>

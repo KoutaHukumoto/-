@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>TOPページ</title>
+	<link rel="stylesheet" href="css/TopPage.css">
+	<style>
+		.error {
+			display: none;
+			color: red;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		function validateForm() {
+			const id = document.querySelector('input[name="id"]').value;
+			const pass = document.querySelector('input[name="pass"]').value;
+			const errorMessage = document.getElementById('error-message');
+
+			if (!id || !pass) {
+				errorMessage.style.display = 'block'; // メッセージを表示
+				return false; // フォームの送信を防ぐ
+			}
+
+			errorMessage.style.display = 'none'; // メッセージを非表示
+			return true; // フォームを送信
+		}
+
+		function goToPage() {
+			window.location.href = 'newRegistration.html';
+		}
+	</script>
+
+	<form action="/Dosukoi-Analytics/loginServlet" method="post" onsubmit="return validateForm();">
+		<div class="h1">
+			<h1>9年後の君へ</h1>
+		</div>
+		<div class="login">
+			<label>id:</label>
+			<input type="text" name="id" class="form-control">
+			<br>
+			<label>パスワード:</label>
+			<input type="password" name="pass" class="form-control">
+			<p id="error-message" class="error">※IDまたはパスワードが間違っています。</p>
+		</div>
+
+		<div class="login_btn">
+			<button type="submit" class="btn btn-primary">ログイン</button>
+		</div>
+	</form>
+
+	<div class="new_btn">
+		<button type="button" onclick="goToPage();">新規登録</button>
+	</div>
+</body>
+
+</html>
