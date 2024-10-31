@@ -41,18 +41,22 @@
 					<span></span>
 				</label>
 				<div id="msg">
-					<a id="link1" href="#">初級</a>
-					<a id="link2" href="#">中級</a>
-					<a id="link3" href="#">上級</a>
+					<form action="/Dosukoi-Analytics/dojyoServlet" method="POST">
+						<input type="hidden" name="s_id" value="国語">
+						<input type="hidden" name="d_id" value="初級">
+						<button id="link1" type="submit">初級</button>
+						<button id="link2" type="submit">中級</button>
+						<button id="link3" type="submit">上級</button>
+					</form>
 				</div>
 			</div>
 		</div>
 		<div class="subject">
-			<label for="popup" onclick="national_language()">国語</label>
-			<label for="popup" onclick="mathematics()">数学</label>
-			<label for="popup" onclick="english()">英語</label>
-			<label for="popup" onclick="science()">理科</label>
-			<label for="popup" onclick="society()">社会</label>
+			<label for="popup" id="national_language()">国語</label>
+			<label for="popup" id="mathematics()">数学</label>
+			<label for="popup" id="english()">英語</label>
+			<label for="popup" id="science()">理科</label>
+			<label for="popup" id="society()">社会</label>
 		</div>
 
 		<div class="mypage">
