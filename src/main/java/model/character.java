@@ -23,6 +23,12 @@ public class character implements Serializable{
 	private int itemId;
 	
 	private int dungeonId;
+	
+	
+	
+	
+	
+	
 
 	public int getCharacterId() {
 		return characterId;
