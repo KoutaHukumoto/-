@@ -15,6 +15,14 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/commons-codec-1.17.1.jar</systemPath>
         </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connect</artifactId>
+            <version>8.0.27</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/mysql-connector-java-8.0.27.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>
