@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class BaseDao {
 
 	// 接続文字列
-	private static final String URL = "jdbc:mysql://localhost:3306/dosukoi";
+	private static final String URL = "jdbc:mysql://localhost:3306/doi";
 	private static final String USER = "root";
 	private static final String PASSWORD = "";
 	
