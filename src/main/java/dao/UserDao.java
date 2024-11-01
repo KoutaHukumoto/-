@@ -26,7 +26,7 @@ public class UserDao extends BaseDao {
 			try (PreparedStatement ps = con.prepareStatement(sql)) {
 				// 検索条件を設定
 				ps.setInt(1, id);
-				ps.setString(2, pass)
+				ps.setString(2, pass);
 				
 		
 				
