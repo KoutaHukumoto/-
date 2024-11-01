@@ -14,7 +14,16 @@ document.addEventListener('DOMContentLoaded', function() {
 	// 攻撃ボタンのイベントリスナー
 	document.querySelectorAll('.battle-option')[0].addEventListener('click', function() {
 		battleRound();
-	});
+	})
+	
+	 // 防御ボタンのイベントリスナー
+	 // 「ぼうぎょ」ボタンを押したら、ぼうぎょが始まります。
+    document.querySelectorAll('.battle-option')[1].addEventListener('click', function() {
+	    	defenseRound();
+	    });
+
+
+	
 
 	// 必殺技ボタンのイベントリスナー
 	document.querySelectorAll('.battle-option')[2].addEventListener('click', function() {
@@ -118,6 +127,44 @@ function battleRound() {
 			}, 500);
 		});
 	}
+}
+	// 防御機能
+	function defenseRound() {
+    const playerHPElement = document.querySelector('.character.pc .character-header meter');
+    const npcHPElement = document.querySelector('.character.npc .character-header meter');
+    const playerImgElement = document.querySelector('.character.pc .character-img');
+    const battleLog = document.getElementById('battleLog');
+    let playerHP = parseInt(playerHPElement.getAttribute('value'));
+    let npcHP = parseInt(npcHPElement.getAttribute('value'));
+    const playerDefense = ${defense}; // プレイヤーの防御力
+    const npcAttack = 20; // 敵の攻撃力
+
+    // プレイヤーが防御を固めたログを表示
+    const defenseLog = document.createElement('li');
+    battleLog.appendChild(defenseLog);
+    displayTextOneByOne(defenseLog, 'あなたは防御を固めた！！', function() {
+        // 相手が攻撃する
+        const damage = npcAttack - playerDefense > 0 ? npcAttack - playerDefense : 0; // 防御効果を適用
+        playerHP -= damage;
+
+        const npcAttackLog = document.createElement('li');
+        battleLog.appendChild(npcAttackLog);
+        displayTextOneByOne(npcAttackLog, `スライムの攻撃！ あなたに10のダメージ！`, function() {
+            playerImgElement.classList.add('shake'); // プレイヤーがダメージを受けて揺れる演出
+            setTimeout(function() {
+                playerImgElement.classList.remove('shake');
+                playerHPElement.setAttribute('value', playerHP);
+                if (playerHP <= 0) {
+                    playerHP = 0;
+                    const loseLog = document.createElement('li');
+                    battleLog.appendChild(loseLog);
+                    displayTextOneByOne(loseLog, 'あなたは倒れた。。。', function() {
+                        displayBattleResult('敗北。。。');
+                    });
+                }
+            }, 500); // 揺れ終わった後に次の処理に進む
+        });
+    });
 }
 
 // 必殺技機能
