@@ -43,4 +43,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="I:/git/Dosukoi-Analytics/src/main/webapp/WEB-INF/lib/commons-codec-1.17.1.jar"/>
+	<classpathentry kind="lib" path="I:/git/Dosukoi-Analytics/src/main/webapp/WEB-INF/lib/mysql-connector-java-8.0.27.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
 </classpath>

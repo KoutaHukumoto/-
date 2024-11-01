@@ -37,10 +37,10 @@ public class loginServlet extends HttpServlet {
 
 		if (session.getAttribute("loginUser") == null) {
 			//未ログイン
-			forward = "index.jsp";
+			forward = "newRegistration.jsp";
 		} else {
 			//ログイン済み
-			forward = "loginResult.jsp";
+			forward = "mypage.jsp";
 		}
 
 		//フォワード
@@ -52,6 +52,8 @@ public class loginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String pass = request.getParameter("pass");
 		int id = Integer.parseInt(request.getParameter("id"));
+		
+	
 		
 		String hashdpass = DigestUtils.sha256Hex(pass);
 
