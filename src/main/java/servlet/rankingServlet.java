@@ -14,8 +14,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.character;
 
-@WebServlet("/MainServlet")
-public class MainServlet extends HttpServlet {
+@WebServlet("/rankingServlet")
+public class rankingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
