@@ -10,10 +10,12 @@
 <body>
 	<div class="title">科目：難易度</div>
 	<div class="question">問1：</div>
-	<div class="answer">1</div>
-	<div class="answer">2</div>
-	<div class="answer">3</div>
-	<div class="answer">4</div>
+	<div class="answer">
+		<div class="answer1">1</div>
+		<div class="answer2">2</div>
+		<div class="answer3">3</div>
+		<div class="answer4">4</div>
+	</div>
 	<div class="back">
 		<a href="./dojyo.html">もどる</a>
 	</div>
