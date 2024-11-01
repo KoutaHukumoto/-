@@ -7,7 +7,6 @@ body {
 	background-position: center;
 	background-attachment: fixed;
 	min-height: 100vh;
-	color: white;
 }
 
 body a {
@@ -15,15 +14,42 @@ body a {
 	color: white;
 }
 
+.question,
+.answer {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	left: 25%;
+	background-color: white;
+	font-size: 1.5em;
+}
+
+.question {
+	width: 50%;
+	height: 5%;
+	top: 15%;
+	padding-left: 1%;
+	border: 5px solid black;
+}
+
+.answer {
+	justify-content: center;
+	width: 10%;
+	height: 13%;
+	top: 25%;
+	border: 1px solid black;
+}
+
 .title,
 .back,
-.answer {
+.confirmation {
 	position: fixed;
 	width: 20%;
 	text-align: center;
 	background-color: black;
 	border: 2px solid white;
 	font-size: 2em;
+	color: white;
 }
 
 .title {
@@ -36,7 +62,7 @@ body a {
 	left: 5%;
 }
 
-.answer {
+.confirmation {
 	bottom: 5%;
 	right: 5%;
 }
