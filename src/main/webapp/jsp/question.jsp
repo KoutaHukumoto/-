@@ -14,6 +14,7 @@ List<question> questionlist = (List<question>) request.getAttribute("questionlis
 </head>
 <body>
 	<div class="title">科目：難易度</div>
+<<<<<<< Upstream, based on first
 	<%
 	for (int i = 0; i < questionlist.size(); i++) {
 		question question = questionlist.get(i); 
