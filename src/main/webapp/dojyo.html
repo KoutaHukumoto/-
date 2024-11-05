@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<title>道場</title>
+	<link rel="stylesheet" href="css/dojyo.css">
+	<script src="js/dojyo.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="page-number">道場</div>
+		</div>
+		<div class="character">
+			<div class="avatar-section">
+				<img src="画像/avater.jpg" alt="avatar">
+				<p>田中</p>
+			</div>
+
+			<div class="status">
+				<div class="status_child">
+					<p>HP : 100</p>
+					<p>攻撃 : 10</p>
+					<p>防御 : 10</p>
+					<p>すばやさ : 10</p>
+					<div class="item">
+						<div class="item_child">
+							<p>装備品：あまのさかほこ</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<input type="checkbox" id="popup">
+		<div id="overlay">
+			<label for="popup" id="bg_gray"></label>
+			<div id="window">
+				<label for="popup" id="btn_cloth">
+					<span></span>
+				</label>
+				<div id="msg">
+					<form action="/Dosukoi-Analytics/dojyoServlet" method="POST">
+						<input type="hidden" name="s_id" value="国語">
+						<input type="hidden" name="d_id" value="初級">
+						<button id="link1" type="submit">初級</button>
+						<button id="link2" type="submit">中級</button>
+						<button id="link3" type="submit">上級</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="subject">
+			<label for="popup" id="national_language()">国語</label>
+			<label for="popup" id="mathematics()">数学</label>
+			<label for="popup" id="english()">英語</label>
+			<label for="popup" id="science()">理科</label>
+			<label for="popup" id="society()">社会</label>
+		</div>
+
+		<div class="mypage">
+			<a href="./mypage.html">マイページ</a>
+		</div>
+	</div>
+</body>
+
+</html>

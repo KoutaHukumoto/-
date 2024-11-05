@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+body {
+	background-image: url("../画像/問題画面背景.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	min-height: 100vh;
+	color: white;
+}
+
+body a {
+	text-decoration: none;
+	color: white;
+}
+
+.title,
+.back,
+.answer {
+	position: fixed;
+	width: 20%;
+	text-align: center;
+	background-color: black;
+	border: 2px solid white;
+	font-size: 2em;
+}
+
+.title {
+	top: 5%;
+	right: 40%;
+}
+
+.back {
+	bottom: 5%;
+	left: 5%;
+}
+
+.answer {
+	bottom: 5%;
+	right: 5%;
+}

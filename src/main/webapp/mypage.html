@@ -3,7 +3,6 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>マイページ</title>
 	<link rel="stylesheet" href="css/mypage.css">
 </head>
@@ -52,8 +51,11 @@
 				<input type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
 				<button type="submit">ダンジョン</button>
 			</form>
+			
 			<a href="#training">道場</a>
-			<a href="#ranking">ランキング</a>
+			<form action="/Dosukoi-Analytics/MainServlet" method="POST">
+			<button type="submit">ランキング</button>
+			</form>
 		</div>
 
 		<div class="logout">
@@ -62,9 +64,4 @@
 	</div>
 </body>
 
-<<<<<<< HEAD
-</html>>
-
-=======
->>>>>>> branch 'main' of https://github.com/KoutaHukumoto/Dosukoi-Analytics.git
 </html>
