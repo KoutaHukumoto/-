@@ -15,7 +15,7 @@ List<question> questionlist = (List<question>) request.getAttribute("questionlis
 <body>
 	<div class="title">科目：難易度</div>
 		<% for (int i = 0; i < questionlist.size(); i++) { 
-			Question question = questionlist.get(i); 
+			question question = questionlist.get(i); 
 		%>
 			<div class="question">
 				<p>問題 : <%= question.getQuestionText() %></p>
