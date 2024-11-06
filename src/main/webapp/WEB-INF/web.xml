@@ -17,5 +17,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-
+  <servlet>
+    <description></description>
+    <display-name>Remove</display-name>
+    <servlet-name>Remove</servlet-name>
+    <servlet-class>servlet.Remove</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Remove</servlet-name>
+    <url-pattern>/Remove</url-pattern>
+  </servlet-mapping>
 </web-app>

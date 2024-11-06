@@ -23,6 +23,17 @@ public class question implements Serializable{
 	private String fakeAnswer2;
 	
 	private String fakeAnswer3;
+	
+	
+	 public question(String category, String difficulty, String questionText, String answer, String fakeAnswer1, String fakeAnswer2, String fakeAnswer3) {
+	        this.category = category;
+	        this.difficulty = difficulty;
+	        this.questionText = questionText;
+	        this.answer = answer;
+	        this.fakeAnswer1 = fakeAnswer1;
+	        this.fakeAnswer2 = fakeAnswer2;
+	        this.fakeAnswer3 = fakeAnswer3;
+	    }
 
 	public int getQuestionId() {
 		return questionId;

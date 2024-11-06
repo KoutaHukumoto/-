@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import dao.monsterDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -9,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Status;
+import model.monster;
 
 public class dungeonServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -36,6 +38,13 @@ public class dungeonServlet extends HttpServlet {
         // セッションにStatusオブジェクトを保存
         HttpSession session = request.getSession();
         session.setAttribute("status", status);
+
+        int monsterId = 1;
+        int bossId = 0;
+
+        monsterDao monster = new monsterDao();
+        monster monsterstatus = monster.getMonster(monsterId,bossId);
+        session.setAttribute("monsterstatus",monsterstatus);
 
         // JSPにフォワード
         RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/dungeon.jsp");

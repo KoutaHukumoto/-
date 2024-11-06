@@ -40,8 +40,4 @@ public class RankingDao extends BaseDao {
 	    return dataList;
 	}
 
-	
-	
-
-
 }

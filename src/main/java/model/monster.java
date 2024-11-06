@@ -30,6 +30,17 @@ public class monster implements Serializable{
 		return monsterId;
 	}
 
+	public monster(int monsterId, String monsterName, int monsterAttack, int monsterHp, int monsterDefence, int monsterSpeed, String skill1, String skill2 ){
+        this.monsterId = monsterId;
+        this.monsterName = monsterName;
+        this.monsterAttack = monsterAttack;
+        this.monsterHp = monsterHp;
+        this.monsterDefence = monsterDefence;
+        this.monsterSpeed = monsterSpeed;
+        this.skill1 = skill1;
+        this.skill2 = skill2;
+	}
+
 	public void setMonsterId(int monsterId) {
 		this.monsterId = monsterId;
 	}

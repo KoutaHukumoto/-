@@ -28,8 +28,6 @@ public class UserDao extends BaseDao {
 				ps.setInt(1, id);
 				ps.setString(2, pass);
 				
-		
-				
 				// 検索実行
 				try (ResultSet rs = ps.executeQuery()) {
 					if (rs.next()) {
