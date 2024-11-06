@@ -14,17 +14,19 @@ List<question> questionlist = (List<question>) request.getAttribute("questionlis
 </head>
 <body>
 	<div class="title">科目：難易度</div>
-	<div class="question">
-		<p>
-			問題:
-			<%=question.getQuestionText()%></p>
-		<ul>
-			<li><%=question.getOption1()%></li>
-			<li><%=question.getOption2()%></li>
-			<li><%=question.getOption3()%></li>
-			<li><%=question.getOption4()%></li>
-		</ul>
-	</div>
+		<% for (int i = 0; i < questionlist.size(); i++) { 
+			Question question = questionlist.get(i); 
+		%>
+			<div class="question">
+				<p>問題 : <%= question.getQuestionText() %></p>
+				<ul>
+					<li><%= question.getAnswer() %></li>
+					<li><%= question.getFakeAnswer1() %></li>
+					<li><%= question.getFakeAnswer2() %></li>
+					<li><%= question.getFakeAnswer3() %></li>
+				</ul>
+			</div>
+		<% } %>
 
 	<div class="back">
 		<a href="./dojyo.html">もどる</a>
