@@ -30,7 +30,7 @@ List<question> questionlist = (List<question>) request.getAttribute("questionlis
 		<a href="./dojyo.html">もどる</a>
 	</div>
 
-	<div class="answer">
+	<div class="confirmation">
 		<a href="#">答え合わせ</a>
 	</div>
 </body>
