@@ -136,7 +136,7 @@ function battleRound() {
     const battleLog = document.getElementById('battleLog');
     let playerHP = parseInt(playerHPElement.getAttribute('value'));
     let npcHP = parseInt(npcHPElement.getAttribute('value'));
-    const playerDefense = ${defense}; // プレイヤーの防御力
+    const playerDefense = statusData.defense; // プレイヤーの防御力
     const npcAttack = 20; // 敵の攻撃力
 
     // プレイヤーが防御を固めたログを表示

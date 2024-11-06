@@ -9,19 +9,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>common-codec</groupId>
+            <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.17.1</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/commons-codec-1.17.1.jar</systemPath>
+            <version>1.15</version>
         </dependency>
-
         <dependency>
             <groupId>mysql</groupId>
-            <artifactId>mysql-connect</artifactId>
+            <artifactId>mysql-connector-java</artifactId>
             <version>8.0.27</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/mysql-connector-java-8.0.27.jar</systemPath>
         </dependency>
     </dependencies>
 

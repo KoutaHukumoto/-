@@ -11,29 +11,6 @@ import java.sql.SQLException;
 public class BaseDao {
 
 	// 接続文字列
-<<<<<<< HEAD
-	private static final String URL = "jdbc:mysql://localhost:3306/doi";
-	private static final String USER = "root";
-	private static final String PASSWORD = "";
-	
-	// コネクション
-	protected Connection con = null;
-	// DB接続する
-	protected void connect() throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		con = DriverManager.getConnection(URL, USER, PASSWORD);
-		
-	}
-	
-	// DB切断する
-	protected void disConnect() throws SQLException {
-		if (con != null) {
-			con.close();
-		}
-	}
-
-}
-=======
 	private static final String URL = "jdbc:mysql://localhost:3306/dosukoi";
 	private static final String USER = "root";
 	private static final String PASSWORD = "";
@@ -55,4 +32,3 @@ public class BaseDao {
 	}
 
 }
->>>>>>> refs/heads/test

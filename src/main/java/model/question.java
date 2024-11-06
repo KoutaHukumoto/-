@@ -1,6 +1,5 @@
 package model;
 
-<<<<<<< HEAD
 import java.io.Serializable;
 
 /*
@@ -89,8 +88,3 @@ public class question implements Serializable{
 		this.fakeAnswer3 = fakeAnswer3;
 	}
 }
-=======
-public class question {
-
-}
->>>>>>> refs/heads/test
