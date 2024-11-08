@@ -16,7 +16,7 @@ public class questionDao extends BaseDao {
 		try {
 			connect();
 			String sql = "SELECT * FROM question_table "
-					+ "WHERE category = ? AND difficulty = ? ORDER BY RAND() LIMIT 1";
+					+ "WHERE category = ? AND difficulty = ? ORDER BY RAND() LIMIT 5";
 
 			try (PreparedStatement ps = con.prepareStatement(sql)) {
 				// 検索条件を設定
