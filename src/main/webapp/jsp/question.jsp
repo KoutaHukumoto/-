@@ -14,19 +14,34 @@ List<question> questionlist = (List<question>) request.getAttribute("questionlis
 </head>
 <body>
 	<div class="title">科目：難易度</div>
-		<% for (int i = 0; i < questionlist.size(); i++) { 
-			question question = questionlist.get(i); 
-		%>
-			<div class="question">
-				<p>問題 : <%= question.getQuestionText() %></p>
-				<ul>
-					<li><%= question.getAnswer() %></li>
-					<li><%= question.getFakeAnswer1() %></li>
-					<li><%= question.getFakeAnswer2() %></li>
-					<li><%= question.getFakeAnswer3() %></li>
-				</ul>
-			</div>
-		<% } %>
+	<%
+	for (int i = 0; i < questionlist.size(); i++) {
+		question question = questionlist.get(i);
+	%>
+	<div class="question">
+		<p>
+			問題 :
+			<%=question.getQuestionText()%></p>
+	</div>
+	<div class="answer">
+
+		<div class="answer1">
+			<input type="radio" id="1" name="answer"><label for="1"><%=question.getAnswer()%></label>
+		</div>
+		<div class="answer2">
+			<input type="radio" id="2" name="answer"><label for="2"><%=question.getFakeAnswer1()%></label>
+		</div>
+		<div class="answer3">
+			<input type="radio" id="3" name="answer"><label for="3"><%=question.getFakeAnswer2()%></label>
+		</div>
+		<div class="answer4">
+			<input type="radio" id="4" name="answer"><label for="4"><%=question.getFakeAnswer3()%></label>
+		</div>
+
+	</div>
+	<%
+	}
+	%>
 
 	<div class="back">
 		<a href="./dojyo.html">もどる</a>

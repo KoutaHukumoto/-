@@ -33,11 +33,44 @@ body a {
 }
 
 .answer {
+	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
-	width: 10%;
+	width: 51%;
 	height: 13%;
 	top: 25%;
 	border: 1px solid black;
+	box-sizing: border-box;
+}
+
+.answer label {
+	background: white;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.answer input {
+	display: none;
+}
+
+.answer input:checked+label {
+	background: red;
+}
+
+.answer1,
+.answer2,
+.answer3,
+.answer4 {
+	width: 50%;
+	height: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: white;
+	border: 1px solid black;
+	box-sizing: border-box;
+	cursor: pointer;
 }
 
 .title,
