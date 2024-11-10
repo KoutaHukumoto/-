@@ -51,10 +51,6 @@ body a {
 	display: none;
 }
 
-.answer input:checked+label {
-	background-color: red;
-}
-
 .answer1,
 .answer2,
 .answer3,

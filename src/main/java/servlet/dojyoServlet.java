@@ -31,9 +31,11 @@ public class dojyoServlet extends HttpServlet {
 		String s_id = request.getParameter("s_id");
         String d_id = request.getParameter("d_id");
         
+        int id = 10;
+        
         questionDao question = new questionDao();
         
-        List<question> questionlist  = question.getQuestions(s_id, d_id);
+        List<question> questionlist  = question.getQuestions(s_id, d_id,id);
         
         request.setAttribute("questionlist", questionlist);
 		
