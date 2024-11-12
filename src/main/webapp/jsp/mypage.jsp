@@ -57,7 +57,11 @@
 				<input type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
 				<button type="submit">ダンジョン</button>
 			</form>
-			<a href="#training">道場</a> <a href="#ranking">ランキング</a>
+			<a href="#training">道場</a>
+			
+			<form action="/Dosukoi-Analytics/rankingServlet" method="POST">
+				<button type="submit">ランキング</button>
+			</form>
 		</div>
 
 		<div class="logout">
