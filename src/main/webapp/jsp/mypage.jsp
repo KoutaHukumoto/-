@@ -48,7 +48,7 @@
 		<div class="menu">
 			<form action="/Dosukoi-Analytics/dungeonServlet" method="POST">
 				<input type="hidden" name="name" value="<%=status.getName()%>"> 
-				<inputtype="hidden" name="id"value="<%=status.getId()%>">
+				<input type="hidden" name="id"value="<%=status.getId()%>">
 				<input type="hidden" name="hp" value="<%=status.getHp()%>">
 				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
 				<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
