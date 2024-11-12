@@ -34,6 +34,11 @@ public class question implements Serializable{
 	        this.fakeAnswer2 = fakeAnswer2;
 	        this.fakeAnswer3 = fakeAnswer3;
 	    }
+	 
+	 public question(String category,String difficulty) {
+	        this.category = category;
+	        this.difficulty = difficulty;
+	 }
 
 	public int getQuestionId() {
 		return questionId;

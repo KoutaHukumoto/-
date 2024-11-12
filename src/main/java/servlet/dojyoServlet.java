@@ -37,6 +37,9 @@ public class dojyoServlet extends HttpServlet {
         
         List<question> questionlist  = question.getQuestions(s_id, d_id,id);
         
+        question category = new question(s_id,d_id);
+        
+        request.setAttribute("category", category);
         request.setAttribute("questionlist", questionlist);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/question.jsp");

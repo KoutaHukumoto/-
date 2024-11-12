@@ -20,7 +20,7 @@ body a {
 	align-items: center;
 	position: relative;
 	top: 150px;
-	left: 25%;
+	left: 24%;
 	background-color: white;
 	font-size: 1.5em;
 }
@@ -43,8 +43,14 @@ body a {
 }
 
 .answer label {
+	width: 100%;
+	text-align: center;
 	text-decoration: none;
 	cursor: pointer;
+}
+
+.answer input:checked+label {
+	background: red;
 }
 
 .answer input {
@@ -63,7 +69,6 @@ body a {
 	align-items: center;
 	border: 1px solid black;
 	box-sizing: border-box;
-	cursor: pointer;
 }
 
 .title,
@@ -79,8 +84,10 @@ body a {
 }
 
 .title {
+	width: 30%;
 	top: 5%;
-	right: 40%;
+	right: 35%;
+	z-index: 1;
 }
 
 .back {
