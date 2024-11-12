@@ -62,7 +62,7 @@
         </tbody>
     </table>
 
-    <a href="mypage.html" class="btn btn-secondary btn-lg" role="button">もどる</a>
+    <a href="RemoveServlet" class="btn btn-secondary btn-lg" role="button">もどる</a>
 
 </body>
 
