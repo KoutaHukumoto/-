@@ -1,12 +1,13 @@
 @charset "UTF-8";
 
 body {
-	background-image: url("../画像/問題画面背景.png");
-	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-image: url(../画像/問題画面背景.png);
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
-	min-height: 100vh;
 }
 
 body a {
@@ -14,36 +15,38 @@ body a {
 	color: white;
 }
 
+.quiz {
+	height: 70svh;
+	overflow: auto;
+	margin-top: 150px;
+	margin-left: 100px;
+	width: 130svh;
+}
+
 .question,
 .answer {
 	display: flex;
-	align-items: center;
-	position: relative;
-	top: 150px;
-	left: 24%;
 	background-color: white;
 	font-size: 1.5em;
 }
 
 .question {
-	width: 50%;
-	margin-bottom: 30px;
+	width: 90%;
+	margin-bottom: 50px;
 	padding-left: 1%;
 	border: 2px solid black;
 }
 
 .answer {
 	flex-wrap: wrap;
-	justify-content: center;
-	width: 51%;
-	margin-bottom: 150px;
+	width: 91%;
+	margin-bottom: 130px;
 	border: 2px solid black;
 }
 
 .answer label {
 	width: 100%;
 	text-align: center;
-	text-decoration: none;
 	cursor: pointer;
 }
 
@@ -60,11 +63,7 @@ body a {
 .answer3,
 .answer4 {
 	width: 50%;
-	height: 50%;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 	border: 1px solid black;
 	box-sizing: border-box;
 }
@@ -73,7 +72,7 @@ body a {
 .back,
 .confirmation {
 	position: fixed;
-	width: 19%;
+	width: 20%;
 	text-align: center;
 	background-color: black;
 	border: 2px solid white;
@@ -85,7 +84,6 @@ body a {
 	width: 30%;
 	top: 5%;
 	right: 35%;
-	z-index: 1;
 }
 
 .back {
@@ -100,9 +98,8 @@ body a {
 
 .confirmation button {
 	width: 100%;
-	background: black;
-	color: white;
+	background-color: black;
 	font-size: 1em;
-	border: 1px solid black;
+	color: white;
 	cursor: pointer;
 }
