@@ -99,7 +99,8 @@ body a {
 .confirmation button {
 	width: 100%;
 	background-color: black;
-	font-size: 1em;
+	font-size: 0.9em;
 	color: white;
 	cursor: pointer;
+	border: 1px solid black;
 }

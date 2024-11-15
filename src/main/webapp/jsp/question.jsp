@@ -62,7 +62,7 @@ question category = (question) request.getAttribute("category");
 	</div>
 
 	<div class="confirmation">
-		<button type="submit">答え合わせ</button>
+		<button type="submit" value="<%=questionlist.size()%>">答え合わせ</button>
 	</div>
 	</form>
 </body>
