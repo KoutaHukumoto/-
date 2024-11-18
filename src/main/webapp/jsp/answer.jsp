@@ -33,7 +33,8 @@
 			</div>
 		</div>
 		<div class="subject">科目：難易度</div>
-		<div class="result">10問中： 10問正解</div>
+		<div class="result"><%=request.getAttribute("size") %>問中： 10問正解
+		</div>
 		<div class="dojyo">
 			<a href="./dojyo.html">道場</a>
 		</div>

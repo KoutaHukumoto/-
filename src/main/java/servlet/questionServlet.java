@@ -36,6 +36,7 @@ public class questionServlet extends HttpServlet {
 			answer = request.getParameter("answer_" + i);
 			answerList.add(answer);
 		}
+		request.setAttribute("size", size);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/answer.jsp");
 		dispatcher.forward(request, response);

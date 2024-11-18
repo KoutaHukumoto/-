@@ -27,23 +27,23 @@ public class dojyoServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		String s_id = request.getParameter("s_id");
-        String d_id = request.getParameter("d_id");
-        
-        int id = 10;
-        
-        questionDao question = new questionDao();
-        
-        List<question> questionlist  = question.getQuestions(s_id, d_id,id);
-        
-        question category = new question(s_id,d_id);
-        
-        request.setAttribute("category", category);
-        request.setAttribute("questionlist", questionlist);
-		
+		String d_id = request.getParameter("d_id");
+
+		int id = 10;
+
+		questionDao question = new questionDao();
+
+		List<question> questionlist = question.getQuestions(s_id, d_id, id);
+
+		question category = new question(s_id, d_id);
+
+		request.setAttribute("category", category);
+		request.setAttribute("questionlist", questionlist);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/question.jsp");
-        dispatcher.forward(request, response);
+		dispatcher.forward(request, response);
 	}
 
 }
