@@ -18,7 +18,7 @@ question category = (question) request.getAttribute("category");
 <body>
 	<div class="title"><%=category.getCategory()%>：<%=category.getDifficulty()%></div>
 	<div class="quiz">
-		<form action="/Dosukoi-Analytics/questionServlet" method="POST">
+		<form action="/Dosukoi-Analytics/answerServlet" method="POST">
 			<%
 			for (int i = 0; i < questionlist.size(); i++) {
 				question question = questionlist.get(i);
@@ -60,9 +60,11 @@ question category = (question) request.getAttribute("category");
 	<div class="back">
 		<a href="./dojyo.html">もどる</a>
 	</div>
-
 	<div class="confirmation">
-		<button type="submit" name="size" value="<%=questionlist.size()%>">答え合わせ</button>
+		<input type="hidden" name="s_id" value="<%=category.getCategory()%>">
+		<input type="hidden" name="d_id" value="<%=category.getDifficulty()%>">
+		<button type="submit" name="size"
+			value="<%=question.getQuestionText()%>">答え合わせ</button>
 	</div>
 	</form>
 </body>

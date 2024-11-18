@@ -11,11 +11,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/questionServlet")
-public class questionServlet extends HttpServlet {
+@WebServlet("/answerServlet")
+public class answerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public questionServlet() {
+	public answerServlet() {
 		super();
 	}
 
@@ -28,6 +28,8 @@ public class questionServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		int size = Integer.parseInt(request.getParameter("size"));
+		String s_id = request.getParameter("s_id");
+		String d_id = request.getParameter("d_id");
 
 		List<String> answerList = new ArrayList<String>();
 		String answer = new String();
@@ -37,6 +39,8 @@ public class questionServlet extends HttpServlet {
 			answerList.add(answer);
 		}
 		request.setAttribute("size", size);
+		request.setAttribute("s_id", s_id);
+		request.setAttribute("d_id", d_id);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/answer.jsp");
 		dispatcher.forward(request, response);

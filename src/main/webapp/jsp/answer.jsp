@@ -32,8 +32,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="subject">科目：難易度</div>
-		<div class="result"><%=request.getAttribute("size") %>問中： 10問正解
+		<div class="subject"><%=request.getAttribute("s_id")%>：<%=request.getAttribute("d_id")%></div>
+		<div class="result"><%=request.getAttribute("size")%>問中： 10問正解
 		</div>
 		<div class="dojyo">
 			<a href="./dojyo.html">道場</a>
