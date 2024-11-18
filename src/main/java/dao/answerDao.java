@@ -11,6 +11,7 @@ public class answerDao extends BaseDao {
 		List<question> questions = new ArrayList<>();
 
 		try {
+			connect();
 
 		} catch (Exception e) {
 			e.printStackTrace();

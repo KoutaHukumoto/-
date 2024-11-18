@@ -25,27 +25,33 @@ question category = (question) request.getAttribute("category");
 			%>
 			<div class="question">
 				<p>
-					問題<%=i + 1%>:
-					<%=question.getQuestionText()%></p>
+					問題<%=i + 1%>: <input type="hidden" name="text_<%=i%>"
+						value="<%=question.getQuestionText()%>">
+					<%=question.getQuestionText()%>
+				</p>
 			</div>
 			<div class="answer">
 				<div class="answer1">
-					<input type="radio" id="1_<%=i%>" name="answer_<%=i%>"> <label
-						for="1_<%=i%>"> <%=question.getAnswer()%>
+					<input type="radio" id="1_<%=i%>" name="answer_<%=i%>"
+						value="<%=question.getAnswer()%>"> <label for="1_<%=i%>">
+						<%=question.getAnswer()%>
 					</label>
 				</div>
 				<div class="answer2">
-					<input type="radio" id="2_<%=i%>" name="answer_<%=i%>"> <label
+					<input type="radio" id="2_<%=i%>" name="answer_<%=i%>"
+						value="<%=question.getFakeAnswer1()%>"> <label
 						for="2_<%=i%>"> <%=question.getFakeAnswer1()%>
 					</label>
 				</div>
 				<div class="answer3">
-					<input type="radio" id="3_<%=i%>" name="answer_<%=i%>"> <label
+					<input type="radio" id="3_<%=i%>" name="answer_<%=i%>"
+						value="<%=question.getFakeAnswer2()%>"> <label
 						for="3_<%=i%>"> <%=question.getFakeAnswer2()%>
 					</label>
 				</div>
 				<div class="answer4">
-					<input type="radio" id="4_<%=i%>" name="answer_<%=i%>"> <label
+					<input type="radio" id="4_<%=i%>" name="answer_<%=i%>"
+						value="<%=question.getFakeAnswer3()%>"> <label
 						for="4_<%=i%>"> <%=question.getFakeAnswer3()%>
 					</label>
 				</div>
@@ -63,8 +69,7 @@ question category = (question) request.getAttribute("category");
 	<div class="confirmation">
 		<input type="hidden" name="s_id" value="<%=category.getCategory()%>">
 		<input type="hidden" name="d_id" value="<%=category.getDifficulty()%>">
-		<button type="submit" name="size"
-			value="<%=question.getQuestionText()%>">答え合わせ</button>
+		<button type="submit" name="size" value="<%=questionlist.size()%>">答え合わせ</button>
 	</div>
 	</form>
 </body>

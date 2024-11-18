@@ -33,9 +33,13 @@ public class answerServlet extends HttpServlet {
 
 		List<String> answerList = new ArrayList<String>();
 		String answer = new String();
+		String text = new String();
 
 		for (int i = 0; i < size; i++) {
+			text = request.getParameter("text_" + i);
 			answer = request.getParameter("answer_" + i);
+			System.out.println("text_" + i + ":" + text);
+			System.out.println("answer_" + i + ":" + answer);
 			answerList.add(answer);
 		}
 		request.setAttribute("size", size);
