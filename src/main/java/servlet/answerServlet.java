@@ -1,15 +1,16 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
+import dao.answerDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.answer;
 
 @WebServlet("/answerServlet")
 public class answerServlet extends HttpServlet {
@@ -31,16 +32,18 @@ public class answerServlet extends HttpServlet {
 		String s_id = request.getParameter("s_id");
 		String d_id = request.getParameter("d_id");
 
-		List<String> answerList = new ArrayList<String>();
-		String answer = new String();
+		answerDao answer = new answerDao();
+
+		String selected_answer = new String();
 		String text = new String();
+
+		List<answer> answerList = answer.getAnswers(text, selected_answer);
 
 		for (int i = 0; i < size; i++) {
 			text = request.getParameter("text_" + i);
-			answer = request.getParameter("answer_" + i);
+			selected_answer = request.getParameter("answer_" + i);
 			System.out.println("text_" + i + ":" + text);
-			System.out.println("answer_" + i + ":" + answer);
-			answerList.add(answer);
+			System.out.println("answer_" + i + ":" + selected_answer);
 		}
 		request.setAttribute("size", size);
 		request.setAttribute("s_id", s_id);

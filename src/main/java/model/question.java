@@ -7,38 +7,38 @@ import java.io.Serializable;
  * userテーブルのデータを保持するクラス
 */
 
-public class question implements Serializable{
+public class question implements Serializable {
 	private int questionId;
-	
+
 	private String category;
-	
+
 	private String difficulty;
-	
+
 	private String questionText;
-	
+
 	private String answer;
-	
+
 	private String fakeAnswer1;
-	
+
 	private String fakeAnswer2;
-	
+
 	private String fakeAnswer3;
-	
-	
-	 public question(String category, String difficulty, String questionText, String answer, String fakeAnswer1, String fakeAnswer2, String fakeAnswer3) {
-	        this.category = category;
-	        this.difficulty = difficulty;
-	        this.questionText = questionText;
-	        this.answer = answer;
-	        this.fakeAnswer1 = fakeAnswer1;
-	        this.fakeAnswer2 = fakeAnswer2;
-	        this.fakeAnswer3 = fakeAnswer3;
-	    }
-	 
-	 public question(String category,String difficulty) {
-	        this.category = category;
-	        this.difficulty = difficulty;
-	 }
+
+	public question(String category, String difficulty, String questionText, String answer, String fakeAnswer1,
+			String fakeAnswer2, String fakeAnswer3) {
+		this.category = category;
+		this.difficulty = difficulty;
+		this.questionText = questionText;
+		this.answer = answer;
+		this.fakeAnswer1 = fakeAnswer1;
+		this.fakeAnswer2 = fakeAnswer2;
+		this.fakeAnswer3 = fakeAnswer3;
+	}
+
+	public question(String category, String difficulty) {
+		this.category = category;
+		this.difficulty = difficulty;
+	}
 
 	public int getQuestionId() {
 		return questionId;
