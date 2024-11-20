@@ -3,14 +3,11 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import model.answer;
 
 public class answerDao extends BaseDao {
-	public List<answer> getAnswers(String questionText, String answer) {
-		List<answer> answers = new ArrayList<>();
+	public int getAnswers(String questionText, String answer) {
+
+		int answercount = 0;
 
 		try {
 			connect();
@@ -24,11 +21,11 @@ public class answerDao extends BaseDao {
 
 				try (ResultSet rs = ps.executeQuery()) {
 					while (rs.next()) {
-						// 検索結果があった場合、Questionオブジェクトを作成し、リストに追加
-
+						answercount = rs.getInt("正答数");
 					}
 				}
 			}
+			return answercount;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -38,7 +35,7 @@ public class answerDao extends BaseDao {
 				e.printStackTrace();
 			}
 		}
-		return answers;
+		return answercount;
 
 	}
 }

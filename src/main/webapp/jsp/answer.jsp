@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%
+int size = (int) request.getAttribute("size");
+%>
+<%
+List<String> text_list = (List<String>) request.getAttribute("text_list");
+%>
+<%
+List<String> selected_answer_list = (List<String>) request.getAttribute("selected_answer_list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +43,21 @@
 			</div>
 		</div>
 		<div class="subject"><%=request.getAttribute("s_id")%>：<%=request.getAttribute("d_id")%></div>
-		<div class="result"><%=request.getAttribute("size")%>問中： 10問正解
+		<div class="result">
+			<%=size%>問中：
+			<%=request.getAttribute("total_answer")%>問正解
+		</div>
+		<div class="kaito">解答</div>
+		<div class="total_result">
+			<%
+			for (int i = 0; i < size; i++) {
+			%>
+			<div class="id"><%=i + 1%></div>
+			<div class="text"><%=text_list.get(i)%></div>
+			<div class="answer"><%=selected_answer_list.get(i)%></div>
+			<%
+			}
+			%>
 		</div>
 		<div class="dojyo">
 			<a href="./dojyo.html">道場</a>

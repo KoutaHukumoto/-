@@ -45,7 +45,8 @@ body {
 }
 
 .subject,
-.result {
+.result,
+.kaito {
 	display: flex;
 	position: relative;
 	font-size: 2em;
@@ -61,10 +62,55 @@ body {
 	padding: 10px 0 10px 0;
 }
 
+.result,
+.kaito {
+	margin: 20px 0 20px 0;
+	border-bottom: 1px solid white;
+}
+
 .result {
 	width: 30%;
 	left: 20%;
-	border-bottom: 1px solid white;
+}
+
+.kaito {
+	width: 10%;
+	left: 14%;
+}
+
+.total_result {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	left: 24%;
+	background-color: white;
+	color: black;
+	font-size: 1.3em;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.id,
+.text,
+.answer {
+	box-sizing: border-box;
+	display: flex;
+	border: 1px solid black;
+	justify-content: center;
+	align-items: center;
+}
+
+.id {
+	width: 10%;
+}
+
+.text {
+	width: 70%;
+}
+
+.answer {
+	width: 20%;
 }
 
 .dojyo,

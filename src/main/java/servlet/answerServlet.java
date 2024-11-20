@@ -1,7 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 
 import dao.answerDao;
 import jakarta.servlet.RequestDispatcher;
@@ -10,7 +10,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.answer;
 
 @WebServlet("/answerServlet")
 public class answerServlet extends HttpServlet {
@@ -34,20 +33,28 @@ public class answerServlet extends HttpServlet {
 
 		answerDao answer = new answerDao();
 
-		String selected_answer = new String();
-		String text = new String();
+		ArrayList<String> text_list = new ArrayList<String>();
 
-		List<answer> answerList = answer.getAnswers(text, selected_answer);
+		ArrayList<String> selected_answer_list = new ArrayList<String>();
+
+		int total_answer = 0;
 
 		for (int i = 0; i < size; i++) {
-			text = request.getParameter("text_" + i);
-			selected_answer = request.getParameter("answer_" + i);
-			System.out.println("text_" + i + ":" + text);
-			System.out.println("answer_" + i + ":" + selected_answer);
+			String text = request.getParameter("text_" + i);
+			String selected_answer = request.getParameter("answer_" + i);
+
+			total_answer = total_answer + answer.getAnswers(text, selected_answer);
+
+			text_list.add(text);
+			selected_answer_list.add(selected_answer);
 		}
+
 		request.setAttribute("size", size);
 		request.setAttribute("s_id", s_id);
 		request.setAttribute("d_id", d_id);
+		request.setAttribute("total_answer", total_answer);
+		request.setAttribute("text_list", text_list);
+		request.setAttribute("selected_answer_list", selected_answer_list);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/answer.jsp");
 		dispatcher.forward(request, response);
