@@ -10,18 +10,19 @@ import model.question;
 
 public class questionDao extends BaseDao {
 
-	public List<question> getQuestions(String s_id, String d_id) {
+	public List<question> getQuestions(String s_id, String d_id, int id) {
 		List<question> questions = new ArrayList<>();
 
 		try {
 			connect();
 			String sql = "SELECT * FROM question_table "
-					+ "WHERE category = ?, difficulty = ? ORDER BY RAND() LIMIT 1";
+					+ "WHERE category = ? AND difficulty = ? ORDER BY RAND() LIMIT ?";
 
 			try (PreparedStatement ps = con.prepareStatement(sql)) {
 				// 検索条件を設定
 				ps.setString(1, s_id);
 				ps.setString(2, d_id);
+				ps.setInt(3, id);
 
 				// 検索実行
 				try (ResultSet rs = ps.executeQuery()) {

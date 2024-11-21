@@ -3,20 +3,20 @@ package servlet;
 import java.io.IOException;
 import java.util.List;
 
-import dao.questionDao;
+import dao.answerDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.question;
+import model.answer;
 
-@WebServlet("/dojyoServlet")
-public class dojyoServlet extends HttpServlet {
+@WebServlet("/answerServlet")
+public class answerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public dojyoServlet() {
+	public answerServlet() {
 		super();
 	}
 
@@ -28,23 +28,28 @@ public class dojyoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		int size = Integer.parseInt(request.getParameter("size"));
 		String s_id = request.getParameter("s_id");
 		String d_id = request.getParameter("d_id");
 
-		int id = 10;
-		System.out.println(s_id);
-		System.out.println(d_id);
+		answerDao answer = new answerDao();
 
-		questionDao question = new questionDao();
+		String selected_answer = new String();
+		String text = new String();
 
-		List<question> questionlist = question.getQuestions(s_id, d_id, id);
+		List<answer> answerList = answer.getAnswers(text, selected_answer);
 
-		question category = new question(s_id, d_id);
+		for (int i = 0; i < size; i++) {
+			text = request.getParameter("text_" + i);
+			selected_answer = request.getParameter("answer_" + i);
+			System.out.println("text_" + i + ":" + text);
+			System.out.println("answer_" + i + ":" + selected_answer);
+		}
+		request.setAttribute("size", size);
+		request.setAttribute("s_id", s_id);
+		request.setAttribute("d_id", d_id);
 
-		request.setAttribute("category", category);
-		request.setAttribute("questionlist", questionlist);
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/question.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/answer.jsp");
 		dispatcher.forward(request, response);
 	}
 

@@ -1,101 +1,119 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /*
- *JavaBeans 
- * userテーブルのデータを保持するクラス
+ * JavaBeans 
+ * questionテーブルのデータを保持するクラス
 */
 
-public class question implements Serializable{
-	private int questionId;
-	
-	private String category;
-	
-	private String difficulty;
-	
-	private String questionText;
-	
-	private String answer;
-	
-	private String fakeAnswer1;
-	
-	private String fakeAnswer2;
-	
-	private String fakeAnswer3;
-	
-	
-	 public question(String category, String difficulty, String questionText, String answer, String fakeAnswer1, String fakeAnswer2, String fakeAnswer3) {
-	        this.category = category;
-	        this.difficulty = difficulty;
-	        this.questionText = questionText;
-	        this.answer = answer;
-	        this.fakeAnswer1 = fakeAnswer1;
-	        this.fakeAnswer2 = fakeAnswer2;
-	        this.fakeAnswer3 = fakeAnswer3;
-	    }
+public class question implements Serializable {
+    private int questionId;
+    private String category;
+    private String difficulty;
+    private String questionText;
+    private String answer;
+    private String fakeAnswer1;
+    private String fakeAnswer2;
+    private String fakeAnswer3;
 
-	public int getQuestionId() {
-		return questionId;
-	}
+    // コンストラクタ
+    public question(String category, String difficulty, String questionText, String answer, String fakeAnswer1,
+            String fakeAnswer2, String fakeAnswer3) {
+        this.category = category;
+        this.difficulty = difficulty;
+        this.questionText = questionText;
+        this.answer = answer;
+        this.fakeAnswer1 = fakeAnswer1;
+        this.fakeAnswer2 = fakeAnswer2;
+        this.fakeAnswer3 = fakeAnswer3;
+    }
 
-	public void setQuestionId(int questionId) {
-		this.questionId = questionId;
-	}
+    public question(String category, String difficulty) {
+        this.category = category;
+        this.difficulty = difficulty;
+    }
 
-	public String getCategory() {
-		return category;
-	}
+    // ゲッターとセッター
+    public int getQuestionId() {
+        return questionId;
+    }
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
+    public void setQuestionId(int questionId) {
+        this.questionId = questionId;
+    }
 
-	public String getDifficulty() {
-		return difficulty;
-	}
+    public String getCategory() {
+        return category;
+    }
 
-	public void setDifficulty(String difficulty) {
-		this.difficulty = difficulty;
-	}
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
-	public String getQuestionText() {
-		return questionText;
-	}
+    public String getDifficulty() {
+        return difficulty;
+    }
 
-	public void setQuestionText(String questionText) {
-		this.questionText = questionText;
-	}
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+    }
 
-	public String getAnswer() {
-		return answer;
-	}
+    public String getQuestionText() {
+        return questionText;
+    }
 
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
+    public void setQuestionText(String questionText) {
+        this.questionText = questionText;
+    }
 
-	public String getFakeAnswer1() {
-		return fakeAnswer1;
-	}
+    public String getAnswer() {
+        return answer;
+    }
 
-	public void setFakeAnswer1(String fakeAnswer1) {
-		this.fakeAnswer1 = fakeAnswer1;
-	}
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
 
-	public String getFakeAnswer2() {
-		return fakeAnswer2;
-	}
+    public String getFakeAnswer1() {
+        return fakeAnswer1;
+    }
 
-	public void setFakeAnswer2(String fakeAnswer2) {
-		this.fakeAnswer2 = fakeAnswer2;
-	}
+    public void setFakeAnswer1(String fakeAnswer1) {
+        this.fakeAnswer1 = fakeAnswer1;
+    }
 
-	public String getFakeAnswer3() {
-		return fakeAnswer3;
-	}
+    public String getFakeAnswer2() {
+        return fakeAnswer2;
+    }
 
-	public void setFakeAnswer3(String fakeAnswer3) {
-		this.fakeAnswer3 = fakeAnswer3;
-	}
+    public void setFakeAnswer2(String fakeAnswer2) {
+        this.fakeAnswer2 = fakeAnswer2;
+    }
+
+    public String getFakeAnswer3() {
+        return fakeAnswer3;
+    }
+
+    public void setFakeAnswer3(String fakeAnswer3) {
+        this.fakeAnswer3 = fakeAnswer3;
+    }
+
+    /**
+     * 選択肢をランダム化して取得するメソッド
+     * 
+     * @return ランダム化された選択肢のリスト
+     */
+    public List<String> getShuffledChoices() {
+        List<String> choices = new ArrayList<>();
+        choices.add(answer);
+        choices.add(fakeAnswer1);
+        choices.add(fakeAnswer2);
+        choices.add(fakeAnswer3);
+        Collections.shuffle(choices); // 選択肢をランダムに並べ替え
+        return choices;
+    }
 }

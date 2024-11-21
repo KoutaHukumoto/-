@@ -38,6 +38,7 @@
 		<div class="item">
 			<h2>装備品</h2>
 			<div class="item_child">
+				
 				<p>あまのさかほこ</p>
 				<p>攻撃力とすばやさを2倍にする</p>
 			</div>
@@ -57,7 +58,10 @@
 				<input type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
 				<button type="submit">ダンジョン</button>
 			</form>
-			<a href="#training">道場</a>
+			
+			<form action="/Dosukoi-Analytics/questionServlet" method="POST">
+				<button type="submit">道場</button>
+			</form>
 			
 			<form action="/Dosukoi-Analytics/rankingServlet" method="POST">
 				<button type="submit">ランキング</button>

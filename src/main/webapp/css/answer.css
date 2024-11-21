@@ -1,0 +1,83 @@
+body {
+	background-color: black;
+	color: white;
+	font-family: 'Courier New', Courier, monospace;
+}
+
+.header {
+	width: 10%;
+	overflow: hidden;
+	padding: 10px;
+}
+
+.container {
+	width: 80%;
+	height: 70svh;
+	margin: 0 auto;
+	border: 2px solid white;
+	padding: 20px;
+	overflow: hidden;
+	position: relative;
+}
+
+.character {
+	float: left;
+}
+
+.avatar-section,
+.status {
+	box-sizing: border-box;
+	margin-right: 2%;
+	text-align: center;
+}
+
+.avatar-section img {
+	width: 200px;
+	height: 200px;
+	border: 2px solid white;
+}
+
+.status_child {
+	width: 200px;
+	border: 2px solid white;
+	padding: 10px;
+	font-size: 1.1em;
+}
+
+.subject,
+.result {
+	display: flex;
+	position: relative;
+	font-size: 2em;
+	flex-direction: column;
+	align-items: center;
+}
+
+.subject {
+	width: 40%;
+	left: 15%;
+	border: 2px solid white;
+	margin-bottom: 2%;
+	padding: 10px 0 10px 0;
+}
+
+.result {
+	width: 30%;
+	left: 20%;
+	border-bottom: 1px solid white;
+}
+
+.dojyo,
+.next {
+	position: absolute;
+	text-align: center;
+	padding: 10px;
+	border: 2px solid white;
+	width: 20%;
+	bottom: 5%;
+	font-size: 1.5em;
+}
+
+.next {
+	right: 3%;
+}
