@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.List"%>
+<%@ page import="model.answer,java.util.ArrayList"%>
 <%
 int size = (int) request.getAttribute("size");
 %>
 <%
-List<String> text_list = (List<String>) request.getAttribute("text_list");
-%>
-<%
-List<String> selected_answer_list = (List<String>) request.getAttribute("selected_answer_list");
+ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
@@ -51,10 +48,33 @@ List<String> selected_answer_list = (List<String>) request.getAttribute("selecte
 		<div class="total_result">
 			<%
 			for (int i = 0; i < size; i++) {
+				answer getAnswer = list.get(i);
 			%>
-			<div class="id"><%=i + 1%></div>
-			<div class="text"><%=text_list.get(i)%></div>
-			<div class="answer"><%=selected_answer_list.get(i)%></div>
+			<div class="id">
+				<%=i + 1%>
+			</div>
+			<div class="text">
+				問題文:
+				<%=getAnswer.getQuestionText()%>
+			</div>
+			<div class="answer">
+				模範解答:
+				<%=getAnswer.getAnswer()%>
+			</div>
+			<div class="selected_answer">
+				選択した解答:
+				<%
+			if (getAnswer.getSelected_answer() == null || getAnswer.getSelected_answer().isEmpty()) {
+			%>
+				無回答
+				<%
+			} else {
+			%>
+				<%=getAnswer.getSelected_answer()%>
+				<%
+				}
+				%>
+			</div>
 			<%
 			}
 			%>
