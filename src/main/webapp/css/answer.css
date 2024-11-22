@@ -86,7 +86,8 @@ body {
 	background-color: white;
 	color: black;
 	font-size: 1.3em;
-	display: grid;
+	display: flex;
+	flex-wrap: wrap;
 	overflow: auto;
 }
 
@@ -101,20 +102,14 @@ body {
 	align-items: center;
 }
 
-.id {
-	grid-row: span 2;
+.answer,
+.selected_answer {
+	width: 50%;
+	padding: 20px;
 }
 
 .text {
-	padding: 20px;
-	grid-column: 2 / span 2;
-}
-
-.answer {
-	padding: 20px;
-}
-
-.selected_answer {
+	width: 100%;
 	padding: 20px;
 }
 

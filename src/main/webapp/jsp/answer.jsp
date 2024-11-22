@@ -50,11 +50,8 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 			for (int i = 0; i < size; i++) {
 				answer getAnswer = list.get(i);
 			%>
-			<div class="id">
-				<%=i + 1%>
-			</div>
 			<div class="text">
-				問題文:
+				問題<%=i + 1%>:
 				<%=getAnswer.getQuestionText()%>
 			</div>
 			<div class="answer">
