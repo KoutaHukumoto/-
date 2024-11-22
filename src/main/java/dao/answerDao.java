@@ -42,22 +42,20 @@ public class answerDao extends BaseDao {
 	public String model_answer(String questionText) {
 		String model_answer = "";
 
-	    try {
-	        connect();
+		try {
+			connect();
 
-	        // クエリにプレースホルダーを使用
-	        String sql = "SELECT answer FROM question_table WHERE question_text = ?";
+			String sql = "SELECT answer FROM question_table WHERE question_text = ?";
 
-	        try (PreparedStatement ps = con.prepareStatement(sql)) {
-	            // パラメータをバインド
-	            ps.setString(1, questionText);
+			try (PreparedStatement ps = con.prepareStatement(sql)) {
+				ps.setString(1, questionText);
 
-	            try (ResultSet rs = ps.executeQuery()) {
-	                if (rs.next()) {
-	                    model_answer = rs.getString("answer");
-	                }
-	            }
-	        }
+				try (ResultSet rs = ps.executeQuery()) {
+					if (rs.next()) {
+						model_answer = rs.getString("answer");
+					}
+				}
+			}
 			return model_answer;
 		} catch (Exception e) {
 			e.printStackTrace();
