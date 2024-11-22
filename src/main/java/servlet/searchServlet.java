@@ -12,6 +12,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Status;
 import model.character;
 
 @WebServlet("/searchServlet")
@@ -29,6 +30,25 @@ public class searchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+    	String name = request.getParameter("name");
+        int id = Integer.parseInt(request.getParameter("id"));
+        int hp = Integer.parseInt(request.getParameter("hp"));
+        int attack = Integer.parseInt(request.getParameter("attack"));
+        int defense = Integer.parseInt(request.getParameter("defense"));
+        int speed = Integer.parseInt(request.getParameter("speed"));
+        String item = request.getParameter("item");
+        String itemEffect = request.getParameter("itemEffect");
+        
+
+        // Statusオブジェクトを作成
+        Status status = new Status(name, id, hp, attack, defense, speed, item, itemEffect);
+        
+        System.out.println(name);
+        
+       // Status オブジェクトをリクエスト属性にセット
+       request.setAttribute("status", status);
+    	
+    	
         // フォームから送信されたキャラクター名を取得
         String characterName = request.getParameter("characterName");
 

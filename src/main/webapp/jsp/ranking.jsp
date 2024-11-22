@@ -3,6 +3,8 @@
 
 <%@ page import="model.character" %>
 <%@ page import="java.util.List" %> <!-- List をインポート -->
+<%@ page import="model.Status"%>
+<%Status status = (Status) request.getAttribute("status");%>
 
 <!DOCTYPE html>
 <html>
@@ -20,8 +22,18 @@
     <!-- 検索フォーム -->
     <form method="POST" action="searchServlet">
         <input type="text" name="characterName" placeholder="キャラクター名で検索">
+        <input type="hidden" name="name" value="<%=status.getName()%>"> 
+				<input type="hidden" name="id"value="<%=status.getId()%>">
+				<input type="hidden" name="hp" value="<%=status.getHp()%>">
+				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
+				<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
+				<input type="hidden"name="speed" value="<%=status.getSpeed()%>"> 
+				<input type="hidden" name="item" value="あまのさかほこ">
+				<input type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
         <button type="submit">検索</button>
     </form>
+    
+    
 
     <table>
         <thead>
@@ -62,8 +74,20 @@
         </tbody>
     </table>
 
-    <a href="RemoveServlet" class="btn btn-secondary btn-lg" role="button">もどる</a>
-
+   
+	
+	<form action="/Dosukoi-Analytics/backServlet" method="POST">
+				<input type="hidden" name="name" value="<%=status.getName()%>"> 
+				<input type="hidden" name="id"value="<%=status.getId()%>">
+				<input type="hidden" name="hp" value="<%=status.getHp()%>">
+				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
+				<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
+				<input type="hidden"name="speed" value="<%=status.getSpeed()%>"> 
+				<input type="hidden" name="item" value="あまのさかほこ">
+				<input type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
+				<button type="submit">もどる</button>
+			</form>
+	
 </body>
 
 </html>

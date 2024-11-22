@@ -12,6 +12,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Status;
 import model.character;
 
 @WebServlet("/rankingServlet")
@@ -19,16 +20,48 @@ public class rankingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	        throws ServletException, IOException {
+	    // 初期データを設定
+	    Status defaultStatus = new Status("デフォルト名", 0, 100, 10, 10, 10, "なし", "効果なし");
+	    request.setAttribute("status", defaultStatus);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/ranking.jsp");
-		dispatcher.forward(request, response);
+	    RankingDao rankingDao = new RankingDao();
+	    List<character> dataList = new ArrayList<>();
+	    try {
+	        dataList = rankingDao.getAllData(); // データベースから全データを取得
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        request.setAttribute("errorMessage", "データの取得に失敗しました。");
+	    }
 
+	    request.setAttribute("dataList", dataList);
+
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/ranking.jsp");
+	    dispatcher.forward(request, response);
 	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	        throws ServletException, IOException {
 	    // ランキングデータを取得
+		
+		 	String name = request.getParameter("name");
+	        int id = Integer.parseInt(request.getParameter("id"));
+	        int hp = Integer.parseInt(request.getParameter("hp"));
+	        int attack = Integer.parseInt(request.getParameter("attack"));
+	        int defense = Integer.parseInt(request.getParameter("defense"));
+	        int speed = Integer.parseInt(request.getParameter("speed"));
+	        String item = request.getParameter("item");
+	        String itemEffect = request.getParameter("itemEffect");
+	        
+
+	        // Statusオブジェクトを作成
+	        Status status = new Status(name, id, hp, attack, defense, speed, item, itemEffect);
+	        
+	        System.out.println(name);
+	        
+	        request.setAttribute("status", status);
+		
 	    RankingDao rankingDao = new RankingDao();
 	    List<character> dataList = new ArrayList<>();
 	    
