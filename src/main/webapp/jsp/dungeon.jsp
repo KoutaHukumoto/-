@@ -1,10 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="model.Status"%>
 <%@ page import="model.monster"%>
+<%@ page import="model.dungeon"%>
 <% 
     Status status = (Status) session.getAttribute("status"); 
-    monster monster = (monster) session.getAttribute("monsterstatus"); 
-%>
+    monster monster = (monster) session.getAttribute("monsterstatus");
+    dungeon dungeoninformation = (dungeon) session.getAttribute("dungeonInformation");
+     %>
+    
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -51,7 +54,7 @@
         </audio>
 
         <div class="container text-center">
-            <h1 class="level-title">1階層</h1>
+            <h1 class="level-title"><%= dungeoninformation.getDungeonId() %>階層</h1>
             <h2>VS</h2>
 
             <div class="character-info">

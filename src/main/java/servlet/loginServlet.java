@@ -52,8 +52,7 @@ public class loginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String pass = request.getParameter("pass");
 		int id = Integer.parseInt(request.getParameter("id"));
-		
-	
+
 		
 		String hashdpass = DigestUtils.sha256Hex(pass);
 

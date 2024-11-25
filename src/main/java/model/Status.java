@@ -10,6 +10,7 @@ public class Status {
 	private String item;
 	private String itemEffect;
 	private String pass;
+	
 
 	public Status(String name, int id, int hp, int attack, int defense, int speed, String item, String itemEffect) {
 		this.name = name;
@@ -20,6 +21,7 @@ public class Status {
 		this.speed = speed;
 		this.item = item;
 		this.itemEffect = itemEffect;
+
 	}
 	
 	public Status(String name, int id, int hp, int attack, int defense, int speed, String item) {
