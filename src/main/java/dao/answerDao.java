@@ -3,14 +3,11 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import model.answer;
 
 public class answerDao extends BaseDao {
-	public List<answer> getAnswers(String questionText, String answer) {
-		List<answer> answers = new ArrayList<>();
+	public int getAnswers(String questionText, String answer) {
+
+		int answercount = 0;
 
 		try {
 			connect();
@@ -24,11 +21,11 @@ public class answerDao extends BaseDao {
 
 				try (ResultSet rs = ps.executeQuery()) {
 					while (rs.next()) {
-						// 検索結果があった場合、Questionオブジェクトを作成し、リストに追加
-
+						answercount = rs.getInt("正答数");
 					}
 				}
 			}
+			return answercount;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -38,7 +35,37 @@ public class answerDao extends BaseDao {
 				e.printStackTrace();
 			}
 		}
-		return answers;
+		return answercount;
 
+	}
+
+	public String model_answer(String questionText) {
+		String model_answer = "";
+
+		try {
+			connect();
+
+			String sql = "SELECT answer FROM question_table WHERE question_text = ?";
+
+			try (PreparedStatement ps = con.prepareStatement(sql)) {
+				ps.setString(1, questionText);
+
+				try (ResultSet rs = ps.executeQuery()) {
+					if (rs.next()) {
+						model_answer = rs.getString("answer");
+					}
+				}
+			}
+			return model_answer;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				this.disConnect();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return model_answer;
 	}
 }

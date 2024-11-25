@@ -13,9 +13,17 @@ public class answer implements Serializable {
 
 	private String answer;
 
+	private String selected_answer;
+
 	public answer(String questionText, String answer) {
 		this.questionText = questionText;
 		this.answer = answer;
+	}
+
+	public answer(String questionText, String answer, String selected_answer) {
+		this.questionText = questionText;
+		this.answer = answer;
+		this.selected_answer = selected_answer;
 	}
 
 	public int getQuestionId() {
@@ -56,5 +64,13 @@ public class answer implements Serializable {
 
 	public void setAnswer(String answer) {
 		this.answer = answer;
+	}
+
+	public String getSelected_answer() {
+		return selected_answer;
+	}
+
+	public void setSelected_answer(String selected_answer) {
+		this.selected_answer = selected_answer;
 	}
 }

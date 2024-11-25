@@ -22,7 +22,7 @@
     <!-- 検索フォーム -->
     <form method="POST" action="searchServlet">
         <input type="text" name="characterName" placeholder="キャラクター名で検索">
-        <input type="hidden" name="name" value="<%=status.getName()%>"> 
+        		<input type="hidden" name="name" value="<%=status.getName()%>"> 
 				<input type="hidden" name="id"value="<%=status.getId()%>">
 				<input type="hidden" name="hp" value="<%=status.getHp()%>">
 				<input type="hidden" name="attack" value="<%=status.getAttack()%>">

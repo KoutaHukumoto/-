@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ page import="model.character" %>
+<%@ page import="java.util.List" %> <!-- List をインポート -->
 <%@ page import="model.Status"%>
 <%Status status = (Status) request.getAttribute("status");%>
-
-
-<!DOCTYPE html>
-<html lang="ja">
 
 <head>
 	<meta charset="UTF-8">
@@ -53,6 +52,14 @@
 		
 		
 		<form action="/Dosukoi-Analytics/dojyoServlet" method="POST">
+			<input type="hidden" name="name" value="<%=status.getName()%>"> 
+			<input type="hidden" name="id"value="<%=status.getId()%>">
+			<input type="hidden" name="hp" value="<%=status.getHp()%>">
+			<input type="hidden" name="attack" value="<%=status.getAttack()%>">
+			<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
+			<input type="hidden"name="speed" value="<%=status.getSpeed()%>"> 
+			<input type="hidden" name="item" value="あまのさかほこ">
+			<input type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
 			<!-- hidden inputs for subject and difficulty -->
 			<input type="hidden" name="s_id" id="s_id" value="">
 			<input type="hidden" name="d_id" id="d_id" value="">
