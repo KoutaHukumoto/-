@@ -7,31 +7,42 @@ public class Status {
 	private int attack;
 	private int defense;
 	private int speed;
-	private String item;
+	private int itemid;
+	//itemeEffect = itemの効果説明
 	private String itemEffect;
 	private String pass;
+	private int dungeonid;
 	
 
-	public Status(String name, int id, int hp, int attack, int defense, int speed, String item, String itemEffect) {
+	public int getDungeonid() {
+		return dungeonid;
+	}
+
+	public void setDungeonid(int dungeonid) {
+		this.dungeonid = dungeonid;
+	}
+
+	public Status(String name, int id, int hp, int attack, int defense, int speed, int itemid, String itemEffect) {
 		this.name = name;
 		this.id = id;
 		this.hp = hp;
 		this.attack = attack;
 		this.defense = defense;
 		this.speed = speed;
-		this.item = item;
+		this.itemid = itemid;
 		this.itemEffect = itemEffect;
 
 	}
 	
-	public Status(String name, int id, int hp, int attack, int defense, int speed, String item) {
+	public Status(String name, int id, int hp, int attack, int defense, int speed, int itemid, int dungeonid) {
 		this.name = name;
 		this.id = id;
 		this.hp = hp;
 		this.attack = attack;
 		this.defense = defense;
 		this.speed = speed;
-		this.item = item;
+		this.itemid = itemid;
+		this.dungeonid = dungeonid;
 	}
 
 	public Status(String name,int id,String pass) {
@@ -88,12 +99,12 @@ public class Status {
 		this.speed = speed;
 	}
 
-	public String getItem() {
-		return item;
+	public int getItemid() {
+		return itemid;
 	}
 
-	public void setItem(String item) {
-		this.item = item;
+	public void setItemid(int itemid) {
+		this.itemid = itemid;
 	}
 
 	public String getItemEffect() {

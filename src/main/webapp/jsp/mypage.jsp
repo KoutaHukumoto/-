@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="model.Status"%>
-<%Status status = (Status) request.getAttribute("status");%>
+<%
+	Status status = (Status) request.getAttribute("status");%>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -48,13 +49,13 @@
 		<div class="menu">
 			<form action="/Dosukoi-Analytics/dungeonServlet" method="POST">
 				<input type="hidden" name="name" value="<%=status.getName()%>"> 
-				<inputtype="hidden" name="id"value="<%=status.getId()%>">
+				<input type="hidden" name="id" value="<%=status.getId()%>">
 				<input type="hidden" name="hp" value="<%=status.getHp()%>">
 				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
 				<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
 				<input type="hidden"name="speed" value="<%=status.getSpeed()%>"> 
 				<input type="hidden" name="itemid" value=1>
-				<input type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
+				<input type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
 				<button type="submit">ダンジョン</button>
 			</form>
 			<a href="#training">道場</a> <a href="#ranking">ランキング</a>

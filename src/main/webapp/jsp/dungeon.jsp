@@ -2,10 +2,12 @@
 <%@ page import="model.Status"%>
 <%@ page import="model.monster"%>
 <%@ page import="model.dungeon"%>
+<%@ page import="model.item"%>
 <% 
     Status status = (Status) session.getAttribute("status"); 
     monster monster = (monster) session.getAttribute("monsterstatus");
     dungeon dungeoninformation = (dungeon) session.getAttribute("dungeonInformation");
+    item item = (item) session.getAttribute("item");
      %>
     
 <!DOCTYPE html>
@@ -28,8 +30,8 @@
             attack: <%= status.getAttack() %>,
             defense: <%= status.getDefense() %>,
             speed: <%= status.getSpeed() %>,
-            item: "<%= status.getItem() %>",
-            itemEffect: "<%= status.getItemEffect() %>"
+            itemid: <%= status.getItemid() %>,
+            dungeonid: <%= status.getDungeonid() %>
         };
 
         var monsterData = {
@@ -64,7 +66,7 @@
                         <p>攻撃: <%= status.getAttack() %></p>
                         <p>防御: <%= status.getDefense() %></p>
                         <p>すばやさ: <%= status.getSpeed() %></p>
-                        <p>装備品: 「<%= status.getItem() %>」</p>
+                        <p>装備品: 「<%= item.getItemName() %>」</p>
                         <p>「<%= status.getItemEffect() %>」</p>
                     </div>
                     <div class="character-img-box">

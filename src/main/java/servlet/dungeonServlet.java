@@ -34,7 +34,6 @@ public class dungeonServlet extends HttpServlet {
         int speed = Integer.parseInt(request.getParameter("speed"));
         int itemid = Integer.parseInt(request.getParameter("itemid"));
         int dungeonid = Integer.parseInt(request.getParameter("dungeonid"));
-        String itemEffect = request.getParameter("itemEffect");
        
         
         //アイテムによるステータス上昇の計算処理
@@ -46,14 +45,16 @@ public class dungeonServlet extends HttpServlet {
         defense = defense +item.getEffectdefence();
         speed = speed + item.getEffectSpeed();
        
+        
+        System.out.println(dungeonid);
  
         // Statusオブジェクトを作成
-        Status status = new Status(name, id, hp, attack, defense, speed, itemEffect);
+        Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid);
  
         // セッションにStatusオブジェクトを保存
         HttpSession session = request.getSession();
         session.setAttribute("status", status);
- 
+        session.setAttribute("item", item);
        
         
         //ダンジョン情報を保存

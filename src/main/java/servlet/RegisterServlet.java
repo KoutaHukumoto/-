@@ -51,8 +51,6 @@ public class RegisterServlet extends HttpServlet {
 		String pass = request.getParameter("pass");
 
 		String hashdpass = DigestUtils.sha256Hex(pass);
-		
-		System.out.println(name+pass+hashdpass);
 
 		// RegisterDaoを使ってユーザーをDBに登録
 		RegisterDao register = new RegisterDao();

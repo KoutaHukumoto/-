@@ -77,7 +77,8 @@ public class UserDao extends BaseDao {
                             rs.getInt("attack"),    
                             rs.getInt("defence"),  
                             rs.getInt("speed"),
-                            rs.getString("itemid")
+                            rs.getInt("itemid"),
+                            rs.getInt("dungeonid")
                         );
                     }
                 }
