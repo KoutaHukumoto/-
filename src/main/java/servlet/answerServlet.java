@@ -40,15 +40,6 @@ public class answerServlet extends HttpServlet {
         String itemEffect = request.getParameter("itemEffect");
         
 
-        // Statusオブジェクトを作成
-        Status status = new Status(name, id, hp, attack, defense, speed, item, itemEffect);
-        
-        System.out.println(name);
-        
-        request.setAttribute("status", status);
-		
-		
-		
 
 		int size = Integer.parseInt(request.getParameter("size"));
 		String s_id = request.getParameter("s_id");
@@ -75,6 +66,28 @@ public class answerServlet extends HttpServlet {
 		request.setAttribute("d_id", d_id);
 		request.setAttribute("total_answer", total_answer);
 		request.setAttribute("list", list);
+		
+		System.out.println(s_id);
+		
+		
+		//以下能力上昇判定機能
+		if (s_id.equals("国語")) {
+		    hp = hp + 10000;
+		}
+
+		
+		
+		System.out.println(hp);
+		
+		
+		 // Statusオブジェクトを作成
+        Status status = new Status(name, id, hp, attack, defense, speed, item, itemEffect);
+        
+        System.out.println(name);
+        
+        
+        
+        request.setAttribute("status", status);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/answer.jsp");
 		dispatcher.forward(request, response);
