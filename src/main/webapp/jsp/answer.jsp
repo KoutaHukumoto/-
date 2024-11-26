@@ -44,7 +44,7 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 			<%=size%>問中：
 			<%=request.getAttribute("total_answer")%>問正解
 		</div>
-		<div class="kaito">解答</div>
+		<div class="answer">解答</div>
 		<div class="total_result">
 			<%
 			for (int i = 0; i < size; i++) {
@@ -54,7 +54,7 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 				問題<%=i + 1%>:
 				<%=getAnswer.getQuestionText()%>
 			</div>
-			<div class="answer">
+			<div class="model_answer">
 				模範解答:
 				<%=getAnswer.getAnswer()%>
 			</div>
