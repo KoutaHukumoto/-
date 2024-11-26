@@ -10,7 +10,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import model.Status;
 import model.question;
 
@@ -41,13 +40,14 @@ public class dojyoServlet extends HttpServlet {
         
         System.out.println(name);
         System.out.println(id);
+        System.out.println(hp);
 
         // Statusオブジェクトを作成
         Status status = new Status(name, id, hp, attack, defense, speed, item, itemEffect);
 
         // セッションにStatusオブジェクトを保存
-        HttpSession session = request.getSession();
-        session.setAttribute("status", status);
+        
+        request.setAttribute("status", status);
 
 		String s_id = request.getParameter("s_id");
 		String d_id = request.getParameter("d_id");

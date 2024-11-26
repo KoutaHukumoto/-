@@ -1,8 +1,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-	<%@ page import="model.Status"%>
+
+<%@ page import="model.Status"%>
 <%Status status = (Status) request.getAttribute("status");%>
 
 <%@ page import="model.answer,java.util.ArrayList"%>
@@ -27,35 +27,30 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 		<div class="character">
 			<div class="avatar-section">
 				<img src="画像/avater.jpg" alt="avatar">
-				<p>田中</p>
+				<p><%=status.getName()%></p>
+				<p>
+					ID :<%=status.getId()%></p>
 			</div>
-
-
-
 
 			<div class="status">
-			<h2>ステータス</h2>
-			<div class="status_child">
-				<p>HP :<%=status.getHp()%></p>
-				<p>攻撃 :<%=status.getAttack()%></p>
-				<p>防御 :<%=status.getDefense()%></p>
-				<p>すばやさ :<%=status.getSpeed()%></p>
+				<h2>ステータス</h2>
+				<div class="status_child">
+					<p>
+						HP :<%=status.getHp()%></p>
+					<p>
+						攻撃 :<%=status.getAttack()%></p>
+					<p>
+						防御 :<%=status.getDefense()%></p>
+					<p>
+						すばやさ :<%=status.getSpeed()%></p>
+				</div>
 			</div>
+
+
+
+
 		</div>
 
-		<div class="item">
-			<h2>装備品</h2>
-			<div class="item_child">
-				
-				<p>あまのさかほこ</p>
-				<p>攻撃力とすばやさを2倍にする</p>
-			</div>
-			
-			
-			
-			
-		</div>
-		</div>
 		<div class="subject"><%=request.getAttribute("s_id")%>：<%=request.getAttribute("d_id")%></div>
 		<div class="result">
 			<%=size%>問中：
@@ -93,9 +88,9 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 			}
 			%>
 		</div>
-		<div class="dojyo">
-			<a href="./dojyo.html">道場</a>
-		</div>
+	
+			<%-- 道場button無くてもいい説いらない説 --%>
+		
 		<div class="next">
 			<a href="#">次へ</a>
 		</div>

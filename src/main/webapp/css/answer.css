@@ -126,3 +126,49 @@ body {
 .next {
 	right: 3%;
 }
+
+
+
+.dojyo {
+    margin-top: 20px;
+    float: right; 
+    width: 30%;
+}
+
+.dojyo a, .logout {
+    display: block;
+    text-align: center;
+    border: 2px solid white;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    color: white;
+    text-decoration: none;
+}
+
+.dojyo a:hover {
+    background-color: grey;
+}
+.dojyo button {
+    display: block;
+    text-align: center;
+    border: 2px solid white;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    color: white;
+    background-color: transparent;
+    width: 100%; /* aタグの幅に合わせる */
+    cursor: pointer; /* 手のマークが出るように */
+    text-decoration: none; /* テキスト装飾を無くす */
+}
+
+.dojyo button:hover {
+    background-color: grey; /* hover時の背景色 */
+}
+
+button {
+    background: none; /* デフォルトのボタンの背景を消す */
+    border: none; /* デフォルトのボーダーを消す */
+    padding: 0; /* デフォルトのパディングを消す */
+}
