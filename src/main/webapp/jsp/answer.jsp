@@ -3,7 +3,9 @@
 	pageEncoding="UTF-8"%>
 
 <%@ page import="model.Status"%>
-<%Status status = (Status) request.getAttribute("status");%>
+<%
+Status status = (Status) request.getAttribute("status");
+%>
 
 <%@ page import="model.answer,java.util.ArrayList"%>
 <%
@@ -43,11 +45,13 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 						防御 :<%=status.getDefense()%></p>
 					<p>
 						すばやさ :<%=status.getSpeed()%></p>
+					<div class="item">
+						<div class="item_child">
+							<p>装備品：あまのさかほこ</p>
+						</div>
+					</div>
 				</div>
 			</div>
-
-
-
 
 		</div>
 
@@ -56,7 +60,7 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 			<%=size%>問中：
 			<%=request.getAttribute("total_answer")%>問正解
 		</div>
-		<div class="kaito">解答</div>
+		<div class="answer">解答</div>
 		<div class="total_result">
 			<%
 			for (int i = 0; i < size; i++) {
@@ -66,7 +70,7 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 				問題<%=i + 1%>:
 				<%=getAnswer.getQuestionText()%>
 			</div>
-			<div class="answer">
+			<div class="model_answer">
 				模範解答:
 				<%=getAnswer.getAnswer()%>
 			</div>
@@ -88,11 +92,32 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 			}
 			%>
 		</div>
-	
-			<%-- 道場button無くてもいい説いらない説 --%>
-		
+
+		<%-- 道場button無くてもいい説いらない説 --%>
+
+		<input type="checkbox" id="popup">
+		<div id="overlay">
+			<label for="popup" id="bg_gray"></label>
+			<div id="window">
+				<div id="msg">HPが5上がった！！</div>
+			</div>
+		</div>
+
 		<div class="next">
-			<a href="#">次へ</a>
+			<label for="popup" id="txt_label">次へ</label>
+		</div>
+
+		<div id="dojyo">
+			<form action="/Dosukoi-Analytics/questionServlet" method="POST">
+				<input type="hidden" name="name" value="<%=status.getName()%>">
+				<input type="hidden" name="id" value="<%=status.getId()%>">
+				<input type="hidden" name="hp" value="<%=status.getHp()%>">
+				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
+				<input type="hidden" name="defense" value="<%=status.getDefense()%>">
+				<input type="hidden" name="speed" value="<%=status.getSpeed()%>">
+				<input type="hidden" name="item" value="あまのさかほこ"> <input
+					type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
+				<button type="submit">道場へ戻る</button>
 		</div>
 	</div>
 </body>

@@ -40,14 +40,20 @@ body a {
 .answer {
 	flex-wrap: wrap;
 	width: 91%;
+	height: 15svh;
 	margin-bottom: 130px;
 	border: 2px solid black;
 }
 
 .answer label {
 	width: 100%;
+	height: 100%;
 	text-align: center;
 	cursor: pointer;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: center;
 }
 
 .answer input:checked+label {
@@ -63,6 +69,7 @@ body a {
 .answer3,
 .answer4 {
 	width: 50%;
+	height: 50%;
 	display: flex;
 	border: 1px solid black;
 	box-sizing: border-box;

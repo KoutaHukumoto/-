@@ -21,7 +21,9 @@ body {
 }
 
 .character {
+	position: fixed;
 	float: left;
+	z-index: 90;
 }
 
 .avatar-section,
@@ -46,7 +48,7 @@ body {
 
 .subject,
 .result,
-.kaito {
+.answer {
 	display: flex;
 	position: relative;
 	font-size: 2em;
@@ -56,26 +58,26 @@ body {
 
 .subject {
 	width: 40%;
-	left: 15%;
+	left: 30%;
 	border: 2px solid white;
 	margin-bottom: 2%;
 	padding: 10px 0 10px 0;
 }
 
 .result,
-.kaito {
+.answer {
 	margin: 20px 0 20px 0;
 	border-bottom: 1px solid white;
 }
 
 .result {
 	width: 30%;
-	left: 20%;
+	left: 35%;
 }
 
-.kaito {
+.answer {
 	width: 10%;
-	left: 14%;
+	left: 25%;
 }
 
 .total_result {
@@ -92,83 +94,134 @@ body {
 }
 
 .text,
-.answer,
+.model_answer,
 .selected_answer {
 	box-sizing: border-box;
 	display: flex;
 	border: 1px solid black;
 	justify-content: center;
 	align-items: center;
+	padding: 20px;
 }
 
-.answer,
+.model_answer,
 .selected_answer {
 	width: 50%;
-	padding: 20px;
 }
 
 .text {
 	width: 100%;
-	padding: 20px;
 }
 
-.dojyo,
-.next {
+.next,
+#dojyo {
 	position: absolute;
 	text-align: center;
-	padding: 10px;
 	border: 2px solid white;
 	width: 20%;
 	bottom: 5%;
 	font-size: 1.5em;
-}
-
-.next {
 	right: 3%;
 }
 
-
-
-.dojyo {
-    margin-top: 20px;
-    float: right; 
-    width: 30%;
+.next label {
+	display: block;
+	width: 100%;
+	cursor: pointer;
+	font-size: 1.1em;
 }
 
-.dojyo a, .logout {
-    display: block;
-    text-align: center;
-    border: 2px solid white;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-size: 1.5em;
-    color: white;
-    text-decoration: none;
+.next:hover {
+	background-color: grey;
+	opacity: 0.7;
 }
 
-.dojyo a:hover {
-    background-color: grey;
-}
-.dojyo button {
-    display: block;
-    text-align: center;
-    border: 2px solid white;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-size: 1.5em;
-    color: white;
-    background-color: transparent;
-    width: 100%; /* aタグの幅に合わせる */
-    cursor: pointer; /* 手のマークが出るように */
-    text-decoration: none; /* テキスト装飾を無くす */
+#dojyo {
+	visibility: hidden;
+	position: fixed;
+	z-index: 90;
+	bottom: 25%;
+	right: 10%;
 }
 
-.dojyo button:hover {
-    background-color: grey; /* hover時の背景色 */
+#dojyo button {
+	width: 100%;
+	background: black;
+	color: white;
+	cursor: pointer;
+	font-size: 1.1em;
 }
 
-button {
-    background: none; /* デフォルトのボタンの背景を消す */
-    border: none; /* デフォルトのボーダーを消す */
-    padding: 0; /* デフォルトのパディングを消す */
+input {
+	display: none;
+}
+
+#overlay {
+	visibility: hidden;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 70;
+	width: 100%;
+	height: 100%;
+}
+
+#bg_gray {
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 80;
+}
+
+#window {
+	width: 50%;
+	height: 5%;
+	padding: 20px;
+	display: flex;
+	position: fixed;
+	justify-content: center;
+	align-items: center;
+	left: 50%;
+	top: 40%;
+	transform: translate(-50%, -50%);
+	background-color: black;
+	border: 2px solid white;
+	box-shadow: 0px 0px 20px -6px rgba(0, 0, 0, 0.6);
+	z-index: 90;
+	opacity: 0;
+}
+
+#msg {
+	font-size: 2em;
+}
+
+#window a {
+	position: absolute;
+	bottom: 0;
+}
+
+#popup:checked~#overlay {
+	visibility: visible;
+}
+
+#popup:checked~#dojyo {
+	visibility: visible;
+}
+
+#popup:checked~#overlay #window {
+	animation: fadein 500ms forwards;
+	animation-timing-function: ease-in-out;
+}
+
+@keyframes fadein {
+	100% {
+		opacity: 1;
+	}
+}
+
+body {
+	margin: 30px;
 }

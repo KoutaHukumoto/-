@@ -1,26 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ page import="model.character" %>
-<%@ page import="java.util.List" %> <!-- List をインポート -->
+<%@ page import="model.character"%>
+<%@ page import="java.util.List"%>
+<!-- List をインポート -->
 <%@ page import="model.Status"%>
-<%Status status = (Status) request.getAttribute("status");%>
+<%
+Status status = (Status) request.getAttribute("status");
+%>
 
 <head>
-	<meta charset="UTF-8">
-	<title>道場</title>
-	<link rel="stylesheet" href="css/dojyo.css">
-	<script>
-		function setSubject(subject) {
-			// hidden要素に科目を設定
-			document.getElementById("s_id").value = subject;
-		}
+<meta charset="UTF-8">
+<title>道場</title>
+<link rel="stylesheet" href="css/dojyo.css">
+<script>
+	function setSubject(subject) {
+		// hidden要素に科目を設定
+		document.getElementById("s_id").value = subject;
+	}
 
-		function setDifficulty(difficulty) {
-			// hidden要素に難易度を設定
-			document.getElementById("d_id").value = difficulty;
-		}
-	</script>
+	function setDifficulty(difficulty) {
+		// hidden要素に難易度を設定
+		document.getElementById("d_id").value = difficulty;
+	}
+</script>
 </head>
 
 <body>
@@ -48,45 +51,41 @@
 				</div>
 			</div>
 		</div>
-		
-		
-		
+
+
+
 		<form action="/Dosukoi-Analytics/dojyoServlet" method="POST">
-			<input type="hidden" name="name" value="<%=status.getName()%>"> 
-			<input type="hidden" name="id"value="<%=status.getId()%>">
-			<input type="hidden" name="hp" value="<%=status.getHp()%>">
-			<input type="hidden" name="attack" value="<%=status.getAttack()%>">
-			<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
-			<input type="hidden"name="speed" value="<%=status.getSpeed()%>"> 
-			<input type="hidden" name="item" value="あまのさかほこ">
-			<input type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
+			<input type="hidden" name="name" value="<%=status.getName()%>">
+			<input type="hidden" name="id" value="<%=status.getId()%>"> <input
+				type="hidden" name="hp" value="<%=status.getHp()%>"> <input
+				type="hidden" name="attack" value="<%=status.getAttack()%>">
+			<input type="hidden" name="defense" value="<%=status.getDefense()%>">
+			<input type="hidden" name="speed" value="<%=status.getSpeed()%>">
+			<input type="hidden" name="item" value="あまのさかほこ"> <input
+				type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
 			<!-- hidden inputs for subject and difficulty -->
-			<input type="hidden" name="s_id" id="s_id" value="">
-			<input type="hidden" name="d_id" id="d_id" value="">
+			<input type="hidden" name="s_id" id="s_id" value=""> <input
+				type="hidden" name="d_id" id="d_id" value="">
 
 			<div class="subject">
 				<!-- ボタンをクリックで科目を設定 -->
 				<label for="popup" onclick="setSubject('国語')">国語</label>
+				<div class="ex">攻撃UP！</div>
 				<label for="popup" onclick="setSubject('数学')">数学</label>
+				<div class="ex">体力UP！</div>
 				<label for="popup" onclick="setSubject('英語')">英語</label>
+				<div class="ex">防御UP！</div>
 				<label for="popup" onclick="setSubject('理科')">理科</label>
+				<div class="ex">すばやさUP！</div>
 				<label for="popup" onclick="setSubject('社会')">社会</label>
-			</div>
-
-			<div id="ex">
-				<a> 攻撃UP！</a>
-				<a> 体力UP！</a>
-				<a> 防御UP！</a>
-				<a> すばやさUP！</a>
-				<a> 装備品GET！</a>
+				<div class="ex">装備品GET！</div>
 			</div>
 
 			<input type="checkbox" id="popup">
 			<div id="overlay">
 				<label for="popup" id="bg_gray"></label>
 				<div id="window">
-					<label for="popup" id="btn_cloth">
-						<span></span>
+					<label for="popup" id="btn_cloth"> <span></span>
 					</label>
 					<div id="msg">
 						<!-- ボタンをクリックで難易度を設定 -->
@@ -101,8 +100,5 @@
 			<a href="./mypage.html">マイページ</a>
 		</div>
 	</div>
-
-
 </body>
-
 </html>
