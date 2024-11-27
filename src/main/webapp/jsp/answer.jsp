@@ -60,7 +60,13 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 			<%=size%>問中：
 			<%=request.getAttribute("total_answer")%>問正解
 		</div>
-		<div class="answer">解答</div>
+		<div class="answer">
+			<p>解答</p>
+			正解：
+			<div class="answer_red">赤色</div>
+			不正解：
+			<div class="answer_blue">青色</div>
+		</div>
 		<div class="total_result">
 			<%
 			for (int i = 0; i < size; i++) {
@@ -74,7 +80,10 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 				模範解答:
 				<%=getAnswer.getAnswer()%>
 			</div>
-			<div class="selected_answer">
+			<div class="selected_answer"
+				style="background-color: <%=(getAnswer.getSelected_answer() != null && getAnswer.getSelected_answer().equals(getAnswer.getAnswer()))
+		? "#ff7f7f"
+		: "#7f7fff"%>;">
 				選択した解答:
 				<%
 			if (getAnswer.getSelected_answer() == null || getAnswer.getSelected_answer().isEmpty()) {

@@ -96,6 +96,7 @@ body a {
 .back {
 	bottom: 5%;
 	left: 4%;
+
 }
 
 .confirmation {
@@ -103,7 +104,8 @@ body a {
 	right: 5%;
 }
 
-.confirmation button {
+.confirmation button,
+.back button {
 	width: 100%;
 	background-color: black;
 	font-size: 0.9em;
