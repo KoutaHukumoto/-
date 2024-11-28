@@ -36,8 +36,8 @@ public class answerServlet extends HttpServlet {
         int attack = Integer.parseInt(request.getParameter("attack"));
         int defense = Integer.parseInt(request.getParameter("defense"));
         int speed = Integer.parseInt(request.getParameter("speed"));
-        String item = request.getParameter("item");
-        String itemEffect = request.getParameter("itemEffect");
+        int itemid = Integer.parseInt(request.getParameter("itemid"));
+        int dungeonid = Integer.parseInt(request.getParameter("dungeonid"));
         
 
 
@@ -81,7 +81,7 @@ public class answerServlet extends HttpServlet {
 		
 		
 		 // Statusオブジェクトを作成
-        Status status = new Status(name, id, hp, attack, defense, speed, item, itemEffect);
+		Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid);
         
         System.out.println(name);
         

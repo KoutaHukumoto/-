@@ -69,9 +69,9 @@ question category = (question) request.getAttribute("category");
 		<input type="hidden" name="attack" value="<%=status.getAttack()%>">
 		<input type="hidden" name="defense" value="<%=status.getDefense()%>"> 
 		<input type="hidden" name="speed" value="<%=status.getSpeed()%>"> 
-		<input type="hidden" name="item" value="あまのさかほこ">
-		<input type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
-		<input type="hidden" name="s_id" value="<%=category.getCategory()%>">
+		<input type="hidden" name="itemid" value=1>
+				<input type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
+				<input type="hidden" name="s_id" value="<%=category.getCategory()%>">
 		<input type="hidden" name="d_id" value="<%=category.getDifficulty()%>">
 		<button type="submit" name="size" value="<%=questionlist.size()%>">答え合わせ</button>
 	</div>

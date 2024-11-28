@@ -58,9 +58,9 @@
 			<input type="hidden" name="attack" value="<%=status.getAttack()%>">
 			<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
 			<input type="hidden"name="speed" value="<%=status.getSpeed()%>"> 
-			<input type="hidden" name="item" value="あまのさかほこ">
-			<input type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
-			<!-- hidden inputs for subject and difficulty -->
+			<input type="hidden" name="itemid" value=1>
+				<input type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
+				<!-- hidden inputs for subject and difficulty -->
 			<input type="hidden" name="s_id" id="s_id" value="">
 			<input type="hidden" name="d_id" id="d_id" value="">
 

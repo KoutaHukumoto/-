@@ -28,9 +28,9 @@
 				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
 				<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
 				<input type="hidden"name="speed" value="<%=status.getSpeed()%>"> 
-				<input type="hidden" name="item" value="あまのさかほこ">
-				<input type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
-        <button type="submit">検索</button>
+				<input type="hidden" name="itemid" value=1>
+				<input type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
+				<button type="submit">検索</button>
     </form>
     
     
@@ -83,8 +83,8 @@
 				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
 				<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
 				<input type="hidden"name="speed" value="<%=status.getSpeed()%>"> 
-				<input type="hidden" name="item" value="あまのさかほこ">
-				<input type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
+				<input type="hidden" name="itemid" value=1>
+				<input type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
 				<button type="submit">もどる</button>
 			</form>
 	
