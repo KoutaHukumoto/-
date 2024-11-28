@@ -3,22 +3,32 @@
 <%@ page import="model.monster"%>
 <%@ page import="model.dungeon"%>
 <%@ page import="model.item"%>
-<% 
+<%
     Status status = (Status) session.getAttribute("status"); 
     monster monster = (monster) session.getAttribute("monsterstatus");
     dungeon dungeoninformation = (dungeon) session.getAttribute("dungeonInformation");
     item item = (item) session.getAttribute("item");
-     %>
+
+    // dungeonid を取得
+    int dungeonId = dungeoninformation.getDungeonId();
     
+    // dungeonid が 5 で割り切れるかを判定
+    boolean isMultipleOfFive = (dungeonId % 5 == 0);
+
+    // BGM の選択
+   String bgmFile = isMultipleOfFive ? "audio/specialBGM.mp3" : "audio/Umbra.mp3";  
+    // dungeonidが5で割り切れる場合は別のBGM
+%>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ダンジョン</title>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/battle.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ダンジョン</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/battle.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
 <body>
     <script src="js/dungeon.js"></script>
@@ -51,12 +61,13 @@
             <button id="playMusicBtn" class="btn btn-info" aria-label="音楽を再生または停止">🎵 音楽を停止</button>
         </div>
 
+        <!-- BGMを動的に設定 -->
         <audio id="backgroundMusic" autoplay>
-            <source src="audio/Umbra.mp3" type="audio/mp3">
+            <source src="<%= bgmFile %>" type="audio/mp3">
         </audio>
 
         <div class="container text-center">
-            <h1 class="level-title"><%= dungeoninformation.getDungeonId() %>階層</h1>
+            <h1 class="level-title"><%= dungeoninformation.getDungeonId() %>階層 </h1>
             <h2>VS</h2>
 
             <div class="character-info">
