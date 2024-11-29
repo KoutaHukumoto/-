@@ -43,6 +43,8 @@ public class answerServlet extends HttpServlet {
 
 		String change_status;
 
+		String change_status_id;
+
 		int up_status = 0;
 
 		answerDao answer = new answerDao();
@@ -64,24 +66,31 @@ public class answerServlet extends HttpServlet {
 		switch (s_id) {
 		case "国語":
 			change_status = "攻撃";
+			change_status_id = "attack";
 			up_status = attack + total_answer;
 			break;
 		case "数学":
 			change_status = "HP";
+			change_status_id = "hp";
 			up_status = hp + total_answer;
 			break;
 		case "英語":
 			change_status = "防御";
+			change_status_id = "defense";
 			up_status = defense + total_answer;
 			break;
 		case "理科":
 			change_status = "すばやさ";
+			change_status_id = "speed";
 			up_status = speed + total_answer;
 			break;
 		default:
 			change_status = "装備品";
+			change_status_id = "item";
 			break;
 		}
+
+		answer.updateStatus(change_status_id, up_status, id);
 
 		request.setAttribute("size", size);
 		request.setAttribute("s_id", s_id);
