@@ -12,6 +12,9 @@ Status status = (Status) request.getAttribute("status");
 int size = (int) request.getAttribute("size");
 %>
 <%
+int totalAnswer = (int) request.getAttribute("total_answer");
+%>
+<%
 ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 %>
 <!DOCTYPE html>
@@ -37,14 +40,22 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 			<div class="status">
 				<h2>ステータス</h2>
 				<div class="status_child">
-					<p>
-						HP :<%=status.getHp()%></p>
-					<p>
-						攻撃 :<%=status.getAttack()%></p>
-					<p>
-						防御 :<%=status.getDefense()%></p>
-					<p>
-						すばやさ :<%=status.getSpeed()%></p>
+					HP :<%=status.getHp()%>
+					<div class="up_status">
+						→
+						<%=request.getAttribute("up_status")%></div>
+					攻撃 :<%=status.getAttack()%>
+					<div class="up_status">
+						→
+						<%=request.getAttribute("up_status")%></div>
+					防御 :<%=status.getDefense()%>
+					<div class="up_status">
+						→
+						<%=request.getAttribute("up_status")%></div>
+					すばやさ :<%=status.getSpeed()%>
+					<div class="up_status">
+						→
+						<%=request.getAttribute("up_status")%></div>
 					<div class="item">
 						<div class="item_child">
 							<p>装備品：あまのさかほこ</p>
@@ -58,7 +69,7 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 		<div class="subject"><%=request.getAttribute("s_id")%>：<%=request.getAttribute("d_id")%></div>
 		<div class="result">
 			<%=size%>問中：
-			<%=request.getAttribute("total_answer")%>問正解
+			<%=totalAnswer%>問正解
 		</div>
 		<div class="answer">
 			<p>解答</p>
@@ -108,7 +119,26 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 		<div id="overlay">
 			<label for="popup" id="bg_gray"></label>
 			<div id="window">
-				<div id="msg">HPが5上がった！！</div>
+				<div id="msg">
+					<%
+					if (totalAnswer <= 5) {
+					%>
+					報酬を獲得出来ませんでした…
+					<%
+					} else {
+					if (request.getAttribute("change_status").equals("装備品")) {
+					%>
+					<%=request.getAttribute("change_status")%>を入手しました！！<br>
+					効果：攻撃+999になる
+					<%
+					} else {
+					%>
+					<%=request.getAttribute("change_status")%>が<%=totalAnswer%>上がった！！
+					<%
+					}
+					}
+					%>
+				</div>
 			</div>
 		</div>
 

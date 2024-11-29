@@ -46,6 +46,13 @@ body {
 	font-size: 1.1em;
 }
 
+.up_status {
+	position: relative;
+	width: 30%;
+	color: black;
+	left: 70%;
+}
+
 .subject,
 .result,
 .answer {
@@ -133,12 +140,12 @@ body {
 #dojyo {
 	position: absolute;
 	text-align: center;
-	border: 2px solid white;
 	width: 20%;
 	height: 5svh;
 	bottom: 5%;
 	font-size: 1.5em;
 	right: 3%;
+	border: 2px solid white;
 }
 
 .next label {
@@ -161,17 +168,16 @@ body {
 	visibility: hidden;
 	position: fixed;
 	z-index: 90;
-	bottom: 25%;
+	bottom: 26%;
 	right: 10%;
 }
 
 #dojyo button {
 	width: 100%;
-	height: 7svh;
 	background: black;
 	color: white;
 	cursor: pointer;
-	font-size: 1.2em;
+	font-size: 1.1em;
 }
 
 input {
@@ -199,10 +205,8 @@ input {
 }
 
 #window {
-	width: 50%;
-	height: 5%;
 	padding: 20px;
-	display: flex;
+	display: inline-block;
 	position: fixed;
 	justify-content: center;
 	align-items: center;
@@ -225,10 +229,7 @@ input {
 	bottom: 0;
 }
 
-#popup:checked~#overlay {
-	visibility: visible;
-}
-
+#popup:checked~#overlay,
 #popup:checked~#dojyo {
 	visibility: visible;
 }

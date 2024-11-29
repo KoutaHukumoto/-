@@ -23,27 +23,27 @@ public class answerServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
-		String name = request.getParameter("name");
-        int id = Integer.parseInt(request.getParameter("id"));
-        int hp = Integer.parseInt(request.getParameter("hp"));
-        int attack = Integer.parseInt(request.getParameter("attack"));
-        int defense = Integer.parseInt(request.getParameter("defense"));
-        int speed = Integer.parseInt(request.getParameter("speed"));
-        String item = request.getParameter("item");
-        String itemEffect = request.getParameter("itemEffect");
-        
 
+		String name = request.getParameter("name");
+		int id = Integer.parseInt(request.getParameter("id"));
+		int hp = Integer.parseInt(request.getParameter("hp"));
+		int attack = Integer.parseInt(request.getParameter("attack"));
+		int defense = Integer.parseInt(request.getParameter("defense"));
+		int speed = Integer.parseInt(request.getParameter("speed"));
+		String item = request.getParameter("item");
+		String itemEffect = request.getParameter("itemEffect");
 
 		int size = Integer.parseInt(request.getParameter("size"));
 		String s_id = request.getParameter("s_id");
 		String d_id = request.getParameter("d_id");
+
+		String change_status;
+
+		int up_status = 0;
 
 		answerDao answer = new answerDao();
 
@@ -61,33 +61,40 @@ public class answerServlet extends HttpServlet {
 			list.add(new answer(text, model_answer, selected_answer));
 		}
 
+		switch (s_id) {
+		case "国語":
+			change_status = "攻撃";
+			up_status = attack + total_answer;
+			break;
+		case "数学":
+			change_status = "HP";
+			up_status = hp + total_answer;
+			break;
+		case "英語":
+			change_status = "防御";
+			up_status = defense + total_answer;
+			break;
+		case "理科":
+			change_status = "すばやさ";
+			up_status = speed + total_answer;
+			break;
+		default:
+			change_status = "装備品";
+			break;
+		}
+
 		request.setAttribute("size", size);
 		request.setAttribute("s_id", s_id);
 		request.setAttribute("d_id", d_id);
 		request.setAttribute("total_answer", total_answer);
 		request.setAttribute("list", list);
-		
-		System.out.println(s_id);
-		
-		
-		//以下能力上昇判定機能
-		if (s_id.equals("国語")) {
-		    hp = hp + 10000;
-		}
+		request.setAttribute("change_status", change_status);
+		request.setAttribute("up_status", up_status);
 
-		
-		
-		System.out.println(hp);
-		
-		
-		 // Statusオブジェクトを作成
-        Status status = new Status(name, id, hp, attack, defense, speed, item, itemEffect);
-        
-        System.out.println(name);
-        
-        
-        
-        request.setAttribute("status", status);
+		// Statusオブジェクトを作成
+		Status status = new Status(name, id, hp, attack, defense, speed, item, itemEffect);
+
+		request.setAttribute("status", status);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/answer.jsp");
 		dispatcher.forward(request, response);

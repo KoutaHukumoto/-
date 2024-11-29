@@ -28,31 +28,32 @@ public class dojyoServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		String name = request.getParameter("name");
-        int id = Integer.parseInt(request.getParameter("id"));
-        int hp = Integer.parseInt(request.getParameter("hp"));
-        int attack = Integer.parseInt(request.getParameter("attack"));
-        int defense = Integer.parseInt(request.getParameter("defense"));
-        int speed = Integer.parseInt(request.getParameter("speed"));
-        String item = request.getParameter("item");
-        String itemEffect = request.getParameter("itemEffect");
-        
-        System.out.println(name);
-        System.out.println(id);
-        System.out.println(hp);
+		int id = Integer.parseInt(request.getParameter("id"));
+		int hp = Integer.parseInt(request.getParameter("hp"));
+		int attack = Integer.parseInt(request.getParameter("attack"));
+		int defense = Integer.parseInt(request.getParameter("defense"));
+		int speed = Integer.parseInt(request.getParameter("speed"));
+		String item = request.getParameter("item");
+		String itemEffect = request.getParameter("itemEffect");
 
-        // Statusオブジェクトを作成
-        Status status = new Status(name, id, hp, attack, defense, speed, item, itemEffect);
+		System.out.println(name);
+		System.out.println(id);
+		System.out.println(hp);
 
-        // セッションにStatusオブジェクトを保存
-        
-        request.setAttribute("status", status);
+		// Statusオブジェクトを作成
+		Status status = new Status(name, id, hp, attack, defense, speed, item, itemEffect);
+
+		// セッションにStatusオブジェクトを保存
+
+		request.setAttribute("status", status);
 
 		String s_id = request.getParameter("s_id");
 		String d_id = request.getParameter("d_id");
 
 		int id1 = 10;
+
 		System.out.println(s_id);
 		System.out.println(d_id);
 
