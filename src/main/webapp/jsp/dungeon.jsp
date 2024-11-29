@@ -101,7 +101,7 @@
                         <p>HP: <%= monster.getMonsterHp() %></p>
                         <p>攻撃: <%= monster.getMonsterAttack() %></p>
                         <p>防御: <%= monster.getMonsterDefence() %></p>
-                        <p>すばやさ: <%= monster.getMonsterSpeed() %></p>
+                        <p>すばやさaaaaa: <%= monster.getMonsterSpeed() %></p>
                         <p>スキル1: <%= monster.getSkill1() %></p>
                         <p>スキル2: <%= monster.getSkill2() %></p>
                     </div>
