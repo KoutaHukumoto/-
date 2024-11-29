@@ -79,6 +79,7 @@ button {
 }
 
 button:hover {
+
 	background-color: grey;
 	/* hover時の背景色 */
 }
