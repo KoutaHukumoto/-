@@ -57,5 +57,4 @@ public class DungeonDao extends BaseDao {
 	    }
 
 	
-	
 }

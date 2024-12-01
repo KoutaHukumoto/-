@@ -88,6 +88,4 @@ public class item implements Serializable{
 		this.effectspeed = effectSpeed;
 	}
 
-	
-	
 }

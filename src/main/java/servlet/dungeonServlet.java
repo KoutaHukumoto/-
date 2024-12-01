@@ -75,8 +75,7 @@ public class dungeonServlet extends HttpServlet {
         monsterDao monster = new monsterDao();
         monster monsterstatus = monster.getMonster(monsterId,bossId);
         session.setAttribute("monsterstatus",monsterstatus);
-        
-        System.out.println("ここ");
+       
         
  
         // JSPにフォワード

@@ -8,9 +8,11 @@ public class Status {
 	private int defense;
 	private int speed;
 	private int itemid;
+
 	private String itemEffect;
 	private String pass;
 	private int dungeonid;
+	
 
 	public int getDungeonid() {
 		return dungeonid;
@@ -29,6 +31,7 @@ public class Status {
 		this.speed = speed;
 		this.itemid = itemid;
 		this.itemEffect = itemEffect;
+
 	}
 
 	public Status(String name, int id, int hp, int attack, int defense, int speed, int itemid, int dungeonid) {
