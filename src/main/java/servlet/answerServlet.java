@@ -63,10 +63,12 @@ public class answerServlet extends HttpServlet {
 			list.add(new answer(text, model_answer, selected_answer));
 		}
 
+		int total_answer_status = total_answer;
+
 		if (d_id.equals("中級")) {
-			total_answer = total_answer * 2;
+			total_answer_status = total_answer * 2;
 		} else if (d_id.equals("上級")) {
-			total_answer = total_answer * 3;
+			total_answer_status = total_answer * 3;
 		}
 		if (total_answer >= 5) {
 
@@ -74,22 +76,22 @@ public class answerServlet extends HttpServlet {
 			case "国語":
 				change_status = "攻撃";
 				change_status_id = "attack";
-				up_status = attack + total_answer;
+				up_status = attack + total_answer_status;
 				break;
 			case "数学":
 				change_status = "HP";
 				change_status_id = "hp";
-				up_status = hp + total_answer;
+				up_status = hp + total_answer_status;
 				break;
 			case "英語":
 				change_status = "防御";
 				change_status_id = "defense";
-				up_status = defense + total_answer;
+				up_status = defense + total_answer_status;
 				break;
 			case "理科":
 				change_status = "すばやさ";
 				change_status_id = "speed";
-				up_status = speed + total_answer;
+				up_status = speed + total_answer_status;
 				break;
 			default:
 				change_status = "装備品";
@@ -104,6 +106,7 @@ public class answerServlet extends HttpServlet {
 		request.setAttribute("s_id", s_id);
 		request.setAttribute("d_id", d_id);
 		request.setAttribute("total_answer", total_answer);
+		request.setAttribute("total_answer_status", total_answer_status);
 		request.setAttribute("list", list);
 		request.setAttribute("change_status", change_status);
 		request.setAttribute("change_status_id", change_status_id);

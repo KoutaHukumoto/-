@@ -135,7 +135,7 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 					<%
 					} else {
 					%>
-					<%=request.getAttribute("change_status")%>が<%=totalAnswer%>上がった！！
+					<%=request.getAttribute("change_status")%>が<%=request.getAttribute("total_answer_status")%>上がった！！
 					<%
 					}
 					}
