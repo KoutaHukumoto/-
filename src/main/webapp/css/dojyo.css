@@ -198,20 +198,22 @@ body {
 .mypage {
 	text-align: center;
 	margin-top: 20px;
-	padding: 10px;
 	border: 2px solid white;
 	width: 30%;
-	font-size: 1.5em;
+	height: 5%;
 }
 
-.mypage a {
+.mypage button {
 	display: block;
 	width: 100%;
+	height: 100%;
+	font-size: 1.5em;
+	background-color: black;
 	color: white;
-	text-decoration: none;
+	cursor: pointer;
 }
 
-.mypage a:hover {
+.mypage button:hover {
 	background-color: grey;
 	opacity: 0.7;
 }

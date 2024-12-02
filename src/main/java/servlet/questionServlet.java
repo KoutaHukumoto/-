@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.RankingDao;
+import dao.UserDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -28,51 +29,37 @@ public class questionServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-	        throws ServletException, IOException {
-		
+			throws ServletException, IOException {
+
 		String name = request.getParameter("name");
-        int id = Integer.parseInt(request.getParameter("id"));
-        int hp = Integer.parseInt(request.getParameter("hp"));
-        int attack = Integer.parseInt(request.getParameter("attack"));
-        int defense = Integer.parseInt(request.getParameter("defense"));
-        int speed = Integer.parseInt(request.getParameter("speed"));
-        String item = request.getParameter("item");
-        String itemEffect = request.getParameter("itemEffect");
-        
-        System.out.println(name);
-        System.out.println(id);
-
-        // Statusオブジェクトを作成
-        Status status = new Status(name, id, hp, attack, defense, speed, item, itemEffect);
-
-        // セッションにStatusオブジェクトを保存
+		int id = Integer.parseInt(request.getParameter("id"));
+		UserDao userdao = new UserDao();
+		Status status = userdao.find(id);
 
 
-		
-		
-	    RankingDao rankingDao = new RankingDao();
-	    List<character> questionlist = new ArrayList<>();
 
-	    try {
-	        questionlist = rankingDao.getAllData(); // 質問データを取得
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	        request.setAttribute("errorMessage", "データの取得に失敗しました。");
-	    }
-	    
-       
-        request.setAttribute("status", status);
+		RankingDao rankingDao = new RankingDao();
+		List<character> questionlist = new ArrayList<>();
 
-	    // サンプルのカテゴリデータを設定
-	    character category = new character();
-	    request.setAttribute("category", category);
+		try {
+			questionlist = rankingDao.getAllData(); // 質問データを取得
+		} catch (SQLException e) {
+			e.printStackTrace();
+			request.setAttribute("errorMessage", "データの取得に失敗しました。");
+		}
 
-	    // リクエスト属性に設定
-	    request.setAttribute("questionlist", questionlist);
+		request.setAttribute("status", status);
 
-	    // フォワード
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/dojyo.jsp");
-	    dispatcher.forward(request, response);
+		// サンプルのカテゴリデータを設定
+		character category = new character();
+		request.setAttribute("category", category);
+
+		// リクエスト属性に設定
+		request.setAttribute("questionlist", questionlist);
+
+		// フォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/dojyo.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

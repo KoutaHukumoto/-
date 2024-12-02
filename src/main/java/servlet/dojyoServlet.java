@@ -38,9 +38,6 @@ public class dojyoServlet extends HttpServlet {
 		String item = request.getParameter("item");
 		String itemEffect = request.getParameter("itemEffect");
 
-		System.out.println(name);
-		System.out.println(id);
-		System.out.println(hp);
 
 		// Statusオブジェクトを作成
 		Status status = new Status(name, id, hp, attack, defense, speed, item, itemEffect);
@@ -54,8 +51,6 @@ public class dojyoServlet extends HttpServlet {
 
 		int id1 = 10;
 
-		System.out.println(s_id);
-		System.out.println(d_id);
 
 		questionDao question = new questionDao();
 

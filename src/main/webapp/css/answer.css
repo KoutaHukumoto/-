@@ -46,11 +46,31 @@ body {
 	font-size: 1.1em;
 }
 
-.up_status {
+.up_status_hp,
+.up_status_hp.highlight,
+.up_status_attack,
+.up_status_attack.highlight,
+.up_status_defense,
+.up_status_defense.highlight,
+.up_status_speed,
+.up_status_defense.highlight {
 	position: relative;
 	width: 30%;
-	color: black;
 	left: 70%;
+}
+
+.up_status_hp,
+.up_status_attack,
+.up_status_defense,
+.up_status_speed {
+	color: black;
+}
+
+.up_status_hp.highlight,
+.up_status_attack.highlight,
+.up_status_defense.highlight,
+.up_status_defense.highlight {
+	color: #ff7f7f;
 }
 
 .subject,
@@ -202,6 +222,7 @@ input {
 	left: 0;
 	top: 0;
 	z-index: 80;
+	pointer-events: none;
 }
 
 #window {

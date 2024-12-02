@@ -41,9 +41,9 @@ public class answerServlet extends HttpServlet {
 		String s_id = request.getParameter("s_id");
 		String d_id = request.getParameter("d_id");
 
-		String change_status;
+		String change_status = "";
 
-		String change_status_id;
+		String change_status_id = "";
 
 		int up_status = 0;
 
@@ -63,34 +63,42 @@ public class answerServlet extends HttpServlet {
 			list.add(new answer(text, model_answer, selected_answer));
 		}
 
-		switch (s_id) {
-		case "国語":
-			change_status = "攻撃";
-			change_status_id = "attack";
-			up_status = attack + total_answer;
-			break;
-		case "数学":
-			change_status = "HP";
-			change_status_id = "hp";
-			up_status = hp + total_answer;
-			break;
-		case "英語":
-			change_status = "防御";
-			change_status_id = "defense";
-			up_status = defense + total_answer;
-			break;
-		case "理科":
-			change_status = "すばやさ";
-			change_status_id = "speed";
-			up_status = speed + total_answer;
-			break;
-		default:
-			change_status = "装備品";
-			change_status_id = "item";
-			break;
+		if (d_id.equals("中級")) {
+			total_answer = total_answer * 2;
+		} else if (d_id.equals("上級")) {
+			total_answer = total_answer * 3;
 		}
+		if (total_answer >= 5) {
 
-		answer.updateStatus(change_status_id, up_status, id);
+			switch (s_id) {
+			case "国語":
+				change_status = "攻撃";
+				change_status_id = "attack";
+				up_status = attack + total_answer;
+				break;
+			case "数学":
+				change_status = "HP";
+				change_status_id = "hp";
+				up_status = hp + total_answer;
+				break;
+			case "英語":
+				change_status = "防御";
+				change_status_id = "defense";
+				up_status = defense + total_answer;
+				break;
+			case "理科":
+				change_status = "すばやさ";
+				change_status_id = "speed";
+				up_status = speed + total_answer;
+				break;
+			default:
+				change_status = "装備品";
+				change_status_id = "item";
+				break;
+			}
+
+			answer.updateStatus(change_status_id, up_status, id);
+		}
 
 		request.setAttribute("size", size);
 		request.setAttribute("s_id", s_id);
@@ -98,6 +106,7 @@ public class answerServlet extends HttpServlet {
 		request.setAttribute("total_answer", total_answer);
 		request.setAttribute("list", list);
 		request.setAttribute("change_status", change_status);
+		request.setAttribute("change_status_id", change_status_id);
 		request.setAttribute("up_status", up_status);
 
 		// Statusオブジェクトを作成
