@@ -114,7 +114,6 @@
                     <div class="battle-option">ぼうぎょ</div>
                     <div class="battle-option">必殺技</div>
                     <div class="battle-option">にげる</div>
-                    
                 </div>
                 <div class="battle-log">
                     <ul id="battleLog">

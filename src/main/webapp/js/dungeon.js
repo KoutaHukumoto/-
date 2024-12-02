@@ -8,22 +8,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// にげるボタンのイベントリスナー
 	document.querySelectorAll('.battle-option')[3].addEventListener('click', function() {
-		window.location.href = 'mypage.html';
+
+
+		//formを作成
+		var form = document.createElement('form');
+		form.method = 'POST';
+		form.action = '/Dosukoi-Analytics/backServlet';
+
+		//作成したformにデータを挿入
+		var input = document.createElement('input');
+		input.type = 'hidden';
+		input.name = 'id';
+		input.value = statusData.id;
+		form.appendChild(input);
+
+		//formを送信
+		document.body.appendChild(form);
+		form.submit();
+
 	});
 
 	// 攻撃ボタンのイベントリスナー
 	document.querySelectorAll('.battle-option')[0].addEventListener('click', function() {
 		battleRound();
 	})
-	
-	 // 防御ボタンのイベントリスナー
-	 // 「ぼうぎょ」ボタンを押したら、ぼうぎょが始まります。
-    document.querySelectorAll('.battle-option')[1].addEventListener('click', function() {
-	    	defenseRound();
-	    });
 
+	// 防御ボタンのイベントリスナー
+	// 「ぼうぎょ」ボタンを押したら、ぼうぎょが始まります。
+	document.querySelectorAll('.battle-option')[1].addEventListener('click', function() {
+		defenseRound();
+	});
 
-	
 
 	// 必殺技ボタンのイベントリスナー
 	document.querySelectorAll('.battle-option')[2].addEventListener('click', function() {
@@ -48,16 +63,56 @@ function displayBattleResult(message) {
 	const resultOverlay = document.createElement('div');
 	resultOverlay.classList.add('battle-result-overlay');
 
-	resultOverlay.innerHTML =
-		'<div class="result-message">' + message + '</div>' +
-		'<div class="result-buttons">' +
-		'<a href="mypage.html" class="btn btn-primary btn-lg result-back-button" role="button">マイページに戻る</a>' +
-		'<button class="btn btn-primary btn-lg" onclick="restartBattle()">再戦する</button>' +
-		'</div>';
+	// マイページに戻るフォーム
+	const backForm = document.createElement('form');
+	backForm.method = 'POST';
+	backForm.action = '/Dosukoi-Analytics/backServlet'; 
+
+	const backInput = document.createElement('input');
+	backInput.type = 'hidden';
+	backInput.name = 'id';
+	backInput.value = statusData.id;
+	backForm.appendChild(backInput);
+
+	const backButton = document.createElement('button');
+	backButton.type = 'submit';
+	backButton.classList.add('btn', 'btn-primary', 'btn-lg', 'result-back-button');
+	backButton.textContent = 'マイページに戻る';
+	backForm.appendChild(backButton);
+
+	// 再戦ボタン
+	const rematchForm = document.createElement('form');
+	rematchForm.method = 'POST';
+	rematchForm.action = '/Dosukoi-Analytics/rematchServlet';
+
+	const rematchInput = document.createElement('input');
+	rematchInput.type = 'hidden';
+	rematchInput.name = 'id';
+	rematchInput.value = statusData.id;
+	rematchForm.appendChild(rematchInput);
+
+	const rematchButton = document.createElement('button');
+	rematchButton.type = 'submit';
+	rematchButton.classList.add('btn', 'btn-primary', 'btn-lg');
+	rematchButton.textContent = '再戦する';
+	rematchForm.appendChild(rematchButton);
+
+	// 結果オーバーレイの内容を作成
+	const resultMessage = document.createElement('div');
+	resultMessage.classList.add('result-message');
+	resultMessage.textContent = message;
+
+	const resultButtons = document.createElement('div');
+	resultButtons.classList.add('result-buttons');
+	resultButtons.appendChild(backForm);
+	resultButtons.appendChild(rematchForm);
+
+	resultOverlay.appendChild(resultMessage);
+	resultOverlay.appendChild(resultButtons);
 
 	document.body.appendChild(resultOverlay);
-	disableAllButtons();
 }
+
 
 // すべてのボタンを無効にする
 function disableAllButtons() {
@@ -132,44 +187,44 @@ function battleRound() {
 		});
 	}
 }
-	// 防御機能
-	function defenseRound() {
-    const playerHPElement = document.querySelector('.character.pc .character-header meter');
-    const npcHPElement = document.querySelector('.character.npc .character-header meter');
-    const playerImgElement = document.querySelector('.character.pc .character-img');
-    const battleLog = document.getElementById('battleLog');
-    let playerHP = parseInt(playerHPElement.getAttribute('value'));
-    let npcHP = parseInt(npcHPElement.getAttribute('value'));
-    const playerDefense = statusData.defense; // プレイヤーの防御力
-    const npcAttack = 20; // 敵の攻撃力
+// 防御機能
+function defenseRound() {
+	const playerHPElement = document.querySelector('.character.pc .character-header meter');
+	const npcHPElement = document.querySelector('.character.npc .character-header meter');
+	const playerImgElement = document.querySelector('.character.pc .character-img');
+	const battleLog = document.getElementById('battleLog');
+	let playerHP = parseInt(playerHPElement.getAttribute('value'));
+	let npcHP = parseInt(npcHPElement.getAttribute('value'));
+	const playerDefense = statusData.defense; // プレイヤーの防御力
+	const npcAttack = 20; // 敵の攻撃力
 
-    // プレイヤーが防御を固めたログを表示
-    const defenseLog = document.createElement('li');
-    battleLog.appendChild(defenseLog);
-    displayTextOneByOne(defenseLog, 'あなたは防御を固めた！！', function() {
-		
-		
-        // 相手が攻撃する
-        const damage = npcAttack - playerDefense > 0 ? npcAttack - playerDefense : 0; // 防御効果を適用
-        playerHP -= damage;
-        const npcAttackLog = document.createElement('li');
-        battleLog.appendChild(npcAttackLog);
-        displayTextOneByOne(npcAttackLog, `スライムの攻撃！ あなたに${npcAttack} のダメージ！`, function() {
-            playerImgElement.classList.add('shake'); // プレイヤーがダメージを受けて揺れる演出
-            setTimeout(function() {
-                playerImgElement.classList.remove('shake');
-                playerHPElement.setAttribute('value', playerHP);
-                if (playerHP <= 0) {
-                    playerHP = 0;
-                    const loseLog = document.createElement('li');
-                    battleLog.appendChild(loseLog);
-                    displayTextOneByOne(loseLog, 'あなたは倒れた。。。', function() {
-                        displayBattleResult('敗北。。。');
-                    });
-                }
-            }, 500); // 揺れ終わった後に次の処理に進む
-        });
-    });
+	// プレイヤーが防御を固めたログを表示
+	const defenseLog = document.createElement('li');
+	battleLog.appendChild(defenseLog);
+	displayTextOneByOne(defenseLog, 'あなたは防御を固めた！！', function() {
+
+
+		// 相手が攻撃する
+		const damage = npcAttack - playerDefense > 0 ? npcAttack - playerDefense : 0; // 防御効果を適用
+		playerHP -= damage;
+		const npcAttackLog = document.createElement('li');
+		battleLog.appendChild(npcAttackLog);
+		displayTextOneByOne(npcAttackLog, `スライムの攻撃！ あなたに${npcAttack} のダメージ！`, function() {
+			playerImgElement.classList.add('shake'); // プレイヤーがダメージを受けて揺れる演出
+			setTimeout(function() {
+				playerImgElement.classList.remove('shake');
+				playerHPElement.setAttribute('value', playerHP);
+				if (playerHP <= 0) {
+					playerHP = 0;
+					const loseLog = document.createElement('li');
+					battleLog.appendChild(loseLog);
+					displayTextOneByOne(loseLog, 'あなたは倒れた。。。', function() {
+						displayBattleResult('敗北。。。');
+					});
+				}
+			}, 500); // 揺れ終わった後に次の処理に進む
+		});
+	});
 }
 
 // 必殺技機能
