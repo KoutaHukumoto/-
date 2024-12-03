@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="model.Status"%>
-<%
-	Status status = (Status) request.getAttribute("status");%>
+<%@ page import="model.item"%>
+<%Status status = (Status) request.getAttribute("status");
+  item itemName = (item) request.getAttribute("itemName");
+
+
+%>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -40,8 +44,8 @@
 			<h2>装備品</h2>
 			<div class="item_child">
 				
-				<p>あまのさかほこ</p>
-				<p>攻撃力とすばやさを2倍にする</p>
+				<p><%=itemName.getItemName() %></p>
+				<p><%=itemName.getDescription() %></p>
 			</div>
 		</div>
 
