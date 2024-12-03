@@ -60,6 +60,8 @@ public class loginServlet extends HttpServlet {
 		// loginLogicクラスでログイン処理を実行
 		loginLogic loginLogic = new loginLogic();
 		boolean isLogin = loginLogic.execute(id,hashdpass);
+		
+		
 
 		// ログイン結果によるリダイレクト
 		if (isLogin) {

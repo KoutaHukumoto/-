@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		//作成したformにデータを挿入
 		var input = document.createElement('input');
 		input.type = 'hidden';
-		input.name = 'id';
-		input.value = statusData.id;
+		input.name = 'name';
+		input.value = statusData.name;
 		form.appendChild(input);
 
 		//formを送信
@@ -70,8 +70,8 @@ function displayBattleResult(message) {
 
 	const backInput = document.createElement('input');
 	backInput.type = 'hidden';
-	backInput.name = 'id';
-	backInput.value = statusData.id;
+	backInput.name = 'name';
+	backInput.value = statusData.name;
 	backForm.appendChild(backInput);
 
 	const backButton = document.createElement('button');
@@ -87,8 +87,8 @@ function displayBattleResult(message) {
 
 	const rematchInput = document.createElement('input');
 	rematchInput.type = 'hidden';
-	rematchInput.name = 'id';
-	rematchInput.value = statusData.id;
+	rematchInput.name = 'name';
+	rematchInput.value = statusData.name;
 	rematchForm.appendChild(rematchInput);
 
 	const rematchButton = document.createElement('button');

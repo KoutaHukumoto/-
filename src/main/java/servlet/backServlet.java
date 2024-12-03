@@ -19,11 +19,12 @@ public class backServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		// 必要なパラメータをリクエストから取得
-		int id = Integer.parseInt(request.getParameter("id"));
+		String name = request.getParameter("name");
+		
 
 		// Statusオブジェクトを作成
 		UserDao userdao = new UserDao();
-		Status status = userdao.find(id);
+		Status status = userdao.findname(name);
 		
 		
 		request.setAttribute("status", status);
