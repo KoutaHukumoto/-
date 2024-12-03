@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 
+import dao.UserDao;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,32 +13,22 @@ import model.Status; // Status クラスがある前提
 
 @WebServlet("/backServlet")
 public class backServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        // 必要なパラメータをリクエストから取得
-    	 String name = request.getParameter("name");
-         int id = Integer.parseInt(request.getParameter("id"));
-         int hp = Integer.parseInt(request.getParameter("hp"));
-         int attack = Integer.parseInt(request.getParameter("attack"));
-         int defense = Integer.parseInt(request.getParameter("defense"));
-         int speed = Integer.parseInt(request.getParameter("speed"));
-         int itemid = Integer.parseInt(request.getParameter("itemid"));
-         int dungeonid = Integer.parseInt(request.getParameter("dungeonid"));
-         
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-         // Statusオブジェクトを作成
-         Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid);
-         
-         System.out.println(name);
-         
-        // Status オブジェクトをリクエスト属性にセット
-        request.setAttribute("status", status);
+		// 必要なパラメータをリクエストから取得
+		int id = Integer.parseInt(request.getParameter("id"));
 
-        // mypage.jsp にフォワード
-        request.getRequestDispatcher("/jsp/mypage.jsp").forward(request, response);
-    }
+		// Statusオブジェクトを作成
+		UserDao userdao = new UserDao();
+		Status status = userdao.find(id);
+		
+		
+		request.setAttribute("status", status);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/mypage.jsp");
+		dispatcher.forward(request, response);
+	}
 
 }
