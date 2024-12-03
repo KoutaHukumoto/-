@@ -3,8 +3,10 @@
 	pageEncoding="UTF-8"%>
 
 <%@ page import="model.Status"%>
+<%@ page import="model.item"%>
 <%
 Status status = (Status) request.getAttribute("status");
+item item =(item) request.getAttribute("getitem");
 %>
 
 <%@ page import="model.answer,java.util.ArrayList"%>
@@ -131,7 +133,7 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 					if (request.getAttribute("change_status").equals("装備品")) {
 					%>
 					<div class="result_item">
-						<%=request.getAttribute("change_status")%>を入手しました！！<br>
+						<%=item.getItemName()%>を入手しました！！<br>
 						効果：攻撃+999になる
 						<form action="/Dosukoi-Analytics/questionServlet" method="POST">
 							<input type="hidden" name="name" value="<%=status.getName()%>">

@@ -16,7 +16,7 @@ public class character implements Serializable{
 	
 	private int userAttack;
 	
-	private int userDefence;
+	private int userDefense;
 	
 	private int userSpeed;
 	
@@ -62,12 +62,12 @@ public class character implements Serializable{
 		this.userAttack = userAttack;
 	}
 
-	public int getUserDefence() {
-		return userDefence;
+	public int getUserDefense() {
+		return userDefense;
 	}
 
-	public void setUserDefence(int userDefence) {
-		this.userDefence = userDefence;
+	public void setUserDefense(int userDefence) {
+		this.userDefense = userDefence;
 	}
 
 	public int getUserSpeed() {

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.RankingDao;
-import dao.UserDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -31,10 +30,19 @@ public class questionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String name = request.getParameter("name");
-		int id = Integer.parseInt(request.getParameter("id"));
-		UserDao userdao = new UserDao();
-		Status status = userdao.find(id);
+        // フォームからのデータを取得
+        String name = request.getParameter("name");
+        int id = Integer.parseInt(request.getParameter("id"));
+        int hp = Integer.parseInt(request.getParameter("hp"));
+        int attack = Integer.parseInt(request.getParameter("attack"));
+        int defense = Integer.parseInt(request.getParameter("defense"));
+        int speed = Integer.parseInt(request.getParameter("speed"));
+        String item = request.getParameter("item");
+        String itemEffect = request.getParameter("itemEffect");
+        
+
+        // Statusオブジェクトを作成
+        Status status = new Status(name, id, hp, attack, defense, speed, item, itemEffect);
 
 
 

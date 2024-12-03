@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import dao.ItemDao;
 import dao.answerDao;
 import dao.statusDao;
 import jakarta.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Status;
 import model.answer;
+import model.item;
 
 @WebServlet("/answerServlet")
 public class answerServlet extends HttpServlet {
@@ -53,6 +55,9 @@ public class answerServlet extends HttpServlet {
 		ArrayList<answer> list = new ArrayList<>();
 
 		int total_answer = 0;
+		
+		int itemlist = 0;
+		item getitem = null;
 
 		for (int i = 0; i < size; i++) {
 			String text = request.getParameter("text_" + i);
@@ -99,11 +104,30 @@ public class answerServlet extends HttpServlet {
 				change_status_id = "item";
 				break;
 			}
+			
+			if(s_id.equals("社会")) {
+				if (d_id.equals("中級")) {
+					itemlist = 10;
+				} else if (d_id.equals("上級")) {
+					itemlist = 15;
+				} else {
+					itemlist = 5;
+				}
+				
+				int itemid = 1;
+				ItemDao itemdao = new ItemDao();
+				
+				getitem = itemdao.getitemlist(itemid,itemlist);
+				
+			}
 
 			statusDao changestatus = new statusDao();
 			changestatus.updateStatus(change_status_id, up_status, id);
 		}
-
+		
+		System.out.println(getitem.getItemName());
+		
+		request.setAttribute("getitem", getitem);
 		request.setAttribute("size", size);
 		request.setAttribute("s_id", s_id);
 		request.setAttribute("d_id", d_id);
