@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import dao.answerDao;
+import dao.statusDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -99,7 +100,8 @@ public class answerServlet extends HttpServlet {
 				break;
 			}
 
-			answer.updateStatus(change_status_id, up_status, id);
+			statusDao changestatus = new statusDao();
+			changestatus.updateStatus(change_status_id, up_status, id);
 		}
 
 		request.setAttribute("size", size);

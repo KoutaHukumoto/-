@@ -130,8 +130,16 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 					} else {
 					if (request.getAttribute("change_status").equals("装備品")) {
 					%>
-					<%=request.getAttribute("change_status")%>を入手しました！！<br>
-					効果：攻撃+999になる
+					<div class="result_item">
+						<%=request.getAttribute("change_status")%>を入手しました！！<br>
+						効果：攻撃+999になる
+						<form action="/Dosukoi-Analytics/questionServlet" method="POST">
+							<input type="hidden" name="name" value="<%=status.getName()%>">
+							<input type="hidden" name="id" value="<%=status.getId()%>">
+							<button type="submit">いいえ</button>
+						</form>
+						<button>はい</button>
+					</div>
 					<%
 					} else {
 					%>
