@@ -53,7 +53,8 @@ Status status = (Status) request.getAttribute("status");
 						<%=status.getSpeed()%></p>
 					<div class="item">
 						<div class="item_child">
-							<p>装備品：あまのさかほこ</p>
+							<p>
+								装備品：<%=status.getItem()%></p>
 						</div>
 					</div>
 				</div>
@@ -106,14 +107,14 @@ Status status = (Status) request.getAttribute("status");
 		</form>
 		<div class="mypage">
 			<form action="/Dosukoi-Analytics/backServlet" method="POST">
-				<input type="hidden" name="name" value="<%=status.getName()%>"> 
-				<input type="hidden" name="id"value="<%=status.getId()%>">
+				<input type="hidden" name="name" value="<%=status.getName()%>">
+				<input type="hidden" name="id" value="<%=status.getId()%>">
 				<input type="hidden" name="hp" value="<%=status.getHp()%>">
 				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
-				<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
-				<input type="hidden"name="speed" value="<%=status.getSpeed()%>"> 
-				<input type="hidden" name="item" value="あまのさかほこ">
-				<input type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
+				<input type="hidden" name="defense" value="<%=status.getDefense()%>">
+				<input type="hidden" name="speed" value="<%=status.getSpeed()%>">
+				<input type="hidden" name="item" value="あまのさかほこ"> <input
+					type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
 				<button type="submit">もどる</button>
 			</form>
 		</div>

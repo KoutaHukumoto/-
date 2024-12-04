@@ -27,4 +27,14 @@
     <servlet-name>Remove</servlet-name>
     <url-pattern>/Remove</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>itemServlet</display-name>
+    <servlet-name>itemServlet</servlet-name>
+    <servlet-class>servlet.itemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>itemServlet</servlet-name>
+    <url-pattern>/itemServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

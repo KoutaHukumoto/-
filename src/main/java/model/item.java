@@ -8,24 +8,26 @@ import java.io.Serializable;
  * userテーブルのデータを保持するクラス
 */
 
-public class item implements Serializable{
+public class item implements Serializable {
 	private int itemId;
-	
+
 	private String itemName;
-	
+
 	private String description;
-	
+
 	private int effectHp;
-	
+
 	private int effectAttack;
-	
+
 	private int effectdefence;
-	
+
 	private int effectspeed;
-	
-	public item(int itemId, String itemName, int effectHp, int effectAttack, int effectdefence, int effectspeed) {
+
+	public item(int itemId, String itemName, String description, int effectHp, int effectAttack, int effectdefence,
+			int effectspeed) {
 		this.itemId = itemId;
 		this.itemName = itemName;
+		this.description = description;
 		this.effectHp = effectHp;
 		this.effectAttack = effectAttack;
 		this.effectdefence = effectdefence;

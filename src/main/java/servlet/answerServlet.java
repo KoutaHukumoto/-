@@ -55,7 +55,7 @@ public class answerServlet extends HttpServlet {
 		ArrayList<answer> list = new ArrayList<>();
 
 		int total_answer = 0;
-		
+
 		int itemlist = 0;
 		item getitem = null;
 
@@ -104,8 +104,8 @@ public class answerServlet extends HttpServlet {
 				change_status_id = "item";
 				break;
 			}
-			
-			if(s_id.equals("社会")) {
+
+			if (s_id.equals("社会")) {
 				if (d_id.equals("中級")) {
 					itemlist = 10;
 				} else if (d_id.equals("上級")) {
@@ -113,20 +113,18 @@ public class answerServlet extends HttpServlet {
 				} else {
 					itemlist = 5;
 				}
-				
+
 				int itemid = 1;
 				ItemDao itemdao = new ItemDao();
-				
-				getitem = itemdao.getitemlist(itemid,itemlist);
-				
+
+				getitem = itemdao.getitemlist(itemid, itemlist);
+
 			}
 
 			statusDao changestatus = new statusDao();
 			changestatus.updateStatus(change_status_id, up_status, id);
 		}
-		
-		System.out.println(getitem.getItemName());
-		
+
 		request.setAttribute("getitem", getitem);
 		request.setAttribute("size", size);
 		request.setAttribute("s_id", s_id);

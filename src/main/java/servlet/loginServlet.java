@@ -15,8 +15,7 @@ import jakarta.servlet.http.HttpSession;
 import model.Status;
 import model.loginLogic;
 
-
-@WebServlet("/loginServlet") 
+@WebServlet("/loginServlet")
 public class loginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -52,14 +51,12 @@ public class loginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String pass = request.getParameter("pass");
 		int id = Integer.parseInt(request.getParameter("id"));
-		
-	
-		
+
 		String hashdpass = DigestUtils.sha256Hex(pass);
 
 		// loginLogicクラスでログイン処理を実行
 		loginLogic loginLogic = new loginLogic();
-		boolean isLogin = loginLogic.execute(id,hashdpass);
+		boolean isLogin = loginLogic.execute(id, hashdpass);
 
 		// ログイン結果によるリダイレクト
 		if (isLogin) {

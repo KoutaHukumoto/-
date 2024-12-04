@@ -82,6 +82,7 @@ question category = (question) request.getAttribute("category");
 			<input type="hidden" name="item" value="あまのさかほこ"> <input
 				type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
 			<button type="submit">戻る</button>
+		</form>
 	</div>
 
 </body>
