@@ -134,33 +134,36 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 					%>
 					<div class="result_item">
 						装備品：<%=item.getItemName()%>を入手しました！！<br> 効果：<%=item.getDescription()%>
-						<form action="/Dosukoi-Analytics/questionServlet" method="POST">
-							<input type="hidden" name="name" value="<%=status.getName()%>">
-							<input type="hidden" name="id" value="<%=status.getId()%>">
-							<input type="hidden" name="hp" value="<%=status.getHp()%>">
-							<input type="hidden" name="attack"
-								value="<%=status.getAttack()%>"> <input type="hidden"
-								name="defense" value="<%=status.getDefense()%>"> <input
-								type="hidden" name="speed" value="<%=status.getSpeed()%>">
-							<input type="hidden" name="item" value="あまのさかほこ"> <input
-								type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
-							<button type="submit">いいえ</button>
-						</form>
-						<form action="/Dosukoi-Analytics/itemServlet" method="POST">
-							<input type="hidden" name="name" value="<%=status.getName()%>">
-							<input type="hidden" name="id" value="<%=status.getId()%>">
-							<input type="hidden" name="hp" value="<%=status.getHp()%>">
-							<input type="hidden" name="attack"
-								value="<%=status.getAttack()%>"> <input type="hidden"
-								name="defense" value="<%=status.getDefense()%>"> <input
-								type="hidden" name="speed" value="<%=status.getSpeed()%>">
-							<input type="hidden" name="item" value="<%=item.getItemName()%>">
-							<input type="hidden" name="itemEffect"
-								value="<%=item.getDescription()%>"> <input type="hidden"
-								name="itemId" value="<%=item.getItemId()%>">
-							<button type="submit">はい</button>
-						</form>
+						<div class="button-group">
+							<form action="/Dosukoi-Analytics/questionServlet" method="POST">
+								<input type="hidden" name="name" value="<%=status.getName()%>">
+								<input type="hidden" name="id" value="<%=status.getId()%>">
+								<input type="hidden" name="hp" value="<%=status.getHp()%>">
+								<input type="hidden" name="attack"
+									value="<%=status.getAttack()%>"> <input type="hidden"
+									name="defense" value="<%=status.getDefense()%>"> <input
+									type="hidden" name="speed" value="<%=status.getSpeed()%>">
+								<input type="hidden" name="item" value="あまのさかほこ"> <input
+									type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
+								<button type="submit">いいえ</button>
+							</form>
+							<form action="/Dosukoi-Analytics/itemServlet" method="POST">
+								<input type="hidden" name="name" value="<%=status.getName()%>">
+								<input type="hidden" name="id" value="<%=status.getId()%>">
+								<input type="hidden" name="hp" value="<%=status.getHp()%>">
+								<input type="hidden" name="attack"
+									value="<%=status.getAttack()%>"> <input type="hidden"
+									name="defense" value="<%=status.getDefense()%>"> <input
+									type="hidden" name="speed" value="<%=status.getSpeed()%>">
+								<input type="hidden" name="item" value="<%=item.getItemName()%>">
+								<input type="hidden" name="itemEffect"
+									value="<%=item.getDescription()%>"> <input
+									type="hidden" name="itemId" value="<%=item.getItemId()%>">
+								<button type="submit">はい</button>
+							</form>
+						</div>
 					</div>
+
 					<%
 					} else {
 					%>
