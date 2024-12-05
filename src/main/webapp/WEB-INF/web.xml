@@ -37,4 +37,14 @@
     <servlet-name>itemServlet</servlet-name>
     <url-pattern>/itemServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ItemServlet</display-name>
+    <servlet-name>ItemServlet</servlet-name>
+    <servlet-class>servlet.ItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ItemServlet</servlet-name>
+    <url-pattern>/ItemServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

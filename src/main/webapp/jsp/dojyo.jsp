@@ -54,7 +54,7 @@ Status status = (Status) request.getAttribute("status");
 					<div class="item">
 						<div class="item_child">
 							<p>
-								装備品：<%=status.getItem()%></p>
+								装備品：<%=status.getItemid()%></p>
 						</div>
 					</div>
 				</div>
@@ -113,8 +113,6 @@ Status status = (Status) request.getAttribute("status");
 				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
 				<input type="hidden" name="defense" value="<%=status.getDefense()%>">
 				<input type="hidden" name="speed" value="<%=status.getSpeed()%>">
-				<input type="hidden" name="item" value="あまのさかほこ"> <input
-					type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
 				<button type="submit">もどる</button>
 			</form>
 		</div>

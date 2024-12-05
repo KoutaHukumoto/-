@@ -95,7 +95,7 @@ public class ItemDao extends BaseDao {
 		int rowsChanged = 0;
 		try {
 			connect();
-			String sql = "UPDATE character_table SET itemid = ? WHERE `characterid` = ?;";
+			String sql = "UPDATE character_table SET itemid = ? WHERE characterid = ?";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, itemid);

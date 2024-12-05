@@ -147,7 +147,7 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 									type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
 								<button type="submit">いいえ</button>
 							</form>
-							<form action="/Dosukoi-Analytics/itemServlet" method="POST">
+							<form action="/Dosukoi-Analytics/ItemServlet" method="POST">
 								<input type="hidden" name="name" value="<%=status.getName()%>">
 								<input type="hidden" name="id" value="<%=status.getId()%>">
 								<input type="hidden" name="hp" value="<%=status.getHp()%>">
@@ -156,8 +156,7 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 									name="defense" value="<%=status.getDefense()%>"> <input
 									type="hidden" name="speed" value="<%=status.getSpeed()%>">
 								<input type="hidden" name="item" value="<%=item.getItemName()%>">
-								<input type="hidden" name="itemEffect"
-									value="<%=item.getDescription()%>"> <input
+								<input type="hidden" name="itemEffect" value="<%=item.getDescription()%>"> <input
 									type="hidden" name="itemId" value="<%=item.getItemId()%>">
 								<button type="submit">はい</button>
 							</form>
