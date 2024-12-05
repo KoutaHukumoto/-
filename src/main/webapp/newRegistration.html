@@ -4,30 +4,38 @@
 <head>
 	<meta charset="UTF-8">
 	<title>新規登録</title>
+	<link rel="stylesheet" href="css/newRegistration.css">
 </head>
 
 <body>
 
-	<p>パスワードのルール<br>・5文字以上8文字以下<br>・英数字であること<br>・特殊記号は使用できません</p>
+	<div class="point">パスワードのルール<br>・5文字以上8文字以下<br>・英数字であること<br>・特殊記号は使用できません</div>
+
 
 	<form action="/Dosukoi-Analytics/RegisterServlet" method="POST" onsubmit="return check()">
-		<label>ニックネーム:</label>
-		<input type="text" name="name" class="form-control"><br>
+		<div class="form">
+			<label>ニックネーム:</label>
+			<input type="text" name="name" class="form-control"><br>
 
-		<label>パスワード:</label>
-		<input type="password" name="pass" class="form-control"><br>
+			<label>パスワード:</label>
+			<input type="password" name="pass" class="form-control"><br>
 
-		<label>もう一度入力:</label>
-		<input type="password" name="Password again" class="form-control"><br>
-
-		<p id="error-message" style="color:red;"></p>
-
-		<button type="submit">新規登録</button>
+			<label>もう一度入力:</label>
+			<input type="password" name="Password again" class="form-control"><br>
+		</div>
+		<div class="newreg">
+			<p id="error-message" style="color:red;"></p>
+		</div>
+		<div class="newbutton">
+			<button type="submit">新規登録</button>
+		</div>
 	</form>
 
 	<br>
-
+	
+	<div class="backbutton">
 	<button onclick="location.href='toppage.html'">戻る</button>
+	</div>
 
 	<script>
 		function check() {
