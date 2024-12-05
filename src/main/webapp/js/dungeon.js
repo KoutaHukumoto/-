@@ -8,7 +8,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// にげるボタンのイベントリスナー
 	document.querySelectorAll('.battle-option')[3].addEventListener('click', function() {
-		window.location.href = 'mypage.html';
+		
+		//formを作成
+		var form = document.createElement('form');
+		form.method = 'POST';
+		form.action = '/Dosukoi-Analytics/backServlet';
+
+		//作成したformにデータを挿入
+		var input = document.createElement('input');
+		input.type = 'hidden';
+		input.name = 'name';
+		input.value = statusData.name;
+		form.appendChild(input);
+
+		//formを送信
+		document.body.appendChild(form);
+		form.submit();
 	});
 
 	// 攻撃ボタンのイベントリスナー
@@ -48,15 +63,54 @@ function displayBattleResult(message) {
 	const resultOverlay = document.createElement('div');
 	resultOverlay.classList.add('battle-result-overlay');
 
-	resultOverlay.innerHTML =
-		'<div class="result-message">' + message + '</div>' +
-		'<div class="result-buttons">' +
-		'<a href="mypage.html" class="btn btn-primary btn-lg result-back-button" role="button">マイページに戻る</a>' +
-		'<button class="btn btn-primary btn-lg" onclick="restartBattle()">再戦する</button>' +
-		'</div>';
+	// マイページに戻るフォーム
+	const backForm = document.createElement('form');
+	backForm.method = 'POST';
+	backForm.action = '/Dosukoi-Analytics/backServlet'; 
+
+	const backInput = document.createElement('input');
+	backInput.type = 'hidden';
+	backInput.name = 'name';
+	backInput.value = statusData.name;
+	backForm.appendChild(backInput);
+
+	const backButton = document.createElement('button');
+	backButton.type = 'submit';
+	backButton.classList.add('btn', 'btn-primary', 'btn-lg', 'result-back-button');
+	backButton.textContent = 'マイページに戻る';
+	backForm.appendChild(backButton);
+
+	// 再戦ボタン(未完成です)
+	const rematchForm = document.createElement('form');
+	rematchForm.method = 'POST';
+	rematchForm.action = '/Dosukoi-Analytics/rematchServlet';
+
+	const rematchInput = document.createElement('input');
+	rematchInput.type = 'hidden';
+	rematchInput.name = 'name';
+	rematchInput.value = statusData.name;
+	rematchForm.appendChild(rematchInput);
+
+	const rematchButton = document.createElement('button');
+	rematchButton.type = 'submit';
+	rematchButton.classList.add('btn', 'btn-primary', 'btn-lg');
+	rematchButton.textContent = '再戦する';
+	rematchForm.appendChild(rematchButton);
+
+	// 結果オーバーレイの内容を作成
+	const resultMessage = document.createElement('div');
+	resultMessage.classList.add('result-message');
+	resultMessage.textContent = message;
+
+	const resultButtons = document.createElement('div');
+	resultButtons.classList.add('result-buttons');
+	resultButtons.appendChild(backForm);
+	resultButtons.appendChild(rematchForm);
+
+	resultOverlay.appendChild(resultMessage);
+	resultOverlay.appendChild(resultButtons);
 
 	document.body.appendChild(resultOverlay);
-	disableAllButtons();
 }
 
 // すべてのボタンを無効にする
