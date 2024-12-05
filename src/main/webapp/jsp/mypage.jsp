@@ -49,13 +49,13 @@
 		<div class="menu">
 			<form action="/Dosukoi-Analytics/dungeonServlet" method="POST">
 				<input type="hidden" name="name" value="<%=status.getName()%>"> 
-				<input type="hidden" name="id"value="<%=status.getId()%>">
+				<input type="hidden" name="id" value="<%=status.getId()%>">
 				<input type="hidden" name="hp" value="<%=status.getHp()%>">
 				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
 				<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
-				<input type="hidden" name="speed" value="<%=status.getSpeed()%>"> 
-				<input type="hidden" name="item" value="あまのさかほこ">
-				<input type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
+				<input type="hidden"name="speed" value="<%=status.getSpeed()%>"> 
+				<input type="hidden" name="itemid" value=1>
+				<input type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
 				<button type="submit">ダンジョン</button>
 			</form>
 			
@@ -66,8 +66,8 @@
 				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
 				<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
 				<input type="hidden" name="speed" value="<%=status.getSpeed()%>"> 
-				<input type="hidden" name="item" value="あまのさかほこ">
-				<input type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
+				<input type="hidden" name="itemid" value=1>
+				<input type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
 				<button type="submit">道場</button>
 			</form>
 			
@@ -78,8 +78,8 @@
 				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
 				<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
 				<input type="hidden" name="speed" value="<%=status.getSpeed()%>"> 
-				<input type="hidden" name="item" value="あまのさかほこ">
-				<input type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
+				<input type="hidden" name="itemid" value=1>
+				<input type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
 				<button type="submit">ランキング</button>
 			</form>
 		</div>

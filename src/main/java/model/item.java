@@ -89,5 +89,7 @@ public class item implements Serializable {
 	public void setEffectSpeed(int effectSpeed) {
 		this.effectspeed = effectSpeed;
 	}
-
+	
 }
+
+

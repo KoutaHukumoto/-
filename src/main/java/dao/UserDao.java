@@ -66,22 +66,25 @@ public class UserDao extends BaseDao {
 			try (PreparedStatement ps = con.prepareStatement(sql)) {
 				ps.setInt(1, id);
 
-				// 検索処理の実行
-				try (ResultSet rs = ps.executeQuery()) {
-					if (rs.next()) {
-						// データが見つかった場合、Characterオブジェクトにセットして返す
-						status = new Status(
-								rs.getString("charactername"),
-								rs.getInt("characterid"),
-								rs.getInt("hp"),
-								rs.getInt("attack"),
-								rs.getInt("defense"),
-								rs.getInt("speed"),
-								rs.getString("itemid"));
-					}
-				}
-			}
-			return status;
+
+                // 検索処理の実行
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        // データが見つかった場合、Characterオブジェクトにセットして返す
+                        status = new Status(
+                        	rs.getString("charactername"),
+                            rs.getInt("characterid"),       
+                            rs.getInt("hp"),        
+                            rs.getInt("attack"),    
+                            rs.getInt("defence"),  
+                            rs.getInt("speed"),
+                            rs.getInt("itemid"),
+                            rs.getInt("dungeonid")
+                        );
+                    }
+                }
+            }
+          return status;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

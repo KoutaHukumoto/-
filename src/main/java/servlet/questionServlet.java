@@ -32,16 +32,17 @@ public class questionServlet extends HttpServlet {
 
 		// フォームからのデータを取得
 		String name = request.getParameter("name");
-		int id = Integer.parseInt(request.getParameter("id"));
-		int hp = Integer.parseInt(request.getParameter("hp"));
-		int attack = Integer.parseInt(request.getParameter("attack"));
-		int defense = Integer.parseInt(request.getParameter("defense"));
-		int speed = Integer.parseInt(request.getParameter("speed"));
-		String item = request.getParameter("item");
-		String itemEffect = request.getParameter("itemEffect");
+        int id = Integer.parseInt(request.getParameter("id"));
+        int hp = Integer.parseInt(request.getParameter("hp"));
+        int attack = Integer.parseInt(request.getParameter("attack"));
+        int defense = Integer.parseInt(request.getParameter("defense"));
+        int speed = Integer.parseInt(request.getParameter("speed"));
+        int itemid = Integer.parseInt(request.getParameter("itemid"));
+        int dungeonid = Integer.parseInt(request.getParameter("dungeonid"));
+       
+        // Statusオブジェクトを作成
+        Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid);
 
-		// Statusオブジェクトを作成
-		Status status = new Status(name, id, hp, attack, defense, speed, item, itemEffect);
 
 		RankingDao rankingDao = new RankingDao();
 		List<character> questionlist = new ArrayList<>();

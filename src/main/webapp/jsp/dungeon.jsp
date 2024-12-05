@@ -1,19 +1,34 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="model.Status"%>
 <%@ page import="model.monster"%>
-<% 
+<%@ page import="model.dungeon"%>
+<%@ page import="model.item"%>
+<%
     Status status = (Status) session.getAttribute("status"); 
-    monster monster = (monster) session.getAttribute("monsterstatus"); 
+    monster monster = (monster) session.getAttribute("monsterstatus");
+    dungeon dungeoninformation = (dungeon) session.getAttribute("dungeonInformation");
+    item item = (item) session.getAttribute("item");
+
+    // dungeonid を取得
+    int dungeonId = dungeoninformation.getDungeonId();
+    
+    // dungeonid が 5 で割り切れるかを判定
+    boolean isMultipleOfFive = (dungeonId % 5 == 0);
+
+    // BGM の選択
+   String bgmFile = isMultipleOfFive ? "audio/specialBGM.mp3" : "audio/Umbra.mp3";  
+    // dungeonidが5で割り切れる場合は別のBGM
 %>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ダンジョン</title>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/battle.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ダンジョン</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/battle.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
 <body>
     <script src="js/dungeon.js"></script>
@@ -25,8 +40,8 @@
             attack: <%= status.getAttack() %>,
             defense: <%= status.getDefense() %>,
             speed: <%= status.getSpeed() %>,
-            item: "<%= status.getItem() %>",
-            itemEffect: "<%= status.getItemEffect() %>"
+            itemid: <%= status.getItemid() %>,
+            dungeonid: <%= status.getDungeonid() %>
         };
 
         var monsterData = {
@@ -46,12 +61,13 @@
             <button id="playMusicBtn" class="btn btn-info" aria-label="音楽を再生または停止">🎵 音楽を停止</button>
         </div>
 
+        <!-- BGMを動的に設定 -->
         <audio id="backgroundMusic" autoplay>
-            <source src="audio/Umbra.mp3" type="audio/mp3">
+            <source src="<%= bgmFile %>" type="audio/mp3">
         </audio>
 
         <div class="container text-center">
-            <h1 class="level-title">1階層</h1>
+            <h1 class="level-title"><%= dungeoninformation.getDungeonId() %>階層 </h1>
             <h2>VS</h2>
 
             <div class="character-info">
@@ -61,7 +77,7 @@
                         <p>攻撃: <%= status.getAttack() %></p>
                         <p>防御: <%= status.getDefense() %></p>
                         <p>すばやさ: <%= status.getSpeed() %></p>
-                        <p>装備品: 「<%= status.getItem() %>」</p>
+                        <p>装備品: 「<%= item.getItemName() %>」</p>
                         <p>「<%= status.getItemEffect() %>」</p>
                     </div>
                     <div class="character-img-box">
@@ -98,6 +114,7 @@
                     <div class="battle-option">ぼうぎょ</div>
                     <div class="battle-option">必殺技</div>
                     <div class="battle-option">にげる</div>
+                    
                 </div>
                 <div class="battle-log">
                     <ul id="battleLog">
@@ -107,7 +124,17 @@
 
             <div class="battle-controls">
                 <button class="btn btn-primary btn-lg">バトル</button>
-                <a href="RemoveServlet" class="btn btn-secondary btn-lg" role="button">もどる</a>
+                <form action="/Dosukoi-Analytics/backServlet" method="POST">
+				<input type="hidden" name="name" value="<%=status.getName()%>"> 
+				<input type="hidden" name="id"value="<%=status.getId()%>">
+				<input type="hidden" name="hp" value="<%=status.getHp()%>">
+				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
+				<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
+				<input type="hidden"name="speed" value="<%=status.getSpeed()%>"> 
+				<input type="hidden" name="itemid" value=1>
+				<input type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
+				<button type="submit">もどる</button>
+			</form>
             </div>
         </div>
     </div>

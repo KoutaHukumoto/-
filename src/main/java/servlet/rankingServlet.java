@@ -22,7 +22,7 @@ public class rankingServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	        throws ServletException, IOException {
 	    // 初期データを設定
-	    Status defaultStatus = new Status("デフォルト名", 0, 100, 10, 10, 10, "なし", "効果なし");
+	    Status defaultStatus = new Status("デフォルト名", 0, 100, 10, 10, 10, 1, 1);
 	    request.setAttribute("status", defaultStatus);
 
 	    RankingDao rankingDao = new RankingDao();
@@ -51,12 +51,12 @@ public class rankingServlet extends HttpServlet {
 	        int attack = Integer.parseInt(request.getParameter("attack"));
 	        int defense = Integer.parseInt(request.getParameter("defense"));
 	        int speed = Integer.parseInt(request.getParameter("speed"));
-	        String item = request.getParameter("item");
-	        String itemEffect = request.getParameter("itemEffect");
+	        int itemid = Integer.parseInt(request.getParameter("itemid"));
+	        int dungeonid = Integer.parseInt(request.getParameter("dungeonid"));
 	        
 
 	        // Statusオブジェクトを作成
-	        Status status = new Status(name, id, hp, attack, defense, speed, item, itemEffect);
+	        Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid);
 	        
 	        System.out.println(name);
 	        

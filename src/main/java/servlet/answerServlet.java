@@ -30,15 +30,16 @@ public class answerServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		String name = request.getParameter("name");
-		int id = Integer.parseInt(request.getParameter("id"));
-		int hp = Integer.parseInt(request.getParameter("hp"));
-		int attack = Integer.parseInt(request.getParameter("attack"));
-		int defense = Integer.parseInt(request.getParameter("defense"));
-		int speed = Integer.parseInt(request.getParameter("speed"));
-		String item = request.getParameter("item");
-		String itemEffect = request.getParameter("itemEffect");
+        int id = Integer.parseInt(request.getParameter("id"));
+        int hp = Integer.parseInt(request.getParameter("hp"));
+        int attack = Integer.parseInt(request.getParameter("attack"));
+        int defense = Integer.parseInt(request.getParameter("defense"));
+        int speed = Integer.parseInt(request.getParameter("speed"));
+        int itemid = Integer.parseInt(request.getParameter("itemid"));
+        int dungeonid = Integer.parseInt(request.getParameter("dungeonid"));
+
 
 		int size = Integer.parseInt(request.getParameter("size"));
 		String s_id = request.getParameter("s_id");
@@ -114,7 +115,6 @@ public class answerServlet extends HttpServlet {
 					itemlist = 5;
 				}
 
-				int itemid = 1;
 				ItemDao itemdao = new ItemDao();
 
 				getitem = itemdao.getitemlist(itemid, itemlist);
@@ -135,11 +135,19 @@ public class answerServlet extends HttpServlet {
 		request.setAttribute("change_status", change_status);
 		request.setAttribute("change_status_id", change_status_id);
 		request.setAttribute("up_status", up_status);
-
-		// Statusオブジェクトを作成
-		Status status = new Status(name, id, hp, attack, defense, speed, item, itemEffect);
-
-		request.setAttribute("status", status);
+		
+		
+		System.out.println(hp);
+		
+		
+		 // Statusオブジェクトを作成
+		Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid);
+        
+        System.out.println(name);
+        
+        
+        
+        request.setAttribute("status", status);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/answer.jsp");
 		dispatcher.forward(request, response);

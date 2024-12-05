@@ -8,7 +8,7 @@ import java.io.Serializable;
 */
 
 public class dungeon implements Serializable{
-	private int dugeonId;
+	private int dungeonId;
 	
 	private int monsterId;
 	
@@ -16,12 +16,22 @@ public class dungeon implements Serializable{
 	
 	private int bossFlag;
 
-	public int getDugeonId() {
-		return dugeonId;
+	public dungeon(int dungeonId, int monsterId, double reinforcement, int bossFlag) {
+	
+		this.dungeonId = dungeonId;
+		this.monsterId = monsterId;
+		this.reinforcement = reinforcement;
+		this.bossFlag = bossFlag;
+		
+		
 	}
 
-	public void setDugeonId(int dugeonId) {
-		this.dugeonId = dugeonId;
+	public int getDungeonId() {
+		return dungeonId;
+	}
+
+	public void setDungeonId(int dugeonId) {
+		this.dungeonId = dugeonId;
 	}
 
 	public int getMonsterId() {
@@ -47,4 +57,14 @@ public class dungeon implements Serializable{
 	public void setBossFlag(int bossFlag) {
 		this.bossFlag = bossFlag;
 	}
+	
+	public double getreinforcement() {
+		return reinforcement;
+		
+	}
+	
+	public void setreinforcement(double reinforcement) {
+		this.reinforcement = reinforcement;
+	}
+	
 }
