@@ -5,8 +5,9 @@
 <%@ page import="java.util.List"%>
 <!-- List をインポート -->
 <%@ page import="model.Status"%>
-<%
-Status status = (Status) request.getAttribute("status");
+<%@ page import="model.item"%>
+<%Status status = (Status) request.getAttribute("status");
+  item item = (item) request.getAttribute("item");
 %>
 
 <head>
@@ -54,7 +55,7 @@ Status status = (Status) request.getAttribute("status");
 					<div class="item">
 						<div class="item_child">
 							<p>
-								装備品：<%=status.getItemid()%></p>
+								装備品：<%=item.getItemName()%></p>
 						</div>
 					</div>
 				</div>

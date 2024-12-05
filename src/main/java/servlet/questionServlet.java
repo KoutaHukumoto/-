@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.ItemDao;
 import dao.RankingDao;
 import dao.UserDao;
 import jakarta.servlet.RequestDispatcher;
@@ -15,6 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Status;
 import model.character;
+import model.item;
 
 @WebServlet("/questionServlet")
 public class questionServlet extends HttpServlet {
@@ -37,6 +39,10 @@ public class questionServlet extends HttpServlet {
         
 		UserDao userdao = new UserDao();
 		Status status = userdao.findname(name);
+		
+		ItemDao itemdao = new ItemDao();
+		item item = itemdao.getitem(status.getItemid());
+		request.setAttribute("item", item);
 
 
 		RankingDao rankingDao = new RankingDao();

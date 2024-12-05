@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.util.List;
 
+import dao.ItemDao;
 import dao.questionDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -11,6 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Status;
+import model.item;
 import model.question;
 
 @WebServlet("/dojyoServlet")
@@ -46,6 +48,11 @@ public class dojyoServlet extends HttpServlet {
 		// セッションにStatusオブジェクトを保存
 
 		request.setAttribute("status", status);
+		
+		ItemDao itemdao = new ItemDao();
+		item item = itemdao.getitem(itemid);
+		
+		request.setAttribute("item", item);
 
 		String s_id = request.getParameter("s_id");
 		String d_id = request.getParameter("d_id");

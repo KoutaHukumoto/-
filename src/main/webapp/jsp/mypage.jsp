@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="model.Status"%>
-<%Status status = (Status) request.getAttribute("status");%>
+<%@ page import="model.item"%>
+<%Status status = (Status) request.getAttribute("status");
+  item item = (item) request.getAttribute("item");
+%>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -39,8 +42,8 @@
 			<h2>装備品</h2>
 			<div class="item_child">
 				
-				<p>あまのさかほこ</p>
-				<p>攻撃力とすばやさを2倍にする</p>
+				<p><%=item.getItemName()%></p>
+				<p><%=item.getDescription()%></p>
 			</div>
 		</div>
 
@@ -54,7 +57,7 @@
 				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
 				<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
 				<input type="hidden"name="speed" value="<%=status.getSpeed()%>"> 
-				<input type="hidden" name="itemid" value=1>
+				<input type="hidden" name="itemid" value=<%=status.getItemid()%>>
 				<input type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
 				<button type="submit">ダンジョン</button>
 			</form>
@@ -66,7 +69,7 @@
 				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
 				<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
 				<input type="hidden" name="speed" value="<%=status.getSpeed()%>"> 
-				<input type="hidden" name="itemid" value=1>
+				<input type="hidden" name="itemid" value=<%=status.getItemid()%>>
 				<input type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
 				<button type="submit">道場</button>
 			</form>
@@ -78,7 +81,7 @@
 				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
 				<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
 				<input type="hidden" name="speed" value="<%=status.getSpeed()%>"> 
-				<input type="hidden" name="itemid" value=1>
+				<input type="hidden" name="itemid" value=<%=status.getItemid()%>>
 				<input type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
 				<button type="submit">ランキング</button>
 			</form>

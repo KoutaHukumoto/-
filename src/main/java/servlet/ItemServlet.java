@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Status;
+import model.item;
 
 @WebServlet("/ItemServlet")
 public class ItemServlet extends HttpServlet {
@@ -43,6 +44,9 @@ public class ItemServlet extends HttpServlet {
 		itemdao.changeItem(itemid, id);
 		
 		UserDao userdao = new UserDao();
+		
+		item itemlist = itemdao.getitem(itemid);
+		request.setAttribute("item", itemlist);
 		
 		
 		// Statusオブジェクトを作成

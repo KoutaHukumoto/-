@@ -83,7 +83,7 @@
                     <div class="character-img-box">
                         <div class="character-header">
                             <p class="character-name"><%= status.getName() %></p>
-                            <meter max="100" low="20" high="80" optimum="90" value="<%= status.getHp() %>"></meter>
+                            <meter max="<%= status.getHp() %>" low="20" high="80" optimum="90" value="<%= status.getHp() %>"></meter>
                         </div>
                         <img src="画像/avater.jpg" alt="Hero" class="character-img">
                     </div>
@@ -93,7 +93,7 @@
                     <div class="character-img-box">
                         <div class="character-header">
                             <p class="character-name"><%= monster.getMonsterName() %></p>
-                            <meter max="100" low="20" high="80" optimum="90" value="<%= monster.getMonsterHp() %>"></meter>
+                            <meter max="<%= monster.getMonsterHp() %>" low="20" high="80" optimum="90" value="<%= monster.getMonsterHp() %>"></meter>
                         </div>
                         <img src="画像/スライム.png" alt="Enemy" class="character-img">
                     </div>

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import dao.ItemDao;
 import dao.UserDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -13,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Status;
+import model.item;
 import model.loginLogic;
 
 @WebServlet("/loginServlet")
@@ -65,6 +67,9 @@ public class loginServlet extends HttpServlet {
 			UserDao userdao = new UserDao();
 			Status status = userdao.find(id);
 			request.setAttribute("status", status);
+			ItemDao itemdao = new ItemDao();
+			item item = itemdao.getitem(status.getItemid());
+			request.setAttribute("item", item);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/mypage.jsp");
 			dispatcher.forward(request, response);
 		} else {

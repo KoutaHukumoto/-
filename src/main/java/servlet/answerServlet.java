@@ -119,10 +119,11 @@ public class answerServlet extends HttpServlet {
 
 				getitem = itemdao.getitemlist(itemid, itemlist);
 
-			}
+			}else {
 
 			statusDao changestatus = new statusDao();
 			changestatus.updateStatus(change_status_id, up_status, id);
+			}
 		}
 
 		request.setAttribute("getitem", getitem);

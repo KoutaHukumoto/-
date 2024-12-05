@@ -7,6 +7,7 @@ import dao.ItemDao;
 import dao.monsterDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -16,6 +17,8 @@ import model.dungeon;
 import model.item;
 import model.monster;
  
+
+@WebServlet("/dungeonServlet")
 public class dungeonServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
  

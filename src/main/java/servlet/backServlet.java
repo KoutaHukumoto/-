@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import dao.ItemDao;
 import dao.UserDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -10,6 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Status; // Status クラスがある前提
+import model.item;
 
 @WebServlet("/backServlet")
 public class backServlet extends HttpServlet {
@@ -25,6 +27,10 @@ public class backServlet extends HttpServlet {
 		// Statusオブジェクトを作成
 		UserDao userdao = new UserDao();
 		Status status = userdao.findname(name);
+		
+		ItemDao itemdao = new ItemDao();
+		item item = itemdao.getitem(status.getItemid());
+		request.setAttribute("item", item);
 		
 		
 		request.setAttribute("status", status);
