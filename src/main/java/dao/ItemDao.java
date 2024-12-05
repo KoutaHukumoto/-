@@ -32,7 +32,7 @@ public class ItemDao extends BaseDao{
                             rs.getString("itemname"),
                             rs.getInt("effecthp"),
                             rs.getInt("effectattack"),
-                            rs.getInt("effectdefence"),
+                            rs.getInt("effectdefense"),
                             rs.getInt("effectspeed")
                         );
                     }

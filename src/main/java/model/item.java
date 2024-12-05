@@ -19,16 +19,16 @@ public class item implements Serializable{
 	
 	private int effectAttack;
 	
-	private int effectdefence;
+	private int effectdefense;
 	
 	private int effectspeed;
 	
-	public item(int itemId, String itemName, int effectHp, int effectAttack, int effectdefence, int effectspeed) {
+	public item(int itemId, String itemName, int effectHp, int effectAttack, int effectdefense, int effectspeed) {
 		this.itemId = itemId;
 		this.itemName = itemName;
 		this.effectHp = effectHp;
 		this.effectAttack = effectAttack;
-		this.effectdefence = effectdefence;
+		this.effectdefense = effectdefense;
 		this.effectspeed = effectspeed;
 	}
 
@@ -72,12 +72,12 @@ public class item implements Serializable{
 		this.effectAttack = effectAttack;
 	}
 
-	public int getEffectdefence() {
-		return effectdefence;
+	public int getEffectdefense() {
+		return effectdefense;
 	}
 
-	public void setEffectdefence(int effectdefence) {
-		this.effectdefence = effectdefence;
+	public void setEffectdefense(int effectdefense) {
+		this.effectdefense = effectdefense;
 	}
 
 	public int getEffectSpeed() {

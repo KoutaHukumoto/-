@@ -42,7 +42,7 @@ public class dungeonServlet extends HttpServlet {
         
         hp = hp + item.getEffectHp();
         attack = attack + item.getEffectAttack();
-        defense = defense +item.getEffectdefence();
+        defense = defense +item.getEffectdefense();
         speed = speed + item.getEffectSpeed();
        
         

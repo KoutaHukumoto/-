@@ -82,7 +82,19 @@ function battleRound() {
 
 	//プレイヤーとNPCのattackを取得
 	const playerAttack = statusData.attack; // プレイヤーの攻撃力をstatusDataから取得
-	const npcAttack = monsterData.attack; // 敵の攻撃力は固定値
+	const npcAttack = monsterData.attack; // 敵の攻撃力
+	
+	//プレイヤーとNPCのdefenseを取得
+	const playerDefense = statusData.defense;
+	const npcDefense = monsterData.defense;
+	
+	//プレイヤーとNPCのSpeedを取得
+	const playerSpeed = statusData.speed;
+	const npcSpeed = monsterData.speed;
+	
+	
+	
+	
 
 	// プレイヤーが攻撃する
 	if (playerHP > 0 && npcHP > 0) {
@@ -138,10 +150,25 @@ function battleRound() {
     const npcHPElement = document.querySelector('.character.npc .character-header meter');
     const playerImgElement = document.querySelector('.character.pc .character-img');
     const battleLog = document.getElementById('battleLog');
-    let playerHP = parseInt(playerHPElement.getAttribute('value'));
-    let npcHP = parseInt(npcHPElement.getAttribute('value'));
-    const playerDefense = statusData.defense; // プレイヤーの防御力
-    const npcAttack = 20; // 敵の攻撃力
+    
+    
+    
+    // プレイヤーとNPCのHPをstatusDataから取得
+	//プレイヤーとNPCのHPを取得
+	let playerHP = statusData.hp;  // ここでstatusDataを使用
+	let npcHP = parseInt(npcHPElement.getAttribute('value'));
+
+	//プレイヤーとNPCのattackを取得
+	const playerAttack = statusData.attack; // プレイヤーの攻撃力をstatusDataから取得
+	const npcAttack = monsterData.attack; // 敵の攻撃力
+	
+	//プレイヤーとNPCのdefenseを取得
+	const playerDefense = statusData.defense;
+	const npcDefense = monsterData.defense;
+	
+	//プレイヤーとNPCのSpeedを取得
+	const playerSpeed = statusData.speed;
+	const npcSpeed = monsterData.speed;
 
     // プレイヤーが防御を固めたログを表示
     const defenseLog = document.createElement('li');
