@@ -134,7 +134,7 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 					if (request.getAttribute("change_status").equals("装備品")) {
 					%>
 					<div class="result_item">
-						装備品：<%=item.getItemName()%>を入手しました！！<br> 効果：<%=item.getDescription()%>
+						装備品：<%=item.getItemName()%>を入手しました！！<br> 効果：<%=item.getDescription()%><br>変更しますか？
 						<div class="button-group">
 							<form action="/Dosukoi-Analytics/questionServlet" method="POST">
 								<input type="hidden" name="name" value="<%=status.getName()%>">
@@ -172,7 +172,6 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 		<div id="dojyo">
 			<form action="/Dosukoi-Analytics/questionServlet" method="POST">
 				<input type="hidden" name="name" value="<%=status.getName()%>">
-				<input type="hidden" name="id" value="<%=status.getId()%>">
 				<button type="submit">道場へ戻る</button>
 		</div>
 	</div>
