@@ -43,6 +43,8 @@ public class dojyoServlet extends HttpServlet {
 
         // Statusオブジェクトを作成
         Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid);
+        
+        System.out.println(itemid);
 
 
 		// セッションにStatusオブジェクトを保存

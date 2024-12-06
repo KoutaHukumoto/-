@@ -31,24 +31,17 @@ public class ItemServlet extends HttpServlet {
 
 		String name = request.getParameter("name");
 		int id = Integer.parseInt(request.getParameter("id"));
-		int hp = Integer.parseInt(request.getParameter("hp"));
-		int attack = Integer.parseInt(request.getParameter("attack"));
-		int defense = Integer.parseInt(request.getParameter("defense"));
-		int speed = Integer.parseInt(request.getParameter("speed"));
-		String item = request.getParameter("item");
-		String itemEffect = request.getParameter("itemEffect");
 		int itemid = Integer.parseInt(request.getParameter("itemId"));
 
 		ItemDao itemdao = new ItemDao();
 
 		itemdao.changeItem(itemid, id);
-		
+
 		UserDao userdao = new UserDao();
-		
+
 		item itemlist = itemdao.getitem(itemid);
 		request.setAttribute("item", itemlist);
-		
-		
+
 		// Statusオブジェクトを作成
 		Status status = userdao.findname(name);
 

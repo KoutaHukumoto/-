@@ -30,16 +30,15 @@ public class answerServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		String name = request.getParameter("name");
-        int id = Integer.parseInt(request.getParameter("id"));
-        int hp = Integer.parseInt(request.getParameter("hp"));
-        int attack = Integer.parseInt(request.getParameter("attack"));
-        int defense = Integer.parseInt(request.getParameter("defense"));
-        int speed = Integer.parseInt(request.getParameter("speed"));
-        int itemid = Integer.parseInt(request.getParameter("itemid"));
-        int dungeonid = Integer.parseInt(request.getParameter("dungeonid"));
 
+		String name = request.getParameter("name");
+		int id = Integer.parseInt(request.getParameter("id"));
+		int hp = Integer.parseInt(request.getParameter("hp"));
+		int attack = Integer.parseInt(request.getParameter("attack"));
+		int defense = Integer.parseInt(request.getParameter("defense"));
+		int speed = Integer.parseInt(request.getParameter("speed"));
+		int itemid = Integer.parseInt(request.getParameter("itemid"));
+		int dungeonid = Integer.parseInt(request.getParameter("dungeonid"));
 
 		int size = Integer.parseInt(request.getParameter("size"));
 		String s_id = request.getParameter("s_id");
@@ -59,6 +58,7 @@ public class answerServlet extends HttpServlet {
 
 		int itemlist = 0;
 		item getitem = null;
+		ItemDao itemdao = new ItemDao();
 
 		for (int i = 0; i < size; i++) {
 			String text = request.getParameter("text_" + i);
@@ -115,18 +115,22 @@ public class answerServlet extends HttpServlet {
 					itemlist = 5;
 				}
 
-				ItemDao itemdao = new ItemDao();
-
 				getitem = itemdao.getitemlist(itemid, itemlist);
 
-			}else {
+			} else {
 
-			statusDao changestatus = new statusDao();
-			changestatus.updateStatus(change_status_id, up_status, id);
+				getitem = itemdao.getitem(itemid);
+
+				statusDao changestatus = new statusDao();
+				changestatus.updateStatus(change_status_id, up_status, id);
 			}
+		}else {
+			getitem = itemdao.getitem(itemid);
 		}
+		
+		System.out.println(getitem.getItemId());
 
-		request.setAttribute("getitem", getitem);
+		request.setAttribute("item", getitem);
 		request.setAttribute("size", size);
 		request.setAttribute("s_id", s_id);
 		request.setAttribute("d_id", d_id);
@@ -136,19 +140,15 @@ public class answerServlet extends HttpServlet {
 		request.setAttribute("change_status", change_status);
 		request.setAttribute("change_status_id", change_status_id);
 		request.setAttribute("up_status", up_status);
-		
-		
+
 		System.out.println(hp);
-		
-		
-		 // Statusオブジェクトを作成
+
+		// Statusオブジェクトを作成
 		Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid);
-        
-        System.out.println(name);
-        
-        
-        
-        request.setAttribute("status", status);
+
+		System.out.println(name);
+
+		request.setAttribute("status", status);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/answer.jsp");
 		dispatcher.forward(request, response);

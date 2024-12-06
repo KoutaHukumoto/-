@@ -3,10 +3,12 @@
 <%@ page import="model.question"%>
 <%@ page import="java.util.List"%>
 <%@ page import="model.Status"%>
+<%@ page import="model.item"%>
 <%
 Status status = (Status) request.getAttribute("status");
 List<question> questionlist = (List<question>) request.getAttribute("questionlist");
 question category = (question) request.getAttribute("category");
+item item = (item) request.getAttribute("item");
 %>
 <!DOCTYPE html>
 <html>
@@ -69,7 +71,7 @@ question category = (question) request.getAttribute("category");
 		<input type="hidden" name="attack" value="<%=status.getAttack()%>">
 		<input type="hidden" name="defense" value="<%=status.getDefense()%>"> 
 		<input type="hidden" name="speed" value="<%=status.getSpeed()%>"> 
-		<input type="hidden" name="itemid" value=1>
+		<input type="hidden" name="itemid" value=<%=item.getItemId()%>>
 				<input type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
 				<input type="hidden" name="s_id" value="<%=category.getCategory()%>">
 		<input type="hidden" name="d_id" value="<%=category.getDifficulty()%>">

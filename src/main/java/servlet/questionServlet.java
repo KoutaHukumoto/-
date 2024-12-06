@@ -35,7 +35,6 @@ public class questionServlet extends HttpServlet {
 
 		// フォームからのデータを取得
 		String name = request.getParameter("name");
-        int id = Integer.parseInt(request.getParameter("id"));
         
 		UserDao userdao = new UserDao();
 		Status status = userdao.findname(name);

@@ -6,7 +6,7 @@
 <%@ page import="model.item"%>
 <%
 Status status = (Status) request.getAttribute("status");
-item item = (item) request.getAttribute("getitem");
+item item = (item) request.getAttribute("item");
 %>
 
 <%@ page import="model.answer,java.util.ArrayList"%>
@@ -72,7 +72,8 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 						<%=request.getAttribute("up_status")%></div>
 					<div class="item">
 						<div class="item_child">
-							<p>装備品：あまのさかほこ</p>
+							<p>
+								装備品：<%=item.getItemName()%></p>
 						</div>
 					</div>
 				</div>
@@ -137,27 +138,12 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 						<div class="button-group">
 							<form action="/Dosukoi-Analytics/questionServlet" method="POST">
 								<input type="hidden" name="name" value="<%=status.getName()%>">
-								<input type="hidden" name="id" value="<%=status.getId()%>">
-								<input type="hidden" name="hp" value="<%=status.getHp()%>">
-								<input type="hidden" name="attack"
-									value="<%=status.getAttack()%>"> <input type="hidden"
-									name="defense" value="<%=status.getDefense()%>"> <input
-									type="hidden" name="speed" value="<%=status.getSpeed()%>">
-								<input type="hidden" name="item" value="あまのさかほこ"> <input
-									type="hidden" name="itemEffect" value="攻撃力とすばやさを2倍にする">
 								<button type="submit">いいえ</button>
 							</form>
 							<form action="/Dosukoi-Analytics/ItemServlet" method="POST">
 								<input type="hidden" name="name" value="<%=status.getName()%>">
 								<input type="hidden" name="id" value="<%=status.getId()%>">
-								<input type="hidden" name="hp" value="<%=status.getHp()%>">
-								<input type="hidden" name="attack"
-									value="<%=status.getAttack()%>"> <input type="hidden"
-									name="defense" value="<%=status.getDefense()%>"> <input
-									type="hidden" name="speed" value="<%=status.getSpeed()%>">
-								<input type="hidden" name="item" value="<%=item.getItemName()%>">
-								<input type="hidden" name="itemEffect" value="<%=item.getDescription()%>"> <input
-									type="hidden" name="itemId" value="<%=item.getItemId()%>">
+								<input type="hidden" name="itemId" value=<%=item.getItemId()%>>
 								<button type="submit">はい</button>
 							</form>
 						</div>
