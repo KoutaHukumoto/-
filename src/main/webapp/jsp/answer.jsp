@@ -7,6 +7,7 @@
 <%
 Status status = (Status) request.getAttribute("status");
 item item = (item) request.getAttribute("item");
+item acquisitionitem = (item) request.getAttribute("acquisitionitem");
 %>
 
 <%@ page import="model.answer,java.util.ArrayList"%>
@@ -135,10 +136,10 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 					%>
 					<div class="result_item">
 						<p>
-							装備品：<%=item.getItemName()%>を入手しました！！
+							装備品：<%=acquisitionitem.getItemName()%>を入手しました！！
 						</p>
 						<p>
-							効果：<%=item.getDescription()%></p>
+							効果：<%=acquisitionitem.getDescription()%></p>
 						<p>変更しますか？</p>
 
 						<div class="button-group">
@@ -149,7 +150,7 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 							<form action="/Dosukoi-Analytics/ItemServlet" method="POST">
 								<input type="hidden" name="name" value="<%=status.getName()%>">
 								<input type="hidden" name="id" value="<%=status.getId()%>">
-								<input type="hidden" name="itemId" value=<%=item.getItemId()%>>
+								<input type="hidden" name="itemId" value=<%=acquisitionitem.getItemId()%>>
 								<button type="submit">はい</button>
 							</form>
 						</div>

@@ -56,9 +56,10 @@ public class answerServlet extends HttpServlet {
 
 		int total_answer = 0;
 
-		int itemlist = 0;
+		int itemlist = 5;
 		item getitem = null;
 		ItemDao itemdao = new ItemDao();
+		item acquisition = null;
 
 		for (int i = 0; i < size; i++) {
 			String text = request.getParameter("text_" + i);
@@ -111,25 +112,33 @@ public class answerServlet extends HttpServlet {
 					itemlist = 10;
 				} else if (d_id.equals("上級")) {
 					itemlist = 15;
-				} else {
-					itemlist = 5;
 				}
 
-				getitem = itemdao.getitemlist(itemid, itemlist);
+				acquisition = itemdao.getitemlist(itemid, itemlist);
+				getitem = itemdao.getitem(itemid);
 
 			} else {
-
+				
+				acquisition = itemdao.getitemlist(itemid, itemlist);
 				getitem = itemdao.getitem(itemid);
 
 				statusDao changestatus = new statusDao();
 				changestatus.updateStatus(change_status_id, up_status, id);
 			}
-		}else {
+		} else {
+			acquisition = itemdao.getitemlist(itemid, itemlist);
 			getitem = itemdao.getitem(itemid);
 		}
 		
+		if(total_answer == 10) {
+			
+			
+		}
+			
+
 		System.out.println(getitem.getItemId());
 
+		request.setAttribute("acquisitionitem", acquisition);
 		request.setAttribute("item", getitem);
 		request.setAttribute("size", size);
 		request.setAttribute("s_id", s_id);

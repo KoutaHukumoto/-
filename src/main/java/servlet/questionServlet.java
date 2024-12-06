@@ -35,14 +35,13 @@ public class questionServlet extends HttpServlet {
 
 		// フォームからのデータを取得
 		String name = request.getParameter("name");
-        
+
 		UserDao userdao = new UserDao();
 		Status status = userdao.findname(name);
-		
+
 		ItemDao itemdao = new ItemDao();
 		item item = itemdao.getitem(status.getItemid());
 		request.setAttribute("item", item);
-
 
 		RankingDao rankingDao = new RankingDao();
 		List<character> questionlist = new ArrayList<>();
