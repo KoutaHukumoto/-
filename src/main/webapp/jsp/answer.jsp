@@ -134,7 +134,13 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 					if (request.getAttribute("change_status").equals("装備品")) {
 					%>
 					<div class="result_item">
-						装備品：<%=item.getItemName()%>を入手しました！！<br> 効果：<%=item.getDescription()%><br>変更しますか？
+						<p>
+							装備品：<%=item.getItemName()%>を入手しました！！
+						</p>
+						<p>
+							効果：<%=item.getDescription()%></p>
+						<p>変更しますか？</p>
+
 						<div class="button-group">
 							<form action="/Dosukoi-Analytics/questionServlet" method="POST">
 								<input type="hidden" name="name" value="<%=status.getName()%>">
@@ -148,32 +154,33 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 							</form>
 						</div>
 					</div>
-
-					<%
-					} else {
-					%>
-					<%=request.getAttribute("change_status")%>が<%=request.getAttribute("total_answer_status")%>上がった！！
-					<%
-					}
-					}
-					%>
 				</div>
+
+				<%
+				} else {
+				%>
+				<%=request.getAttribute("change_status")%>が<%=request.getAttribute("total_answer_status")%>上がった！！
+				<%
+				}
+				}
+				%>
 			</div>
 		</div>
+	</div>
 
-		<div class="next">
-			<label for="popup" id="txt_label"
-				<%if (request.getAttribute("change_status").equals("装備品")) {%>
-				onclick="changeDisplay('dojyo');" <%} else {%>
-				onclick="changeColor('up_status_<%=request.getAttribute("change_status_id")%>');"
-				<%}%>>次へ</label>
-		</div>
+	<div class="next">
+		<label for="popup" id="txt_label"
+			<%if (request.getAttribute("change_status").equals("装備品")) {%>
+			onclick="changeDisplay('dojyo');" <%} else {%>
+			onclick="changeColor('up_status_<%=request.getAttribute("change_status_id")%>');"
+			<%}%>>次へ</label>
+	</div>
 
-		<div id="dojyo">
-			<form action="/Dosukoi-Analytics/questionServlet" method="POST">
-				<input type="hidden" name="name" value="<%=status.getName()%>">
-				<button type="submit">道場へ戻る</button>
-		</div>
+	<div id="dojyo">
+		<form action="/Dosukoi-Analytics/questionServlet" method="POST">
+			<input type="hidden" name="name" value="<%=status.getName()%>">
+			<button type="submit">道場へ戻る</button>
+	</div>
 	</div>
 
 </body>
