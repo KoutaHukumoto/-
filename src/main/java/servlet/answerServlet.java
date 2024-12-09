@@ -40,7 +40,6 @@ public class answerServlet extends HttpServlet {
 		int itemid = Integer.parseInt(request.getParameter("itemid"));
 		int dungeonid = Integer.parseInt(request.getParameter("dungeonid"));
 
-		int size = Integer.parseInt(request.getParameter("size"));
 		String s_id = request.getParameter("s_id");
 		String d_id = request.getParameter("d_id");
 
@@ -61,7 +60,7 @@ public class answerServlet extends HttpServlet {
 		ItemDao itemdao = new ItemDao();
 		item acquisition = null;
 
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < 10; i++) {
 			String text = request.getParameter("text_" + i);
 			String selected_answer = request.getParameter("answer_" + i);
 			String model_answer = answer.model_answer(text);
@@ -118,7 +117,7 @@ public class answerServlet extends HttpServlet {
 				getitem = itemdao.getitem(itemid);
 
 			} else {
-				
+
 				acquisition = itemdao.getitemlist(itemid, itemlist);
 				getitem = itemdao.getitem(itemid);
 
@@ -129,18 +128,13 @@ public class answerServlet extends HttpServlet {
 			acquisition = itemdao.getitemlist(itemid, itemlist);
 			getitem = itemdao.getitem(itemid);
 		}
-		
-		if(total_answer == 10) {
-			
-			
-		}
-			
 
-		System.out.println(getitem.getItemId());
+		if (total_answer == 10) {
+
+		}
 
 		request.setAttribute("acquisitionitem", acquisition);
 		request.setAttribute("item", getitem);
-		request.setAttribute("size", size);
 		request.setAttribute("s_id", s_id);
 		request.setAttribute("d_id", d_id);
 		request.setAttribute("total_answer", total_answer);
@@ -150,12 +144,8 @@ public class answerServlet extends HttpServlet {
 		request.setAttribute("change_status_id", change_status_id);
 		request.setAttribute("up_status", up_status);
 
-		System.out.println(hp);
-
 		// Statusオブジェクトを作成
 		Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid);
-
-		System.out.println(name);
 
 		request.setAttribute("status", status);
 

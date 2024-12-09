@@ -12,9 +12,6 @@ item acquisitionitem = (item) request.getAttribute("acquisitionitem");
 
 <%@ page import="model.answer,java.util.ArrayList"%>
 <%
-int size = (int) request.getAttribute("size");
-%>
-<%
 int totalAnswer = (int) request.getAttribute("total_answer");
 %>
 <%
@@ -83,7 +80,7 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 
 		<div class="subject"><%=request.getAttribute("s_id")%>：<%=request.getAttribute("d_id")%></div>
 		<div class="result">
-			<%=size%>問中：
+			10問中：
 			<%=totalAnswer%>問正解
 		</div>
 		<div class="answer">
@@ -95,7 +92,7 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 		</div>
 		<div class="total_result">
 			<%
-			for (int i = 0; i < size; i++) {
+			for (int i = 0; i < 10; i++) {
 				answer getAnswer = list.get(i);
 				boolean isCorrect = getAnswer.getSelected_answer() != null
 				&& getAnswer.getSelected_answer().equals(getAnswer.getAnswer());
@@ -118,8 +115,6 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 			}
 			%>
 		</div>
-
-		<%-- 道場button無くてもいい説いらない説 --%>
 
 		<input type="checkbox" id="popup">
 		<div id="overlay">
@@ -150,7 +145,8 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 							<form action="/Dosukoi-Analytics/ItemServlet" method="POST">
 								<input type="hidden" name="name" value="<%=status.getName()%>">
 								<input type="hidden" name="id" value="<%=status.getId()%>">
-								<input type="hidden" name="itemId" value=<%=acquisitionitem.getItemId()%>>
+								<input type="hidden" name="itemId"
+									value=<%=acquisitionitem.getItemId()%>>
 								<button type="submit">はい</button>
 							</form>
 						</div>
@@ -169,12 +165,14 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 		</div>
 	</div>
 
-	<div class="next">
+	<div id="next">
 		<label for="popup" id="txt_label"
-			<%if (request.getAttribute("change_status").equals("装備品")) {%>
-			onclick="changeDisplay('dojyo');" <%} else {%>
-			onclick="changeColor('up_status_<%=request.getAttribute("change_status_id")%>');"
-			<%}%>>次へ</label>
+			onclick="changeDisplay('next');
+			<%if (!request.getAttribute("change_status").equals("装備品")) {%>
+			changeColor('up_status_<%=request.getAttribute("change_status_id")%>');
+			<%} else {%>
+			changeDisplay('dojyo');
+			<%}%>">次へ</label>
 	</div>
 
 	<div id="dojyo">

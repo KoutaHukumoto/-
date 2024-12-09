@@ -47,30 +47,13 @@ body {
 }
 
 .up_status_hp,
-.up_status_hp.highlight,
-.up_status_attack,
-.up_status_attack.highlight,
-.up_status_defense,
-.up_status_defense.highlight,
-.up_status_speed,
-.up_status_defense.highlight {
-	position: relative;
-	width: 30%;
-	left: 70%;
-}
-
-.up_status_hp,
 .up_status_attack,
 .up_status_defense,
 .up_status_speed {
+	position: relative;
 	color: black;
-}
-
-.up_status_hp.highlight,
-.up_status_attack.highlight,
-.up_status_defense.highlight,
-.up_status_defense.highlight {
-	color: #ff7f7f;
+	width: 30%;
+	left: 70%;
 }
 
 .subject,
@@ -156,30 +139,29 @@ body {
 	width: 100%;
 }
 
-.next,
+#next,
 #dojyo {
 	position: fixed;
 	text-align: center;
 	width: 20%;
 	height: 5svh;
-	bottom: 26%;
+	bottom: 25%;
 	font-size: 1.5em;
 	right: 9%;
-	border: 2px solid white;
 }
 
-.next label {
+#next label {
 	display: flex;
-	width: 100%;
-	height: 100%;
+	height: 97%;
 	cursor: pointer;
 	font-size: 1.1em;
 	align-content: center;
 	justify-content: center;
 	flex-wrap: wrap;
+	border: 2px solid white;
 }
 
-.next:hover {
+#next:hover {
 	background-color: grey;
 }
 
@@ -194,6 +176,12 @@ body {
 	color: white;
 	cursor: pointer;
 	font-size: 1.1em;
+	padding: 5px;
+	border: 2px solid white;
+}
+
+#dojyo button:hover {
+	background-color: grey;
 }
 
 input {
