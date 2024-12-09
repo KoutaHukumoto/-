@@ -43,9 +43,6 @@ public class dojyoServlet extends HttpServlet {
 
         // Statusオブジェクトを作成
         Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid);
-        
-        System.out.println(itemid);
-
 
 		// セッションにStatusオブジェクトを保存
 
@@ -60,7 +57,6 @@ public class dojyoServlet extends HttpServlet {
 		String d_id = request.getParameter("d_id");
 
 		int id1 = 10;
-
 
 		questionDao question = new questionDao();
 

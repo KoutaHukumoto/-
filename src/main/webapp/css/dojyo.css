@@ -195,7 +195,6 @@ body {
 .mypage {
 	text-align: center;
 	margin-top: 20px;
-	border: 2px solid white;
 	width: 30%;
 	height: 5%;
 }
@@ -208,6 +207,7 @@ body {
 	background-color: black;
 	color: white;
 	cursor: pointer;
+	border: 2px solid white;
 }
 
 .mypage button:hover {
