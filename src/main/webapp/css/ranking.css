@@ -21,48 +21,52 @@ body {
 
 }
 
-
-
-/* テーブルヘッダー */
-/* テーブル全体 */
-table {
-    margin: 20px auto; /* 上下に余白、左右中央揃え */
-    border-collapse: collapse;
-    width: 70%; /* テーブル幅を設定 */
-    color: white;
-    background-color: rgba(255, 255, 255, 0.1); /* 背景を半透明に */
-    border: 1px solid white; /* 境界線を追加 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* ボックスシャドウを追加 */
+.quiz {
+    margin: auto;
+    width: 130svh;
+    overflow-y: auto; /* 縦方向にスクロール可能にする */
+    overflow-x: hidden; /* 横方向のスクロールを非表示にする */
+    max-height: 600px; /* 表の高さを制限する */
+    border: 1px solid white; /* 枠線を追加 */
 }
 
-/* ヘッダー部分 */
-th {
-    text-align: center; /* ヘッダーのテキストを中央揃え */
-    padding: 15px; /* ヘッダー内の余白 */
-    font-size: 1.4em;
-    font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.2); /* 背景色 */
-    border-bottom: 2px solid white; /* ヘッダー下に強調線 */
-    letter-spacing: 2px; /* 文字間隔 */
+.quiz table {
+    width: 100%;
+    border-collapse: collapse; /* セルの余白を削除 */
 }
 
-/* セル部分 */
-td {
-    text-align: center; /* データセルのテキストを中央揃え */
-    padding: 10px; /* セル内の余白 */
-    font-size: 1.2em; /* テキストサイズ */
-    border-bottom: 1px solid white; /* セル間の境界線 */
+.quiz thead {
+    background-color: black; /* ヘッダーの背景色 */
+    position: sticky; /* 固定する */
+    top: 0; /* 固定位置をテーブル上端に設定 */
+    z-index: 2; /* スクロール時に最前面に */
 }
 
-/* 偶数行の背景色 */
-tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.05); /* 偶数行の背景色 */
+.quiz th, .quiz td {
+    border: 1px solid white; /* セルの境界線 */
+    padding: 8px; /* セル内余白 */
+    text-align: center; /* 中央揃え */
+    color: white; /* テキスト色 */
 }
 
-/* 列ごとの幅調整 */
-th, td {
-    width: 33.3%; /* 全列を均等な幅に設定 */
+.quiz tbody {
+    display: block; /* tbody をブロック要素に */
+    overflow-y: auto; /* 縦方向にスクロール可能 */
+    overflow-x: hidden; /* 横方向のスクロールを非表示にする */
 }
+
+.quiz thead tr {
+    display: table; /* thead の行をテーブル表示 */
+    width: 100%;
+    table-layout: fixed; /* 幅を固定 */
+}
+
+.quiz tbody tr {
+    display: table; /* tbody の行もテーブル表示 */
+    width: 100%;
+    table-layout: fixed; /* 幅を固定 */
+}
+
 
 
 
@@ -149,3 +153,5 @@ input[type="text"]::placeholder {
 .serch_btn button:hover {
     background-color: grey;
 }
+
+
