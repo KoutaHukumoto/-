@@ -129,10 +129,6 @@ public class answerServlet extends HttpServlet {
 			getitem = itemdao.getitem(itemid);
 		}
 
-		if (total_answer == 10) {
-
-		}
-
 		request.setAttribute("acquisitionitem", acquisition);
 		request.setAttribute("item", getitem);
 		request.setAttribute("s_id", s_id);

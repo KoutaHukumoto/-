@@ -136,7 +136,7 @@ function battleRound() {
 
 	//プレイヤーとNPCのattackを取得
 	const playerAttack = statusData.attack; // プレイヤーの攻撃力をstatusDataから取得
-	const npcAttack = monsterData.attack; // 敵の攻撃力は固定値
+	const npcAttack = monsterData.attack; 
 
 	// プレイヤーが攻撃する
 	if (playerHP > 0 && npcHP > 0) {
@@ -195,7 +195,7 @@ function battleRound() {
     let playerHP = parseInt(playerHPElement.getAttribute('value'));
     let npcHP = parseInt(npcHPElement.getAttribute('value'));
     const playerDefense = statusData.defense; // プレイヤーの防御力
-    const npcAttack = 20; // 敵の攻撃力
+    const npcAttack = monsterData.attack; // 敵の攻撃力
 
     // プレイヤーが防御を固めたログを表示
     const defenseLog = document.createElement('li');
@@ -204,11 +204,11 @@ function battleRound() {
 		
 		
         // 相手が攻撃する
-        const damage = npcAttack - playerDefense > 0 ? npcAttack - playerDefense : 0; // 防御効果を適用
+        const damage = npcAttack - playerDefense // 防御効果を適用
         playerHP -= damage;
         const npcAttackLog = document.createElement('li');
         battleLog.appendChild(npcAttackLog);
-        displayTextOneByOne(npcAttackLog, `スライムの攻撃！ あなたに${npcAttack} のダメージ！`, function() {
+        displayTextOneByOne(npcAttackLog, `スライムの攻撃！ あなたに${damage} のダメージ！`, function() {
             playerImgElement.classList.add('shake'); // プレイヤーがダメージを受けて揺れる演出
             setTimeout(function() {
                 playerImgElement.classList.remove('shake');

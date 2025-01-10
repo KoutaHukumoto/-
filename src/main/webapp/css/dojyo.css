@@ -176,7 +176,9 @@ body {
 	line-height: 50px;
 }
 
-#msg button {
+#link1,
+#link2,
+#link3 {
 	width: 50%;
 	color: white;
 	background: black;
