@@ -78,7 +78,7 @@
                         <p>防御: <%= status.getDefense() %></p>
                         <p>すばやさ: <%= status.getSpeed() %></p>
                         <p>装備品: 「<%= item.getItemName() %>」</p>
-                        <p>「<%= status.getItemEffect() %>」</p>
+                        <p>「<%= item.getDescription() %>」</p>
                     </div>
                     <div class="character-img-box">
                         <div class="character-header">

@@ -204,7 +204,7 @@ function battleRound() {
 		
 		
         // 相手が攻撃する
-       const damage = npcAttack - playerDefense > 0 ? npcAttack - playerDefense : 0;// 防御効果を適用
+       const damage = npcAttack - playerDefense > 0 ? npcAttack - playerDefense : 1;// 防御効果を適用
         playerHP -= damage;
         const npcAttackLog = document.createElement('li');
         battleLog.appendChild(npcAttackLog);

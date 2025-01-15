@@ -48,8 +48,6 @@ public class dungeonServlet extends HttpServlet {
         defense = defense +item.getEffectdefence();
         speed = speed + item.getEffectSpeed();
        
-        
-        System.out.println(dungeonid);
  
         // Statusオブジェクトを作成
         Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid);
@@ -78,8 +76,6 @@ public class dungeonServlet extends HttpServlet {
         monsterDao monster = new monsterDao();
         monster monsterstatus = monster.getMonster(monsterId,bossId);
         session.setAttribute("monsterstatus",monsterstatus);
-        
-        System.out.println("ここ");
         
  
         // JSPにフォワード
