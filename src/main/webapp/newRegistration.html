@@ -39,11 +39,17 @@
 
 	<script>
 		function check() {
-			const id = document.querySelector('input[name="name"]').value;
+			const name = document.querySelector('input[name="name"]').value;
 			const pass1 = document.querySelector('input[name="pass"]').value;
 			const pass2 = document.querySelector('input[name="Password again"]').value;
 			const errorMessage = document.getElementById('error-message');
 
+			// 名前の長さを確認（5～8文字）
+			if (name.length < 5 || name.length > 8) {
+				errorMessage.textContent = "名前は5文字以上8文字以下にしてください。";
+				return false;
+			}
+			
 			// パスワードの長さを確認（5～8文字）
 			if (pass1.length < 5 || pass1.length > 8) {
 				errorMessage.textContent = "パスワードは5文字以上8文字以下にしてください。";

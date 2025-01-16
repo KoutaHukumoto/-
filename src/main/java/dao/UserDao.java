@@ -12,7 +12,7 @@ public class UserDao extends BaseDao {
 	 * ユーザーとHash値で検索し検索結果あるか否かをチェックする
 	 */
 
-	public boolean find(int id, String pass) {
+	public boolean find(String name, String pass) {
 		boolean isLogin = false;
 
 		try {
@@ -21,11 +21,11 @@ public class UserDao extends BaseDao {
 			this.connect();
 
 			// SQL文
-			String sql = "SELECT accountid FROM account_table WHERE accountid = ? AND password = ?";
+			String sql = "SELECT charactername FROM account_table WHERE charactername = ? AND password = ?";
 
 			try (PreparedStatement ps = con.prepareStatement(sql)) {
 				// 検索条件を設定
-				ps.setInt(1, id);
+				ps.setString(1, name);
 				ps.setString(2, pass);
 
 				// 検索実行
@@ -54,7 +54,7 @@ public class UserDao extends BaseDao {
 	 *  データをすべて取り出す
 	 */
 
-	public Status find(int id) {
+	public Status find(String name) {
 
 		Status status = null;
 
@@ -62,9 +62,9 @@ public class UserDao extends BaseDao {
 			// DB接続
 			this.connect();
 
-			String sql = "SELECT * FROM character_table WHERE accountid = ?";
+			String sql = "SELECT * FROM character_table WHERE charactername = ?";
 			try (PreparedStatement ps = con.prepareStatement(sql)) {
-				ps.setInt(1, id);
+				ps.setString(1, name);
 
 
                 // 検索処理の実行

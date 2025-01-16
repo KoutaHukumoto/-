@@ -54,8 +54,8 @@ public class RegisterServlet extends HttpServlet {
 
 		// RegisterDaoを使ってユーザーをDBに登録
 		RegisterDao register = new RegisterDao();
-		int id = register.registerUser(hashdpass);
-		boolean newcharacter = register.registercharacter(id, name);
+		int chara = register.registerUser(name,hashdpass);
+		int id = register.registercharacter(name);
 
 		Status status = new Status(name, id, pass);
 
