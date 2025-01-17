@@ -24,11 +24,6 @@ public class character implements Serializable{
 	
 	private int dungeonId;
 	
-	
-	
-	
-	
-	
 
 	public int getCharacterId() {
 		return characterId;

@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Status;
+import model.answerlist;
 import model.character;
 import model.item;
 
@@ -46,6 +47,19 @@ public class questionServlet extends HttpServlet {
 		RankingDao rankingDao = new RankingDao();
 		List<character> questionlist = new ArrayList<>();
 
+		List<answerlist> answerlist = new ArrayList<>();
+
+		answerlist answers = new answerlist();
+		answerlist.addAll(answerlist);
+		
+        for (answerlist answer : answerlist) {
+            System.out.println("Character ID: " + answers.getCharacterId());
+            for (int i = 0; i < 5; i++) {
+                List<String> pair = answer.getCategoryDifficultyAt(i);
+                System.out.println(pair.get(0) + ": " + pair.get(1));
+            }
+        }
+		
 		try {
 			questionlist = rankingDao.getAllData(); // 質問データを取得
 		} catch (SQLException e) {
