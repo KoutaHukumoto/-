@@ -22,23 +22,19 @@ public class backServlet extends HttpServlet {
 
 		// 必要なパラメータをリクエストから取得
 		String name = request.getParameter("name");
-		int result = 0; // デフォルト値を設定
 
 		// Statusオブジェクトを作成
 		UserDao userdao = new UserDao();
-
-		//階層の引き上げ処理
-		try {
-			String resultParam = request.getParameter("result");
-			if (resultParam != null && !resultParam.isEmpty()) {
-				result = Integer.parseInt(resultParam);
-				boolean isUpdated = userdao.updateDungeon(name, result);
-			}
-		} catch (NumberFormatException e) {
-
-		}
-
 		Status status = userdao.findname(name);
+		
+		int result = Integer.parseInt(request.getParameter("result"));
+			if (result != 0) {
+				result = result + status.getDungeonid();
+				boolean isUpdated = userdao.updateDungeon(name, result);
+				status.setDungeonid(result);
+			}
+
+		
 
 		ItemDao itemdao = new ItemDao();
 		item item = itemdao.getitem(status.getItemid());

@@ -130,7 +130,7 @@
 				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
 				<input type="hidden" name="defense"value="<%=status.getDefense()%>"> 
 				<input type="hidden"name="speed" value="<%=status.getSpeed()%>"> 
-				<input type="hidden" name="itemid" value=1>
+				<input type="hidden" name="result" value=0>
 				<input type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
 				<button type="submit">もどる</button>
 			</form>
