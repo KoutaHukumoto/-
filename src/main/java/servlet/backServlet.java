@@ -2,6 +2,10 @@ package servlet;
 
 import java.io.IOException;
 
+<<<<<<< HEAD
+=======
+import dao.ItemDao;
+>>>>>>> refs/heads/Ver1.5.1
 import dao.UserDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -10,6 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Status; // Status クラスがある前提
+import model.item;
 
 @WebServlet("/backServlet")
 public class backServlet extends HttpServlet {
@@ -19,11 +24,17 @@ public class backServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		// 必要なパラメータをリクエストから取得
-		int id = Integer.parseInt(request.getParameter("id"));
+
+		String name = request.getParameter("name");
 
 		// Statusオブジェクトを作成
 		UserDao userdao = new UserDao();
-		Status status = userdao.find(id);
+
+		Status status = userdao.findname(name);
+		
+		ItemDao itemdao = new ItemDao();
+		item item = itemdao.getitem(status.getItemid());
+		request.setAttribute("item", item);
 		
 		
 		request.setAttribute("status", status);

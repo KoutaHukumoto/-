@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	// にげるボタンのイベントリスナー
 	document.querySelectorAll('.battle-option')[3].addEventListener('click', function() {
 
-
+		
 		//formを作成
 		var form = document.createElement('form');
 		form.method = 'POST';
@@ -18,14 +18,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		//作成したformにデータを挿入
 		var input = document.createElement('input');
 		input.type = 'hidden';
-		input.name = 'id';
-		input.value = statusData.id;
+		input.name = 'name';
+		input.value = statusData.name;
 		form.appendChild(input);
 
 		//formを送信
 		document.body.appendChild(form);
 		form.submit();
-
 	});
 
 	// 攻撃ボタンのイベントリスナー
@@ -70,6 +69,7 @@ function displayBattleResult(message) {
 
 	const backInput = document.createElement('input');
 	backInput.type = 'hidden';
+<<<<<<< HEAD
 	backInput.name = 'id';
 	backInput.value = statusData.id;
 	backForm.appendChild(backInput);
@@ -89,6 +89,27 @@ function displayBattleResult(message) {
 	rematchInput.type = 'hidden';
 	rematchInput.name = 'id';
 	rematchInput.value = statusData.id;
+=======
+	backInput.name = 'name';
+	backInput.value = statusData.name;
+	backForm.appendChild(backInput);
+
+	const backButton = document.createElement('button');
+	backButton.type = 'submit';
+	backButton.classList.add('btn', 'btn-primary', 'btn-lg', 'result-back-button');
+	backButton.textContent = 'マイページに戻る';
+	backForm.appendChild(backButton);
+
+	// 再戦ボタン(未完成です)
+	const rematchForm = document.createElement('form');
+	rematchForm.method = 'POST';
+	rematchForm.action = '/Dosukoi-Analytics/rematchServlet';
+
+	const rematchInput = document.createElement('input');
+	rematchInput.type = 'hidden';
+	rematchInput.name = 'name';
+	rematchInput.value = statusData.name;
+>>>>>>> refs/heads/Ver1.5.1
 	rematchForm.appendChild(rematchInput);
 
 	const rematchButton = document.createElement('button');
@@ -137,7 +158,7 @@ function battleRound() {
 
 	//プレイヤーとNPCのattackを取得
 	const playerAttack = statusData.attack; // プレイヤーの攻撃力をstatusDataから取得
-	const npcAttack = monsterData.attack; // 敵の攻撃力は固定値
+	const npcAttack = monsterData.attack; 
 
 	// プレイヤーが攻撃する
 	if (playerHP > 0 && npcHP > 0) {
@@ -187,6 +208,7 @@ function battleRound() {
 		});
 	}
 }
+<<<<<<< HEAD
 // 防御機能
 function defenseRound() {
 	const playerHPElement = document.querySelector('.character.pc .character-header meter');
@@ -197,7 +219,20 @@ function defenseRound() {
 	let npcHP = parseInt(npcHPElement.getAttribute('value'));
 	const playerDefense = statusData.defense; // プレイヤーの防御力
 	const npcAttack = 20; // 敵の攻撃力
+=======
+	// 防御機能
+	function defenseRound() {
+    const playerHPElement = document.querySelector('.character.pc .character-header meter');
+    const npcHPElement = document.querySelector('.character.npc .character-header meter');
+    const playerImgElement = document.querySelector('.character.pc .character-img');
+    const battleLog = document.getElementById('battleLog');
+    let playerHP = parseInt(playerHPElement.getAttribute('value'));
+    let npcHP = parseInt(npcHPElement.getAttribute('value'));
+    const playerDefense = statusData.defense; // プレイヤーの防御力
+    const npcAttack = monsterData.attack; // 敵の攻撃力
+>>>>>>> refs/heads/Ver1.5.1
 
+<<<<<<< HEAD
 	// プレイヤーが防御を固めたログを表示
 	const defenseLog = document.createElement('li');
 	battleLog.appendChild(defenseLog);
@@ -225,6 +260,35 @@ function defenseRound() {
 			}, 500); // 揺れ終わった後に次の処理に進む
 		});
 	});
+=======
+    // プレイヤーが防御を固めたログを表示
+    const defenseLog = document.createElement('li');
+    battleLog.appendChild(defenseLog);
+    displayTextOneByOne(defenseLog, 'あなたは防御を固めた！！', function() {
+		
+		
+        // 相手が攻撃する
+       const damage = npcAttack - playerDefense > 0 ? npcAttack - playerDefense : 1;// 防御効果を適用
+        playerHP -= damage;
+        const npcAttackLog = document.createElement('li');
+        battleLog.appendChild(npcAttackLog);
+        displayTextOneByOne(npcAttackLog, `スライムの攻撃！ あなたに${damage} のダメージ！`, function() {
+            playerImgElement.classList.add('shake'); // プレイヤーがダメージを受けて揺れる演出
+            setTimeout(function() {
+                playerImgElement.classList.remove('shake');
+                playerHPElement.setAttribute('value', playerHP);
+                if (playerHP <= 0) {
+                    playerHP = 0;
+                    const loseLog = document.createElement('li');
+                    battleLog.appendChild(loseLog);
+                    displayTextOneByOne(loseLog, 'あなたは倒れた。。。', function() {
+                        displayBattleResult('敗北。。。');
+                    });
+                }
+            }, 500); // 揺れ終わった後に次の処理に進む
+        });
+    });
+>>>>>>> refs/heads/Ver1.5.1
 }
 
 // 必殺技機能

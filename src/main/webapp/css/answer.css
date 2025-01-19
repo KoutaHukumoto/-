@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-	width: 80%;
+	width: 85%;
 	height: 70svh;
 	margin: 0 auto;
 	border: 2px solid white;
@@ -21,7 +21,9 @@ body {
 }
 
 .character {
+	position: fixed;
 	float: left;
+	z-index: 90;
 }
 
 .avatar-section,
@@ -44,38 +46,64 @@ body {
 	font-size: 1.1em;
 }
 
+.up_status_hp,
+.up_status_attack,
+.up_status_defense,
+.up_status_speed {
+	position: relative;
+	color: black;
+	width: 30%;
+	left: 70%;
+}
+
 .subject,
 .result,
-.kaito {
+.answer {
 	display: flex;
 	position: relative;
 	font-size: 2em;
-	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 }
 
 .subject {
 	width: 40%;
-	left: 15%;
+	left: 30%;
 	border: 2px solid white;
 	margin-bottom: 2%;
 	padding: 10px 0 10px 0;
 }
 
 .result,
-.kaito {
+.answer {
 	margin: 20px 0 20px 0;
-	border-bottom: 1px solid white;
 }
 
 .result {
 	width: 30%;
-	left: 20%;
+	left: 35%;
+	border-bottom: 1px solid white;
 }
 
-.kaito {
-	width: 10%;
-	left: 14%;
+.answer {
+	width: 50%;
+	left: 25%;
+}
+
+.answer p {
+	width: 15%;
+	text-align: center;
+	margin: 0 30px 0 0;
+	border-bottom: 1px solid white;
+}
+
+.answer_red {
+	color: #ff7f7f;
+	margin-right: 30px;
+}
+
+.answer_blue {
+	color: #7f7fff;
 }
 
 .total_result {
@@ -92,83 +120,167 @@ body {
 }
 
 .text,
-.answer,
+.model_answer,
 .selected_answer {
 	box-sizing: border-box;
 	display: flex;
 	border: 1px solid black;
 	justify-content: center;
 	align-items: center;
+	padding: 20px;
 }
 
-.answer,
+.model_answer,
 .selected_answer {
 	width: 50%;
-	padding: 20px;
 }
 
 .text {
 	width: 100%;
-	padding: 20px;
 }
 
-.dojyo,
-.next {
-	position: absolute;
+#next,
+#dojyo {
+	position: fixed;
 	text-align: center;
-	padding: 10px;
-	border: 2px solid white;
 	width: 20%;
-	bottom: 5%;
+	height: 5svh;
+	bottom: 25%;
 	font-size: 1.5em;
+	right: 9%;
 }
 
-.next {
-	right: 3%;
+#next label {
+	display: flex;
+	height: 97%;
+	cursor: pointer;
+	font-size: 1.1em;
+	align-content: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	border: 2px solid white;
+}
+
+#next:hover {
+	background-color: grey;
+}
+
+#dojyo {
+	visibility: hidden;
+	z-index: 90;
+}
+
+#dojyo button {
+	width: 100%;
+	background: black;
+	color: white;
+	cursor: pointer;
+	font-size: 1.1em;
+	padding: 5px;
+	border: 2px solid white;
+}
+
+#dojyo button:hover {
+	background-color: grey;
+}
+
+input {
+	display: none;
+}
+
+#overlay {
+	visibility: hidden;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 70;
+	width: 100%;
+	height: 100%;
+}
+
+#bg_gray {
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 80;
+	pointer-events: none;
+}
+
+#window {
+	padding: 20px;
+	display: inline-block;
+	position: fixed;
+	justify-content: center;
+	align-items: center;
+	left: 50%;
+	top: 40%;
+	transform: translate(-50%, -50%);
+	background-color: black;
+	border: 2px solid white;
+	box-shadow: 0px 0px 20px -6px rgba(0, 0, 0, 0.6);
+	z-index: 90;
+	opacity: 0;
+}
+
+#msg {
+	font-size: 2em;
+}
+
+.result_item form {
+	width: 40%;
+}
+
+.result_item button {
+	width: 100%;
+	color: white;
+	background: black;
+	font-size: 1.0em;
+	border: 2px solid white;
+	cursor: pointer;
+}
+
+.result_item p {
+	margin: 0 0 10px 0;
+}
+
+.result_item button:hover {
+	background-color: grey;
+}
+
+.button-group {
+	display: flex;
+	gap: 130px;
+}
+
+.button-group form {
+	margin: 0;
 }
 
 
-
-.dojyo {
-    margin-top: 20px;
-    float: right; 
-    width: 30%;
+#window a {
+	position: absolute;
+	bottom: 0;
 }
 
-.dojyo a, .logout {
-    display: block;
-    text-align: center;
-    border: 2px solid white;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-size: 1.5em;
-    color: white;
-    text-decoration: none;
+#popup:checked~#overlay,
+#popup:checked~#dojyo {
+	visibility: visible;
 }
 
-.dojyo a:hover {
-    background-color: grey;
-}
-.dojyo button {
-    display: block;
-    text-align: center;
-    border: 2px solid white;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-size: 1.5em;
-    color: white;
-    background-color: transparent;
-    width: 100%; /* aタグの幅に合わせる */
-    cursor: pointer; /* 手のマークが出るように */
-    text-decoration: none; /* テキスト装飾を無くす */
+#popup:checked~#overlay #window {
+	animation: fadein 500ms forwards;
+	animation-timing-function: ease-in-out;
 }
 
-.dojyo button:hover {
-    background-color: grey; /* hover時の背景色 */
+@keyframes fadein {
+	100% {
+		opacity: 1;
+	}
 }
 
-button {
-    background: none; /* デフォルトのボタンの背景を消す */
-    border: none; /* デフォルトのボーダーを消す */
-    padding: 0; /* デフォルトのパディングを消す */
+body {
+	margin: 30px;
 }

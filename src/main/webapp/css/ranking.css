@@ -1,0 +1,156 @@
+h1 {
+	color: white;
+	font-size: 4em;
+	margin: 0;
+	width: 100%;
+	text-align: center;
+
+}
+
+body {
+	background-color: black;
+	background-size: cover;
+}
+
+
+.main {
+	color: white;
+	text-align: center;
+	font-size: 200%;
+
+
+}
+
+.quiz {
+    margin: auto;
+    width: 130svh;
+    overflow-y: auto; /* 縦方向にスクロール可能にする */
+    overflow-x: hidden; /* 横方向のスクロールを非表示にする */
+    max-height: 600px; /* 表の高さを制限する */
+    border: 1px solid white; /* 枠線を追加 */
+}
+
+.quiz table {
+    width: 100%;
+    border-collapse: collapse; /* セルの余白を削除 */
+}
+
+.quiz thead {
+    background-color: black; /* ヘッダーの背景色 */
+    position: sticky; /* 固定する */
+    top: 0; /* 固定位置をテーブル上端に設定 */
+    z-index: 2; /* スクロール時に最前面に */
+}
+
+.quiz th, .quiz td {
+    border: 1px solid white; /* セルの境界線 */
+    padding: 8px; /* セル内余白 */
+    text-align: center; /* 中央揃え */
+    color: white; /* テキスト色 */
+}
+
+.quiz tbody {
+    display: block; /* tbody をブロック要素に */
+    overflow-y: auto; /* 縦方向にスクロール可能 */
+    overflow-x: hidden; /* 横方向のスクロールを非表示にする */
+}
+
+.quiz thead tr {
+    display: table; /* thead の行をテーブル表示 */
+    width: 100%;
+    table-layout: fixed; /* 幅を固定 */
+}
+
+.quiz tbody tr {
+    display: table; /* tbody の行もテーブル表示 */
+    width: 100%;
+    table-layout: fixed; /* 幅を固定 */
+}
+
+
+
+
+button {
+	display: block;
+	text-align: center;
+
+	padding: 10px;
+	font-size: 1.5em;
+	color: white;
+	background-color: transparent;
+	width: 100%;
+	/* aタグの幅に合わせる */
+	cursor: pointer;
+	/* 手のマークが出るように */
+	text-decoration: none;
+	/* テキスト装飾を無くす */
+}
+
+button:hover {
+	background-color: grey;
+	/* hover時の背景色 */
+}
+
+button {
+	background: none;
+	/* デフォルトのボタンの背景を消す */
+	border: none;
+	/* デフォルトのボーダーを消す */
+	padding: 0;
+	/* デフォルトのパディングを消す */
+}
+
+.back_btn {
+	position: absolute;
+	/* 絶対位置指定 */
+	bottom: 0;
+	left: 0;
+	margin-top: 20px;
+	padding: 10px;
+	border: 2px solid white;
+	width: 30%;
+}
+
+form {
+    display: flex; /* 横並び配置 */
+    align-items: center; /* 縦方向の中央揃え */
+    justify-content: center; 
+    gap: 10px; /* 要素間の間隔 */
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    font-size: 20px; /* テキストの大きさ */
+    padding: 3px; /* 内側の余白 */
+    border: 2px solid white; /* ボーダーを.serch_btnと同じに */
+    background-color: transparent; /* 背景を透明に */
+    color: white; /* テキスト色を白に */
+    height: 36px; /* ボタンと同じ高さに調整 */
+    box-sizing: border-box; /* パディングとボーダーを含めたサイズを指定 */
+}
+
+input[type="text"]::placeholder {
+    color: grey; /* プレースホルダーの色 */
+}
+
+.serch_btn {
+    font-size: 20px;
+    border: 2px solid white;
+    padding: 3px;
+    cursor: pointer;
+    background-color: transparent;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.serch_btn button {
+    width: 100%;
+    font-size: 1em;
+    color: white;
+    background: none;
+    border: none;
+}
+
+.serch_btn button:hover {
+    background-color: grey;
+}
