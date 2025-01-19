@@ -6,6 +6,7 @@ import dao.DungeonDao;
 import dao.ItemDao;
 import dao.UserDao;
 import dao.monsterDao;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -50,55 +51,57 @@ public class rematchServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		int result = Integer.parseInt(request.getParameter("result"));
 		UserDao userdao = new UserDao();
-		boolean isUpdated = userdao.updateDungeon(name, result);
 		Status statues = userdao.findname(name);
-		
-		int id = statues.getId();
-        int hp = statues.getHp();
-        int attack = statues.getAttack();
-        int defense = statues.getDefense();
-        int speed = statues.getSpeed();
-        int itemid = statues.getItemid();
-        int dungeonid = statues.getDungeonid();
-		
-        //アイテムによるステータス上昇の計算処理
-        ItemDao effectitem = new ItemDao();
-        item item = effectitem.getitem(itemid);
-        
-        hp = hp + item.getEffectHp();
-        attack = attack + item.getEffectAttack();
-        defense = defense +item.getEffectdefence();
-        speed = speed + item.getEffectSpeed();
-       
- 
-        // Statusオブジェクトを作成
-        Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid);
- 
-        // セッションにStatusオブジェクトを保存
-        HttpSession session = request.getSession();
-        session.setAttribute("status", status);
-        session.setAttribute("item", item);
-       
-        
-        //ダンジョン情報を保存
-        
-        DungeonDao dungeonInfo = new DungeonDao();
-        dungeon dungeonInformation = dungeonInfo.getdungeon(dungeonid);
 
-        session.setAttribute("dungeonInformation", dungeonInformation);
-        
-        //ダンジョン情報からモンスターの決定とモンスターのステータスを取得
-   
-        
-        int monsterId = dungeonInformation.getMonsterId();
-        int bossId = 0;
-            
-        
-        monsterDao monster = new monsterDao();
-        monster monsterstatus = monster.getMonster(monsterId,bossId);
-        session.setAttribute("monsterstatus",monsterstatus);
-			
-		
+		int id = statues.getId();
+		int hp = statues.getHp();
+		int attack = statues.getAttack();
+		int defense = statues.getDefense();
+		int speed = statues.getSpeed();
+		int itemid = statues.getItemid();
+		int dungeonid = statues.getDungeonid();
+
+		if (result != 0) {
+			dungeonid = result + dungeonid;
+			boolean isUpdated = userdao.updateDungeon(name, dungeonid);
+		}
+
+		//アイテムによるステータス上昇の計算処理
+		ItemDao effectitem = new ItemDao();
+		item item = effectitem.getitem(itemid);
+
+		hp = hp + item.getEffectHp();
+		attack = attack + item.getEffectAttack();
+		defense = defense + item.getEffectdefence();
+		speed = speed + item.getEffectSpeed();
+
+		// Statusオブジェクトを作成
+		Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid);
+
+		// セッションにStatusオブジェクトを保存
+		HttpSession session = request.getSession();
+		session.setAttribute("status", status);
+		session.setAttribute("item", item);
+
+		//ダンジョン情報を保存
+
+		DungeonDao dungeonInfo = new DungeonDao();
+		dungeon dungeonInformation = dungeonInfo.getdungeon(dungeonid);
+
+		session.setAttribute("dungeonInformation", dungeonInformation);
+
+		//ダンジョン情報からモンスターの決定とモンスターのステータスを取得
+
+		int monsterId = dungeonInformation.getMonsterId();
+		int bossId = 0;
+
+		monsterDao monster = new monsterDao();
+		monster monsterstatus = monster.getMonster(monsterId, bossId);
+		session.setAttribute("monsterstatus", monsterstatus);
+		// JSPにフォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/dungeon.jsp");
+		dispatcher.forward(request, response);
+
 	}
 
 }
