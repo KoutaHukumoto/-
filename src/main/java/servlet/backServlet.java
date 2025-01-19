@@ -2,10 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
-<<<<<<< HEAD
-=======
 import dao.ItemDao;
->>>>>>> refs/heads/Ver1.5.1
 import dao.UserDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -24,20 +21,34 @@ public class backServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		// 必要なパラメータをリクエストから取得
-
 		String name = request.getParameter("name");
+		int result = 0; // デフォルト値を設定
 
 		// Statusオブジェクトを作成
 		UserDao userdao = new UserDao();
 
+		//階層の引き上げ処理
+		try {
+			String resultParam = request.getParameter("result");
+			if (resultParam != null && !resultParam.isEmpty()) {
+				result = Integer.parseInt(resultParam);
+				boolean isUpdated = userdao.updateDungeon(name, result);
+			}
+		} catch (NumberFormatException e) {
+
+		}
+
 		Status status = userdao.findname(name);
-		
+
 		ItemDao itemdao = new ItemDao();
 		item item = itemdao.getitem(status.getItemid());
 		request.setAttribute("item", item);
-		
-		
+
 		request.setAttribute("status", status);
+
+		// result を JSP に渡したい場合
+		request.setAttribute("result", result);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/mypage.jsp");
 		dispatcher.forward(request, response);
 	}

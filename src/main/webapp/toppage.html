@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<title>TOPページ</title>
 	<link rel="stylesheet" href="css/TopPage.css">
+	<meta name="csrf-token" content="your-csrf-token-here">
 	<style>
 		.error {
 			display: none;
@@ -14,6 +15,7 @@
 </head>
 
 <body>
+	<script src="js/security.js"></script>
 	<script>
 		function validateForm() {
 			const id = document.querySelector('input[name="id"]').value;

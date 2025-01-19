@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// にげるボタンのイベントリスナー
 	document.querySelectorAll('.battle-option')[3].addEventListener('click', function() {
-
 		
 		//formを作成
 		var form = document.createElement('form');
@@ -31,13 +30,15 @@ document.addEventListener('DOMContentLoaded', function() {
 	document.querySelectorAll('.battle-option')[0].addEventListener('click', function() {
 		battleRound();
 	})
+	
+	 // 防御ボタンのイベントリスナー
+	 // 「ぼうぎょ」ボタンを押したら、ぼうぎょが始まります。
+    document.querySelectorAll('.battle-option')[1].addEventListener('click', function() {
+	    	defenseRound();
+	    });
 
-	// 防御ボタンのイベントリスナー
-	// 「ぼうぎょ」ボタンを押したら、ぼうぎょが始まります。
-	document.querySelectorAll('.battle-option')[1].addEventListener('click', function() {
-		defenseRound();
-	});
 
+	
 
 	// 必殺技ボタンのイベントリスナー
 	document.querySelectorAll('.battle-option')[2].addEventListener('click', function() {
@@ -58,80 +59,61 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // バトル結果表示
-function displayBattleResult(message) {
-	const resultOverlay = document.createElement('div');
-	resultOverlay.classList.add('battle-result-overlay');
+function displayBattleResult(message, isVictory) {
+    const resultOverlay = document.createElement('div');
+    resultOverlay.classList.add('battle-result-overlay');
 
-	// マイページに戻るフォーム
-	const backForm = document.createElement('form');
-	backForm.method = 'POST';
-	backForm.action = '/Dosukoi-Analytics/backServlet'; 
+    // 共通のhidden inputを作成する関数
+    function createHiddenInput(name, value) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        return input;
+    }
 
-	const backInput = document.createElement('input');
-	backInput.type = 'hidden';
-<<<<<<< HEAD
-	backInput.name = 'id';
-	backInput.value = statusData.id;
-	backForm.appendChild(backInput);
+    // マイページに戻るフォーム
+    const backForm = document.createElement('form');
+    backForm.method = 'POST';
+    backForm.action = '/Dosukoi-Analytics/backServlet'; 
 
-	const backButton = document.createElement('button');
-	backButton.type = 'submit';
-	backButton.classList.add('btn', 'btn-primary', 'btn-lg', 'result-back-button');
-	backButton.textContent = 'マイページに戻る';
-	backForm.appendChild(backButton);
+    backForm.appendChild(createHiddenInput('name', statusData.name));
+    backForm.appendChild(createHiddenInput('result', isVictory ? 1 : 0));
 
-	// 再戦ボタン
-	const rematchForm = document.createElement('form');
-	rematchForm.method = 'POST';
-	rematchForm.action = '/Dosukoi-Analytics/rematchServlet';
+    const backButton = document.createElement('button');
+    backButton.type = 'submit';
+    backButton.classList.add('btn', 'btn-primary', 'btn-lg', 'result-back-button');
+    backButton.textContent = 'マイページに戻る';
+    backForm.appendChild(backButton);
 
-	const rematchInput = document.createElement('input');
-	rematchInput.type = 'hidden';
-	rematchInput.name = 'id';
-	rematchInput.value = statusData.id;
-=======
-	backInput.name = 'name';
-	backInput.value = statusData.name;
-	backForm.appendChild(backInput);
+    // 再戦ボタン
+    const rematchForm = document.createElement('form');
+    rematchForm.method = 'POST';
+    rematchForm.action = '/Dosukoi-Analytics/rematchServlet';
 
-	const backButton = document.createElement('button');
-	backButton.type = 'submit';
-	backButton.classList.add('btn', 'btn-primary', 'btn-lg', 'result-back-button');
-	backButton.textContent = 'マイページに戻る';
-	backForm.appendChild(backButton);
+    rematchForm.appendChild(createHiddenInput('name', statusData.name));
+    rematchForm.appendChild(createHiddenInput('result', isVictory ? 1 : 0));
 
-	// 再戦ボタン(未完成です)
-	const rematchForm = document.createElement('form');
-	rematchForm.method = 'POST';
-	rematchForm.action = '/Dosukoi-Analytics/rematchServlet';
+    const rematchButton = document.createElement('button');
+    rematchButton.type = 'submit';
+    rematchButton.classList.add('btn', 'btn-primary', 'btn-lg');
+    rematchButton.textContent = '再戦する';
+    rematchForm.appendChild(rematchButton);
 
-	const rematchInput = document.createElement('input');
-	rematchInput.type = 'hidden';
-	rematchInput.name = 'name';
-	rematchInput.value = statusData.name;
->>>>>>> refs/heads/Ver1.5.1
-	rematchForm.appendChild(rematchInput);
+    // 結果オーバーレイの内容を作成
+    const resultMessage = document.createElement('div');
+    resultMessage.classList.add('result-message');
+    resultMessage.textContent = message;
 
-	const rematchButton = document.createElement('button');
-	rematchButton.type = 'submit';
-	rematchButton.classList.add('btn', 'btn-primary', 'btn-lg');
-	rematchButton.textContent = '再戦する';
-	rematchForm.appendChild(rematchButton);
+    const resultButtons = document.createElement('div');
+    resultButtons.classList.add('result-buttons');
+    resultButtons.appendChild(backForm);
+    resultButtons.appendChild(rematchForm);
 
-	// 結果オーバーレイの内容を作成
-	const resultMessage = document.createElement('div');
-	resultMessage.classList.add('result-message');
-	resultMessage.textContent = message;
+    resultOverlay.appendChild(resultMessage);
+    resultOverlay.appendChild(resultButtons);
 
-	const resultButtons = document.createElement('div');
-	resultButtons.classList.add('result-buttons');
-	resultButtons.appendChild(backForm);
-	resultButtons.appendChild(rematchForm);
-
-	resultOverlay.appendChild(resultMessage);
-	resultOverlay.appendChild(resultButtons);
-
-	document.body.appendChild(resultOverlay);
+    document.body.appendChild(resultOverlay);
 }
 
 
@@ -175,7 +157,7 @@ function battleRound() {
 					battleLog.appendChild(winLog);
 					displayTextOneByOne(winLog, 'スライムは倒れた！！！', function() {
 						npcHPElement.setAttribute('value', npcHP);
-						displayBattleResult('勝利！！');
+						displayBattleResult('勝利！！', true); 
 					});
 					return;
 				}
@@ -197,7 +179,7 @@ function battleRound() {
 							battleLog.appendChild(loseLog);
 							displayTextOneByOne(loseLog, 'あなたは倒れた。。。', function() {
 								playerHPElement.setAttribute('value', playerHP);
-								displayBattleResult('敗北。。。');
+								displayBattleResult('敗北。。。', false);
 							});
 							return;
 						}
@@ -208,18 +190,6 @@ function battleRound() {
 		});
 	}
 }
-<<<<<<< HEAD
-// 防御機能
-function defenseRound() {
-	const playerHPElement = document.querySelector('.character.pc .character-header meter');
-	const npcHPElement = document.querySelector('.character.npc .character-header meter');
-	const playerImgElement = document.querySelector('.character.pc .character-img');
-	const battleLog = document.getElementById('battleLog');
-	let playerHP = parseInt(playerHPElement.getAttribute('value'));
-	let npcHP = parseInt(npcHPElement.getAttribute('value'));
-	const playerDefense = statusData.defense; // プレイヤーの防御力
-	const npcAttack = 20; // 敵の攻撃力
-=======
 	// 防御機能
 	function defenseRound() {
     const playerHPElement = document.querySelector('.character.pc .character-header meter');
@@ -230,37 +200,7 @@ function defenseRound() {
     let npcHP = parseInt(npcHPElement.getAttribute('value'));
     const playerDefense = statusData.defense; // プレイヤーの防御力
     const npcAttack = monsterData.attack; // 敵の攻撃力
->>>>>>> refs/heads/Ver1.5.1
 
-<<<<<<< HEAD
-	// プレイヤーが防御を固めたログを表示
-	const defenseLog = document.createElement('li');
-	battleLog.appendChild(defenseLog);
-	displayTextOneByOne(defenseLog, 'あなたは防御を固めた！！', function() {
-
-
-		// 相手が攻撃する
-		const damage = npcAttack - playerDefense > 0 ? npcAttack - playerDefense : 0; // 防御効果を適用
-		playerHP -= damage;
-		const npcAttackLog = document.createElement('li');
-		battleLog.appendChild(npcAttackLog);
-		displayTextOneByOne(npcAttackLog, `スライムの攻撃！ あなたに${npcAttack} のダメージ！`, function() {
-			playerImgElement.classList.add('shake'); // プレイヤーがダメージを受けて揺れる演出
-			setTimeout(function() {
-				playerImgElement.classList.remove('shake');
-				playerHPElement.setAttribute('value', playerHP);
-				if (playerHP <= 0) {
-					playerHP = 0;
-					const loseLog = document.createElement('li');
-					battleLog.appendChild(loseLog);
-					displayTextOneByOne(loseLog, 'あなたは倒れた。。。', function() {
-						displayBattleResult('敗北。。。');
-					});
-				}
-			}, 500); // 揺れ終わった後に次の処理に進む
-		});
-	});
-=======
     // プレイヤーが防御を固めたログを表示
     const defenseLog = document.createElement('li');
     battleLog.appendChild(defenseLog);
@@ -282,13 +222,12 @@ function defenseRound() {
                     const loseLog = document.createElement('li');
                     battleLog.appendChild(loseLog);
                     displayTextOneByOne(loseLog, 'あなたは倒れた。。。', function() {
-                        displayBattleResult('敗北。。。');
+                       displayBattleResult('敗北。。。', false);
                     });
                 }
             }, 500); // 揺れ終わった後に次の処理に進む
         });
     });
->>>>>>> refs/heads/Ver1.5.1
 }
 
 // 必殺技機能
