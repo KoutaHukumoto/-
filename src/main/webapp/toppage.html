@@ -31,9 +31,6 @@
 			return true; // フォームを送信
 		}
 
-		function goToPage() {
-			window.location.href = 'newRegistration.html';
-		}
 	</script>
 
 	<form action="/Dosukoi-Analytics/loginServlet" method="post" onsubmit="return validateForm();">
@@ -53,10 +50,12 @@
 			<button type="submit" class="btn btn-primary">ログイン</button>
 		</div>
 	</form>
-
-	<div class="new_btn">
-		<button type="button" onclick="goToPage();">新規登録</button>
-	</div>
+	
+	<form action="/Dosukoi-Analytics/searchnameServlet" method="post">
+		<div class="new_btn">
+			<button type="submit">新規登録</button>
+		</div>
+	</form>
 </body>
 
 </html>

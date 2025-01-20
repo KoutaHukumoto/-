@@ -3,27 +3,44 @@ package model;
 import java.io.Serializable;
 
 /*
- *JavaBeans 
- * userテーブルのデータを保持するクラス
+*JavaBeans
+* userテーブルのデータを保持するクラス
 */
 
-public class character implements Serializable{
+public class character implements Serializable {
 	private int characterId;
-	
+
 	private int accountId;
-	
+
 	private String characterName;
-	
+
 	private int userAttack;
-	
+
 	private int userDefense;
-	
+
 	private int userSpeed;
-	
+
 	private int itemId;
-	
+
 	private int dungeonId;
-	
+
+	private int rank;
+
+	public character() {
+
+	}
+
+	public character(String characterName) {
+		this.characterName = characterName;
+	}
+
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
 
 	public int getCharacterId() {
 		return characterId;
@@ -88,4 +105,9 @@ public class character implements Serializable{
 	public void setDungeonId(int dungeonId) {
 		this.dungeonId = dungeonId;
 	}
+    @Override
+    public String toString() {
+        return this.characterName;
+    }
+
 }

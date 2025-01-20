@@ -52,20 +52,26 @@ body {
 	width: 30%;
 }
 
-.menu a,
 .logout {
-	display: block;
 	text-align: center;
 	border: 2px solid white;
-	padding: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	font-size: 1.5em;
-	color: white;
-	text-decoration: none;
+	position: absolute;
+	bottom: 0;
+	width: 30%;
 }
 
-.menu a:hover {
+.logout a {
+	display: block;
+	text-decoration: none;
+	color: white;
+	padding: 10px;
+}
+
+.logout a:hover {
 	background-color: grey;
+	/* hover時の背景色 */
 }
 
 .menu button {
@@ -97,34 +103,4 @@ button {
 	/* デフォルトのボーダーを消す */
 	padding: 0;
 	/* デフォルトのパディングを消す */
-}
-
-.logout {
-	position: absolute;
-	/* 絶対位置指定 */
-	bottom: 0;
-	left: 0;
-	margin-top: 20px;
-	padding: 10px;
-	border: 2px solid white;
-	width: 30%;
-}
-
-/* ボタンcss */
-.avatar-section {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.avatar-button {
-	background: none;
-	border: none;
-	color: rgb(255, 255, 255);
-	font-size: 24px;
-	cursor: pointer;
-}
-
-.avatar-button:focus {
-	outline: none;
 }

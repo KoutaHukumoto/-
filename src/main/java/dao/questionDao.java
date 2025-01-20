@@ -12,7 +12,6 @@ public class questionDao extends BaseDao {
 
 	public List<question> getQuestions(String s_id, String d_id, int id) {
 		List<question> questions = new ArrayList<>();
-		int a = 1;
 
 		try {
 			connect();
@@ -38,7 +37,7 @@ public class questionDao extends BaseDao {
 								rs.getString("fakeAnswer2"),
 								rs.getString("fakeAnswer3"));
 						questions.add(question);
-						
+
 					}
 				}
 			}
