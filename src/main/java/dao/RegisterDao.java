@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class RegisterDao extends BaseDao {
 
-	public int registerUser(String pass) {
+	public int registerUser(String name,String pass) {
 		PreparedStatement pstmt = null;
 		ResultSet generatedKeys = null;
 
@@ -16,9 +16,10 @@ public class RegisterDao extends BaseDao {
 
 			// DB接続
 			connect();
-			String sql = "INSERT INTO account_table (password) VALUES (?)";
+			String sql = "INSERT INTO account_table (charactername,password) VALUES (?,?)";
 			pstmt = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-			pstmt.setString(1, pass); // ハッシュ化されたパスワードを保存
+			pstmt.setString(1, name); // 名前を保存
+			pstmt.setString(2, pass); // ハッシュ化されたパスワードを保存
 
 			// SQL文の実行
 			int rowsInserted = pstmt.executeUpdate();
@@ -50,28 +51,36 @@ public class RegisterDao extends BaseDao {
     }
 	
 
-	public boolean registercharacter(int id, String name) {
+	public int registercharacter(String name) {
 		PreparedStatement pstmt = null;
+		ResultSet generatedKeys = null;
 		try {
 
 			// DB接続
 			connect();
 
 			// SQL INSERT文の作成
-			String sql = "INSERT INTO character_table (accountid,charactername) VALUES (?,?)";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, id);
-			pstmt.setString(2, name);
+			String sql = "INSERT INTO character_table (charactername) VALUES (?)";
+			pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			pstmt.setString(1,name);
 
 			// SQL文の実行
 			int rowsInserted = pstmt.executeUpdate();
+			
+	        if (rowsInserted > 0) {
+	            generatedKeys = pstmt.getGeneratedKeys();
+	            if (generatedKeys.next()) {
+	                // 自動生成されたIDを取得
+	                return generatedKeys.getInt(1); // 1は最初のカラムを指す
+	            }
+	        }
 
 			// 挿入が成功したかどうかを返す
-			return rowsInserted > 0;
+	        return 1000000;
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-			return false;
+			return 1000001;
 		} finally {
 			try {
 				if (pstmt != null)

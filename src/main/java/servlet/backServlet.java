@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import dao.ItemDao;
 import dao.UserDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -10,6 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Status; // Status クラスがある前提
+import model.item;
 
 @WebServlet("/backServlet")
 public class backServlet extends HttpServlet {
@@ -19,14 +21,30 @@ public class backServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		// 必要なパラメータをリクエストから取得
-		int id = Integer.parseInt(request.getParameter("id"));
+		String name = request.getParameter("name");
 
 		// Statusオブジェクトを作成
 		UserDao userdao = new UserDao();
-		Status status = userdao.find(id);
+		Status status = userdao.findname(name);
 		
+		int result = Integer.parseInt(request.getParameter("result"));
+			if (result != 0) {
+				result = result + status.getDungeonid();
+				boolean isUpdated = userdao.updateDungeon(name, result);
+				status.setDungeonid(result);
+			}
+
 		
+
+		ItemDao itemdao = new ItemDao();
+		item item = itemdao.getitem(status.getItemid());
+		request.setAttribute("item", item);
+
 		request.setAttribute("status", status);
+
+		// result を JSP に渡したい場合
+		request.setAttribute("result", result);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/mypage.jsp");
 		dispatcher.forward(request, response);
 	}

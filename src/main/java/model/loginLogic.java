@@ -11,10 +11,10 @@ public class loginLogic {
 	 * ログイン認証
 	 */
 
-	public boolean execute(int id, String pass) {
+	public boolean execute(String name, String pass) {
 		UserDao userDao = new UserDao();
 
-		boolean isLogin = userDao.find(id, pass);
+		boolean isLogin = userDao.find(name, pass);
 
 		return isLogin;
 	}

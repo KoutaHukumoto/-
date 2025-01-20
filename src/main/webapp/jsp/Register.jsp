@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>登録完了</title>
+<link rel="stylesheet" href="css/Register.css">
 </head>
 <body>
 	<script>
@@ -16,11 +17,25 @@
 			window.location.href = 'toppage.html';
 		}
 	</script>
+	<div class="comp">
 	<h1>登録が完了しました！</h1>
-	<p>ID:<%= status.getId() %></p>
-	<p>ニックネーム:<%= status.getName() %></p>
-	<p>パスワード:<%= status.getPass() %></p>
+	</div>
+	
+	<div class="ava">
+	<label>アバター:</label>
+	</div>
+	
+	<div class="status">
+	<label class="inp">ID:</label> 
+	<label class="ginp"><%= status.getId() %></label>
+	<label class="inp">ニックネーム:</label>
+	<label class="ginp"><%= status.getName() %></label>
+	<label class="inp">パスワード:</label>
+	<label class="ginp"><%= status.getPass() %></label>
+	</div>
 
+	<div class="kickback">
 	<button type="button" onclick="goToPage()">戻る</button>
+	</div>
 </body>
 </html>

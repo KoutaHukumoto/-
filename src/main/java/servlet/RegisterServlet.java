@@ -54,15 +54,15 @@ public class RegisterServlet extends HttpServlet {
 
 		// RegisterDaoを使ってユーザーをDBに登録
 		RegisterDao register = new RegisterDao();
-		int id = register.registerUser(hashdpass);
-		boolean newcharacter = register.registercharacter(id,name);
+		int chara = register.registerUser(name,hashdpass);
+		int id = register.registercharacter(name);
 
 		Status status = new Status(name, id, pass);
-		
+
 		// セッションにStatusオブジェクトを保存
 		HttpSession session = request.getSession();
 		session.setAttribute("status", status);
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/Register.jsp");
 		dispatcher.forward(request, response);
 

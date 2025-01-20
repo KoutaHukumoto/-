@@ -61,23 +61,6 @@ h1 {
 	/* テキストを右揃え */
 }
 
-button {
-	display: block;
-	text-align: center;
-	border: 2px solid white;
-	padding: 10px;
-	margin-bottom: 10px;
-	font-size: 1.5em;
-	color: white;
-	background-color: transparent;
-	width: 100%;
-	/* aタグの幅に合わせる */
-	cursor: pointer;
-	/* 手のマークが出るように */
-	text-decoration: none;
-	/* テキスト装飾を無くす */
-}
-
 button:hover {
 	background-color: grey;
 	/* hover時の背景色 */
@@ -85,32 +68,29 @@ button:hover {
 
 button {
 	background: none;
-	/* デフォルトのボタンの背景を消す */
 	border: none;
-	/* デフォルトのボーダーを消す */
-	padding: 0;
-	/* デフォルトのパディングを消す */
+	padding: 10px;
+	font-size: 1.5em;
+	color: white;
+	width: 100%;
+	cursor: pointer;
+}
+
+.login_btn,
+.new_btn {
+	position: absolute;
+	bottom: 0;
+	border: 2px solid white;
+	width: 30%;
+	margin-bottom: 10px;
 }
 
 .login_btn {
-	position: absolute;
-	/* 絶対位置指定 */
-	bottom: 0;
 	left: 0;
-	margin-top: 20px;
-	padding: 10px;
-	border: 2px solid white;
-	width: 30%;
+	margin-left: 10px;
 }
 
 .new_btn {
-	position: absolute;
-	/* 絶対位置指定 */
-	bottom: 0;
 	right: 0;
-
-	margin-top: 20px;
-	padding: 10px;
-	border: 2px solid white;
-	width: 30%;
+	margin-right: 10px;
 }

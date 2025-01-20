@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import dao.ItemDao;
 import dao.UserDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -13,10 +14,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Status;
+import model.item;
 import model.loginLogic;
 
-
-@WebServlet("/loginServlet") 
+@WebServlet("/loginServlet")
 public class loginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -51,22 +52,24 @@ public class loginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String pass = request.getParameter("pass");
-		int id = Integer.parseInt(request.getParameter("id"));
-		
-	
-		
+		String name = request.getParameter("name");
+
 		String hashdpass = DigestUtils.sha256Hex(pass);
 
 		// loginLogicクラスでログイン処理を実行
 		loginLogic loginLogic = new loginLogic();
-		boolean isLogin = loginLogic.execute(id,hashdpass);
+		boolean isLogin = loginLogic.execute(name, hashdpass);
+
 
 		// ログイン結果によるリダイレクト
 		if (isLogin) {
 			// ログイン成功時のリダイレクト先
 			UserDao userdao = new UserDao();
-			Status status = userdao.find(id);
+			Status status = userdao.find(name);
 			request.setAttribute("status", status);
+			ItemDao itemdao = new ItemDao();
+			item item = itemdao.getitem(status.getItemid());
+			request.setAttribute("item", item);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/mypage.jsp");
 			dispatcher.forward(request, response);
 		} else {
