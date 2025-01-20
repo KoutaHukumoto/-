@@ -59,9 +59,6 @@ item item = (item) request.getAttribute("item");
 	</div>
 
 
-	<div class="back">
-		<a href="./dojyo.html">もどる</a>
-	</div>
 
 	<div class="confirmation">
 		<input type="hidden" name="name" value="<%=status.getName()%>">
