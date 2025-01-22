@@ -6,25 +6,32 @@ document.addEventListener('DOMContentLoaded', function() {
 		document.querySelector('.battle-controls').style.display = 'none';
 	});
 
-	// にげるボタンのイベントリスナー
-	document.querySelectorAll('.battle-option')[3].addEventListener('click', function() {
-		
-		//formを作成
-		var form = document.createElement('form');
-		form.method = 'POST';
-		form.action = '/Dosukoi-Analytics/backServlet';
+// にげるボタンのイベントリスナー
+document.querySelectorAll('.battle-option')[3].addEventListener('click', function() {
+    // formを作成
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = '/Dosukoi-Analytics/backServlet';
 
-		//作成したformにデータを挿入
-		var input = document.createElement('input');
-		input.type = 'hidden';
-		input.name = 'name';
-		input.value = statusData.name;
-		form.appendChild(input);
+    // nameデータを追加
+    var nameInput = document.createElement('input');
+    nameInput.type = 'hidden';
+    nameInput.name = 'name';
+    nameInput.value = statusData.name;
+    form.appendChild(nameInput);
 
-		//formを送信
-		document.body.appendChild(form);
-		form.submit();
-	});
+    // resultデータを追加
+    var resultInput = document.createElement('input');
+    resultInput.type = 'hidden';
+    resultInput.name = 'result';
+    resultInput.value = 0; 
+    form.appendChild(resultInput);
+
+    // formを送信
+    document.body.appendChild(form);
+    form.submit();
+});
+
 
 	// 攻撃ボタンのイベントリスナー
 	document.querySelectorAll('.battle-option')[0].addEventListener('click', function() {

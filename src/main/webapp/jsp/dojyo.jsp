@@ -3,7 +3,6 @@
 
 <%@ page import="model.character"%>
 <%@ page import="java.util.List"%>
-<!-- List をインポート -->
 <%@ page import="model.Status"%>
 <%@ page import="model.item"%>
 <%Status status = (Status) request.getAttribute("status");
@@ -108,13 +107,9 @@
 			</div>
 		</form>
 		<div class="mypage">
-			<form action="/Dosukoi-Analytics/backServlet" method="POST">
-				<input type="hidden" name="name" value="<%=status.getName()%>">
-				<input type="hidden" name="id" value="<%=status.getId()%>">
-				<input type="hidden" name="hp" value="<%=status.getHp()%>">
-				<input type="hidden" name="attack" value="<%=status.getAttack()%>">
-				<input type="hidden" name="defense" value="<%=status.getDefense()%>">
-				<input type="hidden" name="speed" value="<%=status.getSpeed()%>">
+                <form action="/Dosukoi-Analytics/backServlet" method="POST">
+				<input type="hidden" name="name" value="<%=status.getName()%>"> 
+				<input type="hidden" name="result" value=0>
 				<button type="submit">もどる</button>
 			</form>
 		</div>
