@@ -13,18 +13,47 @@ public class answerlist implements Serializable {
     private List<List<String>> categoryDifficultyList;
 
     // コンストラクタ
+    // コンストラクタ
     public answerlist() {
         this.categoryDifficultyList = new ArrayList<>(5); // 容器のサイズを5に設定
         for (int i = 0; i < 5; i++) {
             this.categoryDifficultyList.add(new ArrayList<>(2)); // 各要素を初期化
         }
         // 初期データを設定
-        this.setCategoryDifficultyAt(0, "国語", "");
-        this.setCategoryDifficultyAt(1, "数学", "");
-        this.setCategoryDifficultyAt(2, "英語", "");
-        this.setCategoryDifficultyAt(3, "理科", "");
-        this.setCategoryDifficultyAt(4, "社会", "");
+        this.setCategoryDifficultyAt1("国語", "初級");
+        this.setCategoryDifficultyAt1("数学", "初級");
+        this.setCategoryDifficultyAt1("英語", "初級");
+        this.setCategoryDifficultyAt1("理科", "初級");
+        this.setCategoryDifficultyAt1("社会", "初級");
     }
+
+    // インデックスを自動で管理するフィールド
+    private int currentIndex = 0;
+
+    // 特定の位置にデータをセット（インデックス自動管理版）
+    public void setCategoryDifficultyAt1(String category, String difficulty) {
+        if (currentIndex < categoryDifficultyList.size()) {
+            List<String> row = categoryDifficultyList.get(currentIndex);
+            row.clear();
+            row.add(category);
+            row.add(difficulty);
+            currentIndex++;
+        } else {
+            throw new IndexOutOfBoundsException("設定可能な項目数を超えました");
+        }
+    }
+
+    // toStringメソッドをオーバーライド
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < categoryDifficultyList.size(); i++) {
+            List<String> row = categoryDifficultyList.get(i);
+            sb.append("[").append(i).append("]: ").append(row).append("\n");
+        }
+        return sb.toString();
+    }
+
 
     // characterId のゲッターとセッター
     public int getCharacterId() {
@@ -77,4 +106,9 @@ public class answerlist implements Serializable {
     public List<String> getCategoryDifficultyAt(int index) {
         return this.categoryDifficultyList.get(index);
     }
+
+	public void setSpecificCategoryDifficulty(int i, String string) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
 }
