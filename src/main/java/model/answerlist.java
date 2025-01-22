@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class answerlist implements Serializable {
@@ -13,47 +14,47 @@ public class answerlist implements Serializable {
     private List<List<String>> categoryDifficultyList;
 
     // コンストラクタ
-    // コンストラクタ
     public answerlist() {
-        this.categoryDifficultyList = new ArrayList<>(5); // 容器のサイズを5に設定
-        for (int i = 0; i < 5; i++) {
-            this.categoryDifficultyList.add(new ArrayList<>(2)); // 各要素を初期化
-        }
-        // 初期データを設定
-        this.setCategoryDifficultyAt1("国語", "初級");
-        this.setCategoryDifficultyAt1("数学", "初級");
-        this.setCategoryDifficultyAt1("英語", "初級");
-        this.setCategoryDifficultyAt1("理科", "初級");
-        this.setCategoryDifficultyAt1("社会", "初級");
+        this.categoryDifficultyList = new ArrayList<>(
+                Arrays.asList(
+                    Arrays.asList("国語", "初級"),
+                    Arrays.asList("数学", "初級"),
+                    Arrays.asList("英語", "初級"),
+                    Arrays.asList("理科", "初級"),
+                    Arrays.asList("社会", "初級")
+                )
+            );
     }
 
-    // インデックスを自動で管理するフィールド
-    private int currentIndex = 0;
-
-    // 特定の位置にデータをセット（インデックス自動管理版）
-    public void setCategoryDifficultyAt1(String category, String difficulty) {
-        if (currentIndex < categoryDifficultyList.size()) {
-            List<String> row = categoryDifficultyList.get(currentIndex);
-            row.clear();
-            row.add(category);
-            row.add(difficulty);
-            currentIndex++;
-        } else {
-            throw new IndexOutOfBoundsException("設定可能な項目数を超えました");
-        }
+    // Getter
+    public List<List<String>> getcategoryDifficultyList() {
+        return categoryDifficultyList;
     }
 
-    // toStringメソッドをオーバーライド
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < categoryDifficultyList.size(); i++) {
-            List<String> row = categoryDifficultyList.get(i);
-            sb.append("[").append(i).append("]: ").append(row).append("\n");
-        }
-        return sb.toString();
+    // Setter
+    public void setItems(List<List<String>> categoryDifficultyList) {
+        this.categoryDifficultyList = categoryDifficultyList;
     }
 
+    // 科目のレベルを更新
+    public void updateLevel(String category, String difficulty) {
+        for (List<String> item : this.categoryDifficultyList) {
+            if (item.get(0).equals(category)) {
+                item.set(1, difficulty);
+                break;
+            }
+        }
+    }
+    
+    // 特定の科目の難易度を返す
+    public String getDifficultyBySubject(String subject) {
+        for (List<String> list : categoryDifficultyList) {
+            if (list.get(0).equals(category)) {
+                return list.get(1);
+            }
+        }
+        return null; // 見つからなかった場合はnullを返す
+    }
 
     // characterId のゲッターとセッター
     public int getCharacterId() {
@@ -82,33 +83,5 @@ public class answerlist implements Serializable {
         this.difficulty = difficulty;
     }
 
-    // categoryDifficultyList のゲッターとセッター
-    public List<List<String>> getCategoryDifficultyList() {
-        return categoryDifficultyList;
-    }
 
-    public void setCategoryDifficultyList(List<List<String>> categoryDifficultyList) {
-        if (categoryDifficultyList.size() != 5) {
-            throw new IllegalArgumentException("The list must contain exactly 5 elements.");
-        }
-        this.categoryDifficultyList = categoryDifficultyList;
-    }
-
-    // カテゴリと難易度を設定
-    public void setCategoryDifficultyAt(int index, String category, String difficulty) {
-        List<String> pair = new ArrayList<>(2);
-        pair.add(category);
-        pair.add(difficulty);
-        this.categoryDifficultyList.set(index, pair);
-    }
-
-    // カテゴリと難易度を取得
-    public List<String> getCategoryDifficultyAt(int index) {
-        return this.categoryDifficultyList.get(index);
-    }
-
-	public void setSpecificCategoryDifficulty(int i, String string) {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
 }

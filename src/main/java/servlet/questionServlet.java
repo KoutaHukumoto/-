@@ -45,27 +45,17 @@ public class questionServlet extends HttpServlet {
 	    item item = itemdao.getitem(status.getItemid());
 	    request.setAttribute("item", item);
 
+	    // answerlist のインスタンスを生成
+	    answerlist answers = new answerlist();
+	    
+	    categoryDao difficulty = new categoryDao();
 	    RankingDao rankingDao = new RankingDao();
 	    List<character> questionlist = new ArrayList<>();
 
-	    List<answerlist> answerlistList = new ArrayList<>();
+	    List<List<String>> answerlist = answers.getcategoryDifficultyList();
+	    
+	    	System.out.println(answerlist);
 
-	    // answerlist のインスタンスを生成
-	    answerlist answers = new answerlist();
-
-	    // 内容を標準出力
-	    System.out.println(answers);
-	    
-	    System.out.println(answers.getCategoryDifficultyList().get(0).get(0));
-	    
-	    categoryDao difficulty = new categoryDao();
-	    
-	    for( int i = 0; i <5; i++ ) {
-	     String categorydifficulty = difficulty.getcategory(status.getId(), 
-	    		 answers.getCategoryDifficultyList().get(i).get(0));
-	     
-	     answers.setSpecificCategoryDifficulty(i, "categorydifficulty");
-	    }
 	    
 		try {
 			questionlist = rankingDao.getAllData(); // 質問データを取得
