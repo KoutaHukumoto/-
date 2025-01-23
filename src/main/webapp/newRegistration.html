@@ -38,7 +38,9 @@
 		<button onclick="location.href='toppage.html'">戻る</button>
 	</div>
 
+
 	<script>
+	
 		function check() {
 			const name = document.querySelector('input[name="name"]').value;
 			const pass1 = document.querySelector('input[name="pass"]').value;
@@ -48,7 +50,7 @@
 			const nameRegex = /^[a-zA-Z0-9ぁ-んァ-ヶ一-龥々ー]+$/; // 名前に使用可能な文字を制限
 
 			// 名前の長さを確認（5～8文字）
-			if (name.length < 5 || name.length > 8) {
+			if (name.length < 5 && name.length > 8) {
 				errorMessage.textContent = "名前は5文字以上8文字以下にしてください。";
 				return false;
 			}
@@ -65,6 +67,7 @@
 				return false;
 			}
 
+			
 			// パスワードが英数字のみかどうかを確認
 			if (!regex.test(pass1)) {
 				errorMessage.textContent = "パスワードは英数字のみ使用できます。";
@@ -76,7 +79,7 @@
 				errorMessage.textContent = "パスワードが一致しません。";
 				return false;
 			}
-
+			
 			// エラーメッセージをリセット
 			errorMessage.textContent = "";
 			return true;
