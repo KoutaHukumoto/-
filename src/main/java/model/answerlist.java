@@ -2,79 +2,92 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class answerlist implements Serializable {
-    private int characterId;
-    private String category;
-    private String difficulty;
+	private int characterId;
+	private String category;
+	private String difficulty;
 
-    // 固定サイズの二次元リストのフィールドを追加
-    private List<List<String>> categoryDifficultyList;
+	// 固定サイズの二次元リストのフィールドを追加
+	private List<List<String>> categoryDifficultyList;
 
-    // コンストラクタ
-    public answerlist() {
-        this.categoryDifficultyList = new ArrayList<>(5); // 容器のサイズを5に設定
-        for (int i = 0; i < 5; i++) {
-            this.categoryDifficultyList.add(new ArrayList<>(2)); // 各要素を初期化
-        }
-        // 初期データを設定
-        this.setCategoryDifficultyAt(0, "国語", "");
-        this.setCategoryDifficultyAt(1, "数学", "");
-        this.setCategoryDifficultyAt(2, "英語", "");
-        this.setCategoryDifficultyAt(3, "理科", "");
-        this.setCategoryDifficultyAt(4, "社会", "");
-    }
+	// コンストラクタ
+	public answerlist() {
+		this.categoryDifficultyList = new ArrayList<>(
+				Arrays.asList(
+						Arrays.asList("国語", "初級"),
+						Arrays.asList("数学", "初級"),
+						Arrays.asList("英語", "初級"),
+						Arrays.asList("理科", "初級"),
+						Arrays.asList("社会", "初級")));
+	}
 
-    // characterId のゲッターとセッター
-    public int getCharacterId() {
-        return characterId;
-    }
+	// Getter
+	public List<List<String>> getcategoryDifficultyList() {
+		return categoryDifficultyList;
+	}
 
-    public void setCharacterId(int characterId) {
-        this.characterId = characterId;
-    }
+	// Setter
+	public void setItems(List<List<String>> categoryDifficultyList) {
+		this.categoryDifficultyList = categoryDifficultyList;
+	}
 
-    // category のゲッターとセッター
-    public String getCategory() {
-        return category;
-    }
+	// 科目のレベルを更新
+	public void updateLevel(String category, String difficulty) {
+		for (List<String> item : this.categoryDifficultyList) {
+			if (item.get(0).equals(category)) {
+				item.set(1, difficulty);
+				break;
+			}
+		}
+	}
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+	// 特定の科目の難易度を返す
+	public String getDifficultyBySubject(String subject) {
+		for (List<String> list : categoryDifficultyList) {
+			if (list.get(0).equals(subject)) {
+				return list.get((1));
+			}
+		}
+		return null; // 見つからなかった場合はnullを返す
+	}
 
-    // difficulty のゲッターとセッター
-    public String getDifficulty() {
-        return difficulty;
-    }
+	public List<String> getcategorylist() {
+	    List<String> categories = new ArrayList<>();
+	    for (List<String> item : categoryDifficultyList) {
+	        // 各行の最初の要素（科目）を取得してリストに追加
+	        categories.add(item.get(0));
+	    }
+	    return categories;
+	}
 
-    public void setDifficulty(String difficulty) {
-        this.difficulty = difficulty;
-    }
+	// characterId のゲッターとセッター
+	public int getCharacterId() {
+		return characterId;
+	}
 
-    // categoryDifficultyList のゲッターとセッター
-    public List<List<String>> getCategoryDifficultyList() {
-        return categoryDifficultyList;
-    }
+	public void setCharacterId(int characterId) {
+		this.characterId = characterId;
+	}
 
-    public void setCategoryDifficultyList(List<List<String>> categoryDifficultyList) {
-        if (categoryDifficultyList.size() != 5) {
-            throw new IllegalArgumentException("The list must contain exactly 5 elements.");
-        }
-        this.categoryDifficultyList = categoryDifficultyList;
-    }
+	// category のゲッターとセッター
+	public String getCategory() {
+		return category;
+	}
 
-    // カテゴリと難易度を設定
-    public void setCategoryDifficultyAt(int index, String category, String difficulty) {
-        List<String> pair = new ArrayList<>(2);
-        pair.add(category);
-        pair.add(difficulty);
-        this.categoryDifficultyList.set(index, pair);
-    }
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
-    // カテゴリと難易度を取得
-    public List<String> getCategoryDifficultyAt(int index) {
-        return this.categoryDifficultyList.get(index);
-    }
+	// difficulty のゲッターとセッター
+	public String getDifficulty() {
+		return difficulty;
+	}
+
+	public void setDifficulty(String difficulty) {
+		this.difficulty = difficulty;
+	}
+
 }

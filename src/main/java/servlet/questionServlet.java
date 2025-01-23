@@ -8,6 +8,7 @@ import java.util.List;
 import dao.ItemDao;
 import dao.RankingDao;
 import dao.UserDao;
+import dao.categoryDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -44,28 +45,32 @@ public class questionServlet extends HttpServlet {
 		item item = itemdao.getitem(status.getItemid());
 		request.setAttribute("item", item);
 
+		// answerlist のインスタンスを生成
+		answerlist answers = new answerlist();
+
+		categoryDao difficulty = new categoryDao();
 		RankingDao rankingDao = new RankingDao();
 		List<character> questionlist = new ArrayList<>();
 
-		List<answerlist> answerlist = new ArrayList<>();
+		List<List<String>> answerlist = answers.getcategoryDifficultyList();
 
-		answerlist answers = new answerlist();
-		answerlist.addAll(answerlist);
 		
-        for (answerlist answer : answerlist) {
-            System.out.println("Character ID: " + answers.getCharacterId());
-            for (int i = 0; i < 5; i++) {
-                List<String> pair = answer.getCategoryDifficultyAt(i);
-                System.out.println(pair.get(0) + ": " + pair.get(1));
-            }
-        }
-		
+
+		List<String> categorylist = answers.getcategorylist();
+		for (int i = 0; i < 5; i++) {
+			String category = difficulty.getcategory(status.getId(), categorylist.get(i));
+			if (category != null) {
+				answers.setCategory(categorylist.get(i));
+			}
+		}
 		try {
 			questionlist = rankingDao.getAllData(); // 質問データを取得
 		} catch (SQLException e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "データの取得に失敗しました。");
 		}
+		
+		request.setAttribute("answers", answers);
 
 		request.setAttribute("status", status);
 

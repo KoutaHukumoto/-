@@ -26,8 +26,8 @@ item item = (item) request.getAttribute("item");
 		<div class="avatar-section">
 			<img id="avatar" src="画像/avater.jpg" alt="avatar">
 			<p><%=status.getName()%></p>
-			<p>
-				ID :<%=status.getId()%></p>
+
+			<p>ID :<%=status.getId()%></p>
 		</div>
 
 		<div class="status">
