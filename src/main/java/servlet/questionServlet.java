@@ -36,33 +36,41 @@ public class questionServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		// フォームからのデータを取得
-	    String name = request.getParameter("name");
+		String name = request.getParameter("name");
 
-	    UserDao userdao = new UserDao();
-	    Status status = userdao.findname(name);
+		UserDao userdao = new UserDao();
+		Status status = userdao.findname(name);
 
-	    ItemDao itemdao = new ItemDao();
-	    item item = itemdao.getitem(status.getItemid());
-	    request.setAttribute("item", item);
+		ItemDao itemdao = new ItemDao();
+		item item = itemdao.getitem(status.getItemid());
+		request.setAttribute("item", item);
 
-	    // answerlist のインスタンスを生成
-	    answerlist answers = new answerlist();
-	    
-	    categoryDao difficulty = new categoryDao();
-	    RankingDao rankingDao = new RankingDao();
-	    List<character> questionlist = new ArrayList<>();
+		// answerlist のインスタンスを生成
+		answerlist answers = new answerlist();
 
-	    List<List<String>> answerlist = answers.getcategoryDifficultyList();
-	    
-	    	System.out.println(answerlist);
+		categoryDao difficulty = new categoryDao();
+		RankingDao rankingDao = new RankingDao();
+		List<character> questionlist = new ArrayList<>();
 
-	    
+		List<List<String>> answerlist = answers.getcategoryDifficultyList();
+
+		
+
+		List<String> categorylist = answers.getcategorylist();
+		for (int i = 0; i < 5; i++) {
+			String category = difficulty.getcategory(status.getId(), categorylist.get(i));
+			if (category != null) {
+				answers.setCategory(categorylist.get(i));
+			}
+		}
 		try {
 			questionlist = rankingDao.getAllData(); // 質問データを取得
 		} catch (SQLException e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "データの取得に失敗しました。");
 		}
+		
+		request.setAttribute("answers", answers);
 
 		request.setAttribute("status", status);
 
