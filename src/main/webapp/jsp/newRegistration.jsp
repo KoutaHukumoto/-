@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ page import="java.util.List"%>
+<%@ page import="model.character"%>
+<%
+List<character> list = (List<character>) session.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
 <title>新規登録</title>
@@ -33,12 +37,15 @@
 			<button type="submit">新規登録</button>
 		</div>
 	</form>
-
+	<%
+	System.out.println(list.get(0));
+	%>
 	<br>
 
 	<div class="backbutton">
 		<button onclick="location.href='toppage.html'">戻る</button>
 	</div>
+
 
 	<script>
 		function check() {
@@ -50,7 +57,7 @@
 			const nameRegex = /^[a-zA-Z0-9ぁ-んァ-ヶ一-龥々ー]+$/; // 名前に使用可能な文字を制限
 
 			// 名前の長さを確認（5～8文字）
-			if (name.length < 5 || name.length > 8) {
+			if (name.length < 5 && name.length > 8) {
 				errorMessage.textContent = "名前は5文字以上8文字以下にしてください。";
 				return false;
 			}
@@ -67,6 +74,12 @@
 				return false;
 			}
 
+			for(List<character> charalist : list){
+				if(list.get(0).equals(name)){
+					errorMessage.textContent = "同名が存在します。";
+					}
+				}
+			
 			// パスワードが英数字のみかどうかを確認
 			if (!regex.test(pass1)) {
 				errorMessage.textContent = "パスワードは英数字のみ使用できます。";
