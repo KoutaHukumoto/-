@@ -327,7 +327,7 @@ function specialAttack() {
 					battleLog.appendChild(winLog);
 					displayTextOneByOne(winLog, 'スライムは倒れた！！！', function() {
 						npcHPElement.setAttribute('value', npcHP);
-						displayBattleResult('勝利！！');
+						displayBattleResult('勝利！！', true);
 					});
 					return;
 				}

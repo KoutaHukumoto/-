@@ -15,23 +15,6 @@
 <title>マイページ</title>
 <link rel="stylesheet" href="css/mypage.css">
 </head>
-<script>
-    function changeAvatar() {
-        const avatar = document.getElementById("avatar");
-        const leftButton = document.getElementById("leftButton");
-        const rightButton = document.getElementById("rightButton");
-
-        if (avatar.src.includes("avater.jpg")) {
-            avatar.src = "画像/avater2.jpg";
-            leftButton.style.display = "inline-block";
-            rightButton.style.display = "none";
-        } else {
-            avatar.src = "画像/avater.jpg";
-            leftButton.style.display = "none";
-            rightButton.style.display = "inline-block";
-        }
-    }
-</script>
 
 <body>
 	<div class="container">
@@ -40,9 +23,9 @@
 		</div>
 
 		<div class="avatar-section">
-			<button id="leftButton" class="avatar-button" onclick="changeAvatar()" style="display: none;">◀</button>
 			<img id="avatar" src="画像/avater.jpg" alt="avatar">
-			<button id="rightButton" class="avatar-button" onclick="changeAvatar()">▶</button>
+			<p><%=status.getName()%></p>
+			<p>ID :<%=status.getId()%></p>
 		</div>
 
 		<div class="status">
