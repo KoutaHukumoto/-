@@ -13,6 +13,23 @@
 		}
 	</style>
 </head>
+<script>
+	// クッキーを確認する関数
+	function checkIfFromServlet() {
+		// クッキー文字列を取得
+		const cookies = document.cookie;
+
+		// "fromServlet=true"が含まれているか確認
+		if (cookies.includes("loginServlet=false")) {
+			// サーブレット経由の場合の処理
+			alert("名前もしくはパスワードが違います。再度ログインを試してください。");
+			// クッキーを削除
+			document.cookie = "fromServlet=; max-age=0";
+		}
+	}
+	// ページ読み込み時にチェックを実行
+	window.onload = checkIfFromServlet;
+</script>
 
 <body>
 	<script src="js/security.js"></script>
@@ -50,7 +67,7 @@
 			<button type="submit" class="btn btn-primary">ログイン</button>
 		</div>
 	</form>
-	
+
 	<form action="/Dosukoi-Analytics/searchnameServlet" method="post">
 		<div class="new_btn">
 			<button type="submit">新規登録</button>
