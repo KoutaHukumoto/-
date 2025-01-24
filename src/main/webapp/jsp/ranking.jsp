@@ -101,16 +101,10 @@ Status status = (Status) request.getAttribute("status");
 	</div>
 	<div class="back_btn">
  
-		<form action="/Dosukoi-Analytics/backServlet" method="POST">
-			<input type="hidden" name="name" value="<%=status.getName()%>">
-			<input type="hidden" name="id" value="<%=status.getId()%>"> <input
-				type="hidden" name="hp" value="<%=status.getHp()%>"> <input
-				type="hidden" name="attack" value="<%=status.getAttack()%>">
-			<input type="hidden" name="defense" value="<%=status.getDefense()%>">
-			<input type="hidden" name="speed" value="<%=status.getSpeed()%>">
-			<input type="hidden" name="itemid" value=1> <input
-				type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
-			<button type="submit">もどる</button>
+                <form action="/Dosukoi-Analytics/backServlet" method="POST">
+				<input type="hidden" name="name" value="<%=status.getName()%>"> 
+				<input type="hidden" name="result" value=0>
+				<button type="submit">もどる</button>
 		</form>
 	</div>
  

@@ -18,7 +18,7 @@ List<character> list = (List<character>) session.getAttribute("list");
 
 <body>
 
-	<div class="point">名前・パスワードのルール<br>・名前とパスワードは5文字以上8文字以下<br>・英数字であること<br>・名前とパスワードに特殊記号は使用できません</div>
+	<div class="point">名前・パスワードのルール<br>・名前は3文字以上10文字以下<br>・パスワードは5文字以上<br>・パスワードは英数字であること<br>・名前とパスワードに特殊記号は使用できません</div>
 	<script src="js/security.js"></script>
 
 	<form action="/Dosukoi-Analytics/RegisterServlet" method="POST" onsubmit="return check()">
@@ -58,8 +58,8 @@ List<character> list = (List<character>) session.getAttribute("list");
 			const nameRegex = /^[a-zA-Z0-9ぁ-んァ-ヶ一-龥々ー]+$/; // 名前に使用可能な文字を制限
 
 			// 名前の長さを確認（5～8文字）
-			if (name.length < 5 || name.length > 8) {
-				errorMessage.textContent = "名前は5文字以上8文字以下にしてください。";
+			if (name.length < 3 || name.length > 10) {
+				errorMessage.textContent = "名前は3文字以上10文字以下にしてください。";
 				return false;
 			}
 
@@ -76,9 +76,9 @@ List<character> list = (List<character>) session.getAttribute("list");
             }
         <%}%>
 			
-			// パスワードの長さを確認（5～8文字）
-			if (pass1.length < 5 || pass1.length > 8) {
-				errorMessage.textContent = "パスワードは5文字以上8文字以下にしてください。";
+			// パスワードの長さを確認（5文字～）
+			if (pass1.length < 5) {
+				errorMessage.textContent = "パスワードは5文字以上にしてください。";
 				return false;
 			}
 
