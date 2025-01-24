@@ -47,10 +47,7 @@ List<character> list = (List<character>) session.getAttribute("list");
 	</div>
 
 
-
 	<script>
-
-	const list = <%= session.getAttribute("list") %>;
 	
 		function check() {
 			const name = document.querySelector('input[name="name"]').value;
@@ -62,7 +59,7 @@ List<character> list = (List<character>) session.getAttribute("list");
 
 			// 名前の長さを確認（5～8文字）
 			if (name.length < 5 || name.length > 8) {
-				errorMessage.textContent = list;
+				errorMessage.textContent = "名前は5文字以上8文字以下にしてください。";
 				return false;
 			}
 
@@ -72,6 +69,13 @@ List<character> list = (List<character>) session.getAttribute("list");
 				return false;
 			}
 
+            <%for (int i = 0; i < list.size(); i++) {%>
+            if (name === "<%=list.get(i)%>") {
+                errorMessage.textContent = "同名が存在しています。";
+                return false;
+            }
+        <%}%>
+			
 			// パスワードの長さを確認（5～8文字）
 			if (pass1.length < 5 || pass1.length > 8) {
 				errorMessage.textContent = "パスワードは5文字以上8文字以下にしてください。";

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -50,7 +52,7 @@
 			const nameRegex = /^[a-zA-Z0-9ぁ-んァ-ヶ一-龥々ー]+$/; // 名前に使用可能な文字を制限
 
 			// 名前の長さを確認（5～8文字）
-			if (name.length < 5 && name.length > 8) {
+			if (name.length < 5 || name.length > 8) {
 				errorMessage.textContent = "名前は5文字以上8文字以下にしてください。";
 				return false;
 			}

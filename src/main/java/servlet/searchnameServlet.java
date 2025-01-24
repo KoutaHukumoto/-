@@ -34,12 +34,7 @@ public class searchnameServlet extends HttpServlet {
         // 名前で検索した結果を取得
         List<character> list = register.searchName();
 
-        // リストが空かどうかの確認（デバッグ用）
-        if (!list.isEmpty()) {
-            System.out.println("First result: " + list.get(0));
-        } else {
-            System.out.println("No results found.");
-        }
+
 
         // セッションスコープにデータを格納
         HttpSession session = request.getSession();
