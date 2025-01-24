@@ -42,14 +42,14 @@ body {
 	font-size: 1.1em;
 }
 
-.subject {
+#subject {
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
 	flex-wrap: wrap;
 }
 
-.subject label {
+#subject label {
 	width: 40%;
 	text-align: center;
 	line-height: 50px;
@@ -60,7 +60,7 @@ body {
 	cursor: pointer;
 }
 
-.subject label:hover {
+#subject label:hover {
 	background-color: grey;
 }
 

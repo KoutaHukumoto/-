@@ -54,8 +54,6 @@ public class questionServlet extends HttpServlet {
 
 		List<List<String>> answerlist = answers.getcategoryDifficultyList();
 
-		
-
 		List<String> categorylist = answers.getcategorylist();
 		
 		
@@ -72,7 +70,7 @@ public class questionServlet extends HttpServlet {
 			request.setAttribute("errorMessage", "データの取得に失敗しました。");
 		}
 		
-		System.out.println(answers.getcategoryDifficultyList());
+		System.out.println(answers.getcategorylist());
 		
 		request.setAttribute("answers", answers);
 
@@ -84,7 +82,7 @@ public class questionServlet extends HttpServlet {
 
 		// リクエスト属性に設定
 		request.setAttribute("questionlist", questionlist);
-
+		
 		// フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/dojyo.jsp");
 		dispatcher.forward(request, response);

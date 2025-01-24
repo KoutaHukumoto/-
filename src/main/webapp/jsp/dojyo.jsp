@@ -7,6 +7,7 @@
 <%@ page import="model.item"%>
 <%Status status = (Status) request.getAttribute("status");
   item item = (item) request.getAttribute("item");
+  answerlist answers = (answerlist) request.getAttribute("answers");
 %>
 
 <head>
@@ -17,12 +18,20 @@
 	function setSubject(subject) {
 		// hidden要素に科目を設定
 		document.getElementById("s_id").value = subject;
+
+		<%for (int i = 0; i < 5; i++) {%>
+		if(answers.getcategorylist() === subject){
+				
+				}
+		 document.querySelector('button[name="link2"]').disabled = false;
+		 <%}%>
 	}
 
 	function setDifficulty(difficulty) {
 		// hidden要素に難易度を設定
 		document.getElementById("d_id").value = difficulty;
 	}
+
 </script>
 </head>
 
@@ -77,7 +86,7 @@
 			<input type="hidden" name="s_id" id="s_id" value=""> <input
 				type="hidden" name="d_id" id="d_id" value="">
 
-			<div class="subject">
+			<div id="subject">
 				<!-- ボタンをクリックで科目を設定 -->
 				<label for="popup" onclick="setSubject('国語')">国語</label>
 				<div class="ex">攻撃UP！</div>
@@ -99,9 +108,9 @@
 					</label>
 					<div id="msg">
 						<!-- ボタンをクリックで難易度を設定 -->
-						<button id="link1" type="submit" onclick="setDifficulty('初級')">初級</button>
-						<button id="link2" type="submit" onclick="setDifficulty('中級')">中級</button>
-						<button id="link3" type="submit" onclick="setDifficulty('上級')">上級</button>
+						<button id="link1" name="link1" type="submit" onclick="setDifficulty('初級')">初級</button>
+						<button id="link2" name="link2" disabled="true" type="submit" onclick="setDifficulty('中級')">中級</button>
+						<button id="link3" name="link3" disabled="true" type="submit" onclick="setDifficulty('上級')">上級</button>
 					</div>
 				</div>
 			</div>

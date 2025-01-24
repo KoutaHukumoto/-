@@ -53,7 +53,11 @@ public class answerlist implements Serializable {
 		}
 		return null; // 見つからなかった場合はnullを返す
 	}
+	
 
+	
+	
+	// すべての科目を呼び出す
 	public List<String> getcategorylist() {
 	    List<String> categories = new ArrayList<>();
 	    for (List<String> item : categoryDifficultyList) {
@@ -63,6 +67,8 @@ public class answerlist implements Serializable {
 	    return categories;
 	}
 	
+	
+	// すべての難易度を返す
 	public List<String> getDifficultylist() {
 	    List<String> categories = new ArrayList<>();
 	    for (List<String> item : categoryDifficultyList) {
