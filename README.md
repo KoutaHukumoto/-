@@ -24,3 +24,24 @@ https://liginc.co.jp/246190
 function(関数)についての説明
 
 https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Functions
+
+
+<script>
+	// クッキーを確認する関数
+	function checkIfFromServlet() {
+		// クッキー文字列を取得
+		const cookies = document.cookie;
+
+		// "fromServlet=true"が含まれているか確認
+		if (cookies.includes("loginServlet=true")) {
+
+			errorMessage.style.display = 'block'; // メッセージを表示
+			return false; // フォームの送信を防ぐ
+			// クッキーを削除
+			document.cookie = "fromServlet=; max-age=0";
+		}
+	}
+
+	// ページ読み込み時にチェックを実行
+	window.onload = checkIfFromServlet;
+</script>
