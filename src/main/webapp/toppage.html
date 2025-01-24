@@ -8,11 +8,29 @@
 	<meta name="csrf-token" content="your-csrf-token-here">
 	<style>
 		.error {
-			display: none;
 			color: red;
 		}
 	</style>
 </head>
+
+<script>
+	// クッキーを確認する関数
+	// クッキーを確認する関数
+	function checkIfFromServlet() {
+		// クッキー文字列を取得
+		const cookies = document.cookie;
+
+		// "fromServlet=true"が含まれているか確認
+		if (cookies.includes("loginServlet=true")) {
+                // サーブレット経由の場合の処理
+                alert("パスワードが違います。再度ログインを試してください。");
+			// クッキーを削除
+			document.cookie = "fromServlet=; max-age=0";
+		}
+	}
+	// ページ読み込み時にチェックを実行
+	window.onload = checkIfFromServlet;
+</script>
 
 <body>
 	<script src="js/security.js"></script>

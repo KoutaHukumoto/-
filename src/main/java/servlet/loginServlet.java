@@ -9,6 +9,7 @@ import dao.UserDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -74,7 +75,9 @@ public class loginServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		} else {
 			// ログイン失敗時、エラーメッセージをセットしてログインページに戻す
-			request.setAttribute("errorMessage", "ログインに失敗しました。IDまたはパスワードが間違っています。");
+	        Cookie cookie = new Cookie("loginServlet", "true"); // クッキーに「サーブレット経由」の情報を記録
+	        cookie.setMaxAge(60); // クッキーの有効期限（秒）
+	        response.addCookie(cookie);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("toppage.html");
 			dispatcher.forward(request, response);
 		}

@@ -60,9 +60,11 @@ public class questionServlet extends HttpServlet {
 		for (int i = 0; i < 5; i++) {
 			String category = difficulty.getcategory(status.getId(), categorylist.get(i));
 			if (category != null) {
-				answers.setCategory(categorylist.get(i));
+				answers.updateLevel(categorylist.get(i), category);
 			}
 		}
+		
+		System.out.println(answers.getDifficultylist());
 		try {
 			questionlist = rankingDao.getAllData(); // 質問データを取得
 		} catch (SQLException e) {
