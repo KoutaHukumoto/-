@@ -57,10 +57,12 @@ public class questionServlet extends HttpServlet {
 		
 
 		List<String> categorylist = answers.getcategorylist();
+		
+		
 		for (int i = 0; i < 5; i++) {
 			String category = difficulty.getcategory(status.getId(), categorylist.get(i));
 			if (category != null) {
-				answers.setCategory(categorylist.get(i));
+				answers.updateLevel(categorylist.get(i), category);
 			}
 		}
 		try {
@@ -69,6 +71,8 @@ public class questionServlet extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "データの取得に失敗しました。");
 		}
+		
+		System.out.println(answers.getcategoryDifficultyList());
 		
 		request.setAttribute("answers", answers);
 

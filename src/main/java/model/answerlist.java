@@ -62,6 +62,15 @@ public class answerlist implements Serializable {
 	    }
 	    return categories;
 	}
+	
+	public List<String> getDifficultylist() {
+	    List<String> categories = new ArrayList<>();
+	    for (List<String> item : categoryDifficultyList) {
+	        // 各行の最初の要素（科目）を取得してリストに追加
+	        categories.add(item.get(1));
+	    }
+	    return categories;
+	}
 
 	// characterId のゲッターとセッター
 	public int getCharacterId() {
