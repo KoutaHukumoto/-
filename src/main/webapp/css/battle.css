@@ -518,7 +518,8 @@ button:hover,
 	position: relative;
 	width: 100px;
 	height: 100px;
-	border-radius: 50%;/* 円形にする */
+	border-radius: 50%;
+	/* 円形にする */
 	background: radial-gradient(circle, #00f, #00a, #004);
 	box-shadow: 0 0 30px 15px rgba(0, 100, 255, 0.6);
 	display: none;
@@ -563,4 +564,24 @@ button:hover,
 .particle.diagonal-opposite {
 	transform: translate(-50%, -50%) rotate(-45deg);
 	/* 反対方向の斜めに配置 */
+}
+
+.flame-effect {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	background: radial-gradient(circle, rgba(255, 100, 0, 1) 0%, rgba(255, 0, 0, 0.5) 100%);
+	border-radius: 50%;
+	pointer-events: none;
+	z-index: 1000;
+}
+
+.explosion-effect {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	background: radial-gradient(circle, rgba(255, 255, 0, 1) 0%, rgba(255, 0, 0, 0) 100%);
+	border-radius: 50%;
+	pointer-events: none;
+	z-index: 1000;
 }
