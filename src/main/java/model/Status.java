@@ -11,6 +11,7 @@ public class Status {
 	private String itemEffect;
 	private String pass;
 	private int dungeonid;
+	private int avatarid;
 
 	public int getDungeonid() {
 		return dungeonid;
@@ -31,7 +32,7 @@ public class Status {
 		this.itemEffect = itemEffect;
 	}
 
-	public Status(String name, int id, int hp, int attack, int defense, int speed, int itemid, int dungeonid) {
+	public Status(String name, int id, int hp, int attack, int defense, int speed, int itemid, int dungeonid, int avatarid) {
 		this.name = name;
 		this.id = id;
 		this.hp = hp;
@@ -40,12 +41,14 @@ public class Status {
 		this.speed = speed;
 		this.itemid = itemid;
 		this.dungeonid = dungeonid;
+		this.avatarid = avatarid;
 	}
 
-	public Status(String name, int id, String pass) {
+	public Status(String name, int id, String pass, int avatarid) {
 		this.name = name;
 		this.id = id;
 		this.pass = pass;
+		this.avatarid = avatarid;
 	}
 
 	public String getName() {
@@ -118,6 +121,14 @@ public class Status {
 
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+
+	public int getAvatarid() {
+		return avatarid;
+	}
+
+	public void setAvatarid(int avatarid) {
+		this.avatarid = avatarid;
 	}
 
 }

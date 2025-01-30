@@ -68,4 +68,109 @@ public class answerDao extends BaseDao {
 		}
 		return model_answer;
 	}
+	
+	public boolean clear(int id, String category, String level) {
+	    boolean isSuccess = false; // 更新の成否を判定
+
+	    try {
+	        connect(); // データベース接続
+
+	        String sql = "INSERT INTO progress_table (characterid, category, difficulty) VALUES (?, ?, ?)";
+
+	        try (PreparedStatement ps = con.prepareStatement(sql)) {
+	            ps.setInt(1, id);
+	            ps.setString(2, category);
+	            ps.setString(3, level);
+
+	            int rowsInserted = ps.executeUpdate(); // INSERT 実行
+
+	            if (rowsInserted > 0) {
+	                isSuccess = true; // 挿入が成功した場合
+	            }
+	        }
+	    }catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+	        try {
+	            if (con != null && !con.isClosed()) {
+	                this.disConnect(); // 接続を閉じる
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return isSuccess;
+	}
+
+	
+	public boolean updateclear(int id, String category, String level) {
+	    boolean isSuccess = false; // 更新の成否を判定
+
+	    try {
+	        connect(); // DB接続
+
+	        String sql = "UPDATE progress_table SET category = ?, difficulty = ? WHERE characterid = ?";
+	        
+	        try (PreparedStatement ps = con.prepareStatement(sql)) {
+	            ps.setString(1, category);
+	            ps.setString(2, level);
+	            ps.setInt(3, id);
+
+	            int rowsUpdated = ps.executeUpdate(); // SQLを実行
+	            if (rowsUpdated > 0) {
+	                isSuccess = true; // 1行以上更新されたら成功
+	            }
+	        }
+	    }catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+	        try {
+	            if (con != null && !con.isClosed()) {
+	                this.disConnect(); // 接続を閉じる
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return isSuccess;
+	}
+
+	
+	public String searchclear(int id, String category) {
+	    String model_answer = "無";
+
+	    try {
+	    	connect();
+
+	        String sql = "SELECT difficulty FROM progress_table WHERE category = ? AND characterid = ?";
+	        try (PreparedStatement ps = con.prepareStatement(sql)) {
+	            ps.setString(1, category);
+	            ps.setInt(2, id);
+
+	            try (ResultSet rs = ps.executeQuery()) {
+	                if (rs.next()) {
+	                    model_answer = rs.getString("difficulty");
+	                    // NULLチェック
+	                    if (model_answer == null) {
+	                        model_answer = "無";
+	                    }
+	                }
+	            }
+	        }
+	    } catch (Exception e) {
+			e.printStackTrace();
+		}  finally {
+	        try {
+	                this.disConnect();
+	            
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return model_answer;
+	}
+
 }

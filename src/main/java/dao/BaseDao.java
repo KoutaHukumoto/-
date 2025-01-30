@@ -11,9 +11,9 @@ import java.sql.SQLException;
 public class BaseDao {
 
 	// 接続文字列
-	private static final String URL = "jdbc:mysql://localhost:3306/dosukoi";
+	private static final String URL = "jdbc:mysql://doskoi.c1q8kqqmqhqi.ap-northeast-1.rds.amazonaws.com:3306/dosukoi";
 	private static final String USER = "root";
-	private static final String PASSWORD = "";
+	private static final String PASSWORD = "mitsuhashi";
 	
 	// コネクション
 	protected Connection con = null;

@@ -52,11 +52,8 @@ public class questionServlet extends HttpServlet {
 		RankingDao rankingDao = new RankingDao();
 		List<character> questionlist = new ArrayList<>();
 
-		List<List<String>> answerlist = answers.getcategoryDifficultyList();
-
 		List<String> categorylist = answers.getcategorylist();
-		
-		
+
 		for (int i = 0; i < 5; i++) {
 			String category = difficulty.getcategory(status.getId(), categorylist.get(i));
 			if (category != null) {
@@ -69,9 +66,9 @@ public class questionServlet extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "データの取得に失敗しました。");
 		}
-		
+
 		System.out.println(answers.getcategorylist());
-		
+
 		request.setAttribute("answers", answers);
 
 		request.setAttribute("status", status);
@@ -82,7 +79,7 @@ public class questionServlet extends HttpServlet {
 
 		// リクエスト属性に設定
 		request.setAttribute("questionlist", questionlist);
-		
+
 		// フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/dojyo.jsp");
 		dispatcher.forward(request, response);

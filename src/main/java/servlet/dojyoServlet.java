@@ -39,10 +39,11 @@ public class dojyoServlet extends HttpServlet {
         int speed = Integer.parseInt(request.getParameter("speed"));
         int itemid = Integer.parseInt(request.getParameter("itemid"));
         int dungeonid = Integer.parseInt(request.getParameter("dungeonid"));
+        int avaterid = Integer.parseInt(request.getParameter("avaterid"));
 
 
         // Statusオブジェクトを作成
-        Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid);
+        Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid,avaterid);
 
 		// セッションにStatusオブジェクトを保存
 

@@ -49,15 +49,18 @@ public class RegisterServlet extends HttpServlet {
 		// フォームからデータを受け取る
 		String name = request.getParameter("name");
 		String pass = request.getParameter("pass");
+		int avatarIndex = Integer.parseInt(request.getParameter("avatarIndex"));
+		
+		System.out.println(avatarIndex);
 
 		String hashdpass = DigestUtils.sha256Hex(pass);
 
 		// RegisterDaoを使ってユーザーをDBに登録
 		RegisterDao register = new RegisterDao();
 		int chara = register.registerUser(name, hashdpass);
-		int id = register.registercharacter(name);
+		int id = register.registercharacter(name, avatarIndex);
 
-		Status status = new Status(name, id, pass);
+		Status status = new Status(name, id, pass, avatarIndex);
 
 		// セッションにStatusオブジェクトを保存
 		HttpSession session = request.getSession();

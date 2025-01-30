@@ -17,11 +17,11 @@ public class answerlist implements Serializable {
 	public answerlist() {
 		this.categoryDifficultyList = new ArrayList<>(
 				Arrays.asList(
-						Arrays.asList("国語", "初級"),
-						Arrays.asList("数学", "初級"),
-						Arrays.asList("英語", "初級"),
-						Arrays.asList("理科", "初級"),
-						Arrays.asList("社会", "初級")));
+						Arrays.asList("国語", " "),
+						Arrays.asList("数学", " "),
+						Arrays.asList("英語", " "),
+						Arrays.asList("理科", " "),
+						Arrays.asList("社会", " ")));
 	}
 
 	// Getter

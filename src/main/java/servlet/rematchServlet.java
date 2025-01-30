@@ -60,7 +60,7 @@ public class rematchServlet extends HttpServlet {
 		int speed = statues.getSpeed();
 		int itemid = statues.getItemid();
 		int dungeonid = statues.getDungeonid();
-
+		int avaterid = statues.getAvatarid();
 		if (result != 0) {
 			dungeonid = result + dungeonid;
 			boolean isUpdated = userdao.updateDungeon(name, dungeonid);
@@ -76,7 +76,7 @@ public class rematchServlet extends HttpServlet {
 		speed = speed + item.getEffectSpeed();
 
 		// Statusオブジェクトを作成
-		Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid);
+		Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid,avaterid);
 
 		// セッションにStatusオブジェクトを保存
 		HttpSession session = request.getSession();
@@ -93,10 +93,9 @@ public class rematchServlet extends HttpServlet {
 		//ダンジョン情報からモンスターの決定とモンスターのステータスを取得
 
 		int monsterId = dungeonInformation.getMonsterId();
-		int bossId = 0;
 
 		monsterDao monster = new monsterDao();
-		monster monsterstatus = monster.getMonster(monsterId, bossId);
+		monster monsterstatus = monster.getMonster(monsterId);
 		session.setAttribute("monsterstatus", monsterstatus);
 		// JSPにフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/dungeon.jsp");

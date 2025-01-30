@@ -39,6 +39,7 @@ public class answerServlet extends HttpServlet {
 		int speed = Integer.parseInt(request.getParameter("speed"));
 		int itemid = Integer.parseInt(request.getParameter("itemid"));
 		int dungeonid = Integer.parseInt(request.getParameter("dungeonid"));
+		int avaterid = Integer.parseInt(request.getParameter("avaterid"));
 
 		String s_id = request.getParameter("s_id");
 		String d_id = request.getParameter("d_id");
@@ -71,11 +72,26 @@ public class answerServlet extends HttpServlet {
 		}
 
 		int total_answer_status = total_answer;
+		
+		String level = answer.searchclear(id, s_id);
+		
+		System.out.println(level);
 
 		if (d_id.equals("中級")) {
 			total_answer_status = total_answer * 2;
+			if(level.equals("初級")) {
+				boolean updateanswer = answer.updateclear(id, s_id, d_id);
+			}
 		} else if (d_id.equals("上級")) {
 			total_answer_status = total_answer * 3;
+			if(level.equals("中級")) {
+				boolean updateanswer = answer.updateclear(id, s_id, d_id);
+			}
+		}else {
+			if(level.equals("無")) {
+				boolean updateanswer = answer.clear(id, s_id, d_id);
+				System.out.println(level);
+			}
 		}
 		if (total_answer >= 5) {
 
@@ -141,7 +157,7 @@ public class answerServlet extends HttpServlet {
 		request.setAttribute("up_status", up_status);
 
 		// Statusオブジェクトを作成
-		Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid);
+		Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid,avaterid);
 
 		request.setAttribute("status", status);
 

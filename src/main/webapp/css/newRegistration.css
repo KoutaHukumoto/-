@@ -103,8 +103,86 @@ button {
 	/* 絶対位置指定 */
 	bottom: 0;
 	right: 0;
-
 	margin-top: 20px;
 	padding: 10px;
 	width: 30%;
 }
+.avatar-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* 左寄せ */
+    margin-bottom: 20px;
+    left: 10%; /* 画面左側に配置 */
+    top: 20%; /* 縦方向の位置調整 */
+}
+
+.avatar-container img {
+    display: block;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.avatar-button {
+    background-color: transparent;
+    color: white;
+    font-size: 0.2em; /* ボタンのサイズを1/10に縮小 */
+    border: none;
+    cursor: pointer;
+    margin: 0 5px; /* ボタンの間隔を調整 */
+    padding: 2px 5px;
+    width: 20px; /* ボタンの幅を小さく */
+    height: 20px; /* ボタンの高さを小さく */
+}
+
+.avatar-button:hover {
+    background-color: grey;
+}
+
+/* アバターと注意文を収めるコンテナのサイズを明示的に設定 */
+.point-container {
+    display: flex;
+    align-items: center; /* 縦方向の中央揃え */
+    justify-content: flex-start; /* 左寄せ */
+}
+
+/* アバターラベルと画像・ボタンを横並びにする */
+.avatar-container {
+    display: flex;
+    align-items: center; /* 縦方向の中央揃え */
+    justify-content: flex-start; /* 左寄せ */
+    gap: 10px; /* 各要素の間隔を調整 */
+}
+
+/* アバター画像 */
+.avatar-container img {
+    display: block;
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 280px; /* 画像の幅 */
+    height: 280px; /* 画像の高さ */
+}
+
+/* 小さいボタン */
+.avatar-button {
+    background-color: transparent;
+    color: white;
+    font-size: 1em; /* ボタンのサイズを1/10に縮小 */
+    border: none;
+    cursor: pointer;
+    margin: 0 2px;
+    padding: 2px 5px;
+}
+
+.avatar-button:hover {
+    background-color: grey;
+}
+
+
+
+/* ラベルの文字サイズと余白調整 */
+.avatar-container label {
+    font-size: 4em;/* 文字サイズを適切に調整 */
+    white-space: nowrap; /* 改行を防ぎ横並びに */
+    color: white; /* 文字色を白に */
+}
+

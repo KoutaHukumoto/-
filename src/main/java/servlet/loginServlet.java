@@ -61,7 +61,6 @@ public class loginServlet extends HttpServlet {
 		loginLogic loginLogic = new loginLogic();
 		boolean isLogin = loginLogic.execute(name, hashdpass);
  
- 
 		// ログイン結果によるリダイレクト
 		if (isLogin) {
 			// ログイン成功時のリダイレクト先
@@ -76,7 +75,7 @@ public class loginServlet extends HttpServlet {
 		} else {
 			// ログイン失敗時、エラーメッセージをセットしてログインページに戻す
 	        Cookie cookie = new Cookie("loginServlet", "false"); // クッキーに「サーブレット経由」の情報を記録
-	        cookie.setMaxAge(60); // クッキーの有効期限（秒）
+	        cookie.setMaxAge(5); // クッキーの有効期限（秒）
 	        response.addCookie(cookie);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("toppage.html");
 			dispatcher.forward(request, response);

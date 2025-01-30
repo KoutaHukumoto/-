@@ -65,94 +65,60 @@ public class RankingDao extends BaseDao {
 	}
  
 	public List<character> searchData(String characterName) throws SQLException {
+        List<character> dataList = new ArrayList<>();
 
-		List<character> dataList = new ArrayList<>();
- 
-		System.out.println(1);
- 
-		try {
+        System.out.println("Starting search...");
 
-			int searchrank = 0;
+        String sql = """
+            WITH ranked_people AS (
+                SELECT 
+                    charactername, 
+                    dungeonid, 
+                    RANK() OVER (ORDER BY dungeonid DESC) AS `rank`
+                FROM character_table
+            )
+            SELECT 
+                charactername, 
+                dungeonid, 
+                `rank`
+            FROM ranked_people
+            WHERE charactername LIKE ?;
+        """;
 
-			this.connect();
- 
-			// 名前を部分一致で検索するクエリ
+        try {
+            this.connect();
+            System.out.println("Connected to database.");
 
-			String sql = "WITH ranked_people AS ("
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+            	 ps.setString(1, "%" + characterName + "%"); // 部分一致検索
 
-					+ "SELECT"
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        character data = new character();
+                        data.setRank(rs.getInt("rank"));
+                        data.setCharacterName(rs.getString("charactername"));
+                        data.setDungeonId(rs.getInt("dungeonid"));
 
-					+ " charactername,"
+                        dataList.add(data);
+                    }
+                }
+            }
 
-					+ " dungeonid,"
 
-					+ " RANK() OVER (ORDER BY dungeonid DESC) AS rank"
-
-					+ " FROM character_table"
-
-					+ " )"
-
-					+ " SELECT "
-
-					+ "charactername,"
-
-					+ " dungeonid,"
-
-					+ "rank"
-
-					+ " FROM ranked_people"
-
-					+ " WHERE charactername LIKE ?;";
- 
-			System.out.println(2);
- 
-			searchrank++;
-
-			PreparedStatement ps = con.prepareStatement(sql);
-
-			ps.setString(1, "%" + characterName + "%"); // 名前を部分一致で検索
-
-			ResultSet rs = ps.executeQuery();
- 
-			System.out.println(searchrank);
- 
-			while (rs.next()) {
-
-				character data = new character();
-
-				data.setRank(rs.getInt("rank"));
-
-				data.setCharacterName(rs.getString("charactername")); // カラム名を修正
-
-				data.setDungeonId(rs.getInt("dungeonid"));
- 
-				System.out.println(3);
- 
-				dataList.add(data);
-
-			}
- 
-		} catch (Exception e) {
-
+        } catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+            try {
+                this.disConnect();
+                System.out.println("Disconnected from database.");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
 
-		} finally {
-
-			try {
-
-				this.disConnect();
-
-			} catch (SQLException e) {
-
-				e.printStackTrace();
-
-			}
-
-		}
+        return dataList;
+    }
  
-		return dataList;
-
-	}
  
 }
 

@@ -585,3 +585,32 @@ button:hover,
 	pointer-events: none;
 	z-index: 1000;
 }
+
+meter::-webkit-meter-optimum-value {
+	background: green;
+}
+
+meter::-webkit-meter-suboptimum-value {
+	background: orange;
+}
+
+meter::-webkit-meter-even-less-good-value {
+	background: red;
+}
+
+.hp {
+	font-size: 1.5rem;
+	/* キャラクター名の文字の大きさを設定する */
+	color: #fff;
+	/* 文字の色を白にする */
+	text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+	/* 文字に影をつけて見やすくする */
+	margin-bottom: 10px;
+	/* キャラクター名の下に余白をつける */
+	padding: 5px;
+	/* キャラクター名の周りに余白をつける */
+	background-color: rgba(0, 0, 0, 0.6);
+	/* 背景に少し透明な黒をつける */
+	border-radius: 5px;
+	/* キャラクター名の枠の角を丸くする */
+}

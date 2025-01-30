@@ -5,6 +5,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="model.Status"%>
 <%@ page import="model.item"%>
+<%@ page import="model.answerlist"%>
 <%Status status = (Status) request.getAttribute("status");
   item item = (item) request.getAttribute("item");
   answerlist answers = (answerlist) request.getAttribute("answers");
@@ -15,22 +16,77 @@
 <title>道場</title>
 <link rel="stylesheet" href="css/dojyo.css">
 <script>
-	function setSubject(subject) {
-		// hidden要素に科目を設定
-		document.getElementById("s_id").value = subject;
+	let categoryLevels = {};
 
-		<%for (int i = 0; i < 5; i++) {%>
-		if(answers.getcategorylist() === subject){
-				
-				}
-		 document.querySelector('button[name="link2"]').disabled = false;
-		 <%}%>
-	}
+	<% if (answers != null) {
+    		List<String> categorylist = answers.getcategorylist();
+    			for (String category : categorylist) {
+        			String difficulty = answers. getDifficultyBySubject(category); // 科目ごとの難易度を取得
+			%>
+        		categoryLevels["<%= category %>"] = "<%= difficulty %>";
+	<% 
+    			}
+		} %>
+
+		console.log(categoryLevels); 
 
 	function setDifficulty(difficulty) {
 		// hidden要素に難易度を設定
 		document.getElementById("d_id").value = difficulty;
 	}
+
+	function setSubject(subject) {
+	    // hidden要素に科目を設定
+	    document.getElementById("s_id").value = subject;
+
+	    // 初期状態（全て無効）
+	    let btn1 = document.getElementById('link1'); // 初級
+	    let btn2 = document.getElementById('link2'); // 中級
+	    let btn3 = document.getElementById('link3'); // 上級
+
+	    btn1.disabled = false;
+	    btn1.classList.add("enabled");
+	    btn1.classList.remove("disabled");
+
+	    btn2.disabled = true;
+	    btn2.classList.add("disabled");
+	    btn2.classList.remove("enabled");
+
+	    btn3.disabled = true;
+	    btn3.classList.add("disabled");
+	    btn3.classList.remove("enabled");
+
+	    // 科目ごとのクリア済み難易度をチェック
+	    let level = categoryLevels[subject];
+
+	    if (level === "初級") {
+	        btn2.disabled = false;
+	        btn2.classList.add("enabled");
+	        btn2.classList.remove("disabled");
+	    } else if (level === "中級") {
+	        btn2.disabled = false;
+	        btn2.classList.add("enabled");
+	        btn2.classList.remove("disabled");
+	        
+	        btn3.disabled = false;
+	        btn3.classList.add("enabled");
+	        btn3.classList.remove("disabled");
+	    } else if (level === "上級") {
+	        btn2.disabled = false;
+	        btn2.classList.add("enabled");
+	        btn2.classList.remove("disabled");
+	        
+	        btn3.disabled = false;
+	        btn3.classList.add("enabled");
+	        btn3.classList.remove("disabled");
+	    }
+	}
+
+	function setDifficulty(difficulty) {
+	    document.getElementById("d_id").value = difficulty;
+	}
+
+
 
 </script>
 </head>
@@ -42,7 +98,7 @@
 		</div>
 		<div class="character">
 			<div class="avatar-section">
-				<img src="画像/avater.jpg" alt="avatar">
+				<img src="画像/avater<%=status.getAvatarid()%>.jpg" alt="avatar">
 				<p><%=status.getName()%></p>
 			</div>
 
@@ -82,6 +138,7 @@
 			<input type="hidden" name="itemid" value=<%=item.getItemId()%>>
 			<input type="hidden" name="dungeonid"
 				value="<%=status.getDungeonid()%>">
+				<input type="hidden" name="avaterid" value="<%=status.getAvatarid()%>">
 			<!-- hidden inputs for subject and difficulty -->
 			<input type="hidden" name="s_id" id="s_id" value=""> <input
 				type="hidden" name="d_id" id="d_id" value="">

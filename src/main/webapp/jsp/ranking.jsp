@@ -38,6 +38,7 @@ Status status = (Status) request.getAttribute("status");
 				<input type="hidden" name="speed" value="<%=status.getSpeed()%>">
 				<input type="hidden" name="itemid" value=1> <input
 					type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
+					<input type="hidden" name="avaterid" value="<%=status.getAvatarid()%>">
 				<div class="serch_btn">
 					<button type="submit">検索</button>
 				</div>
@@ -52,6 +53,7 @@ Status status = (Status) request.getAttribute("status");
 				<input type="hidden" name="speed" value="<%=status.getSpeed()%>">
 				<input type="hidden" name="itemid" value=1> <input
 					type="hidden" name="dungeonid" value="<%=status.getDungeonid()%>">
+					<input type="hidden" name="avaterid" value="<%=status.getAvatarid()%>">
 				<div class="serch_btn">
 					<button type="submit">検索リセット</button>
 				</div>

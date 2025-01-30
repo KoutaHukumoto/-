@@ -24,7 +24,7 @@ item item = (item) request.getAttribute("item");
 		</div>
 
 		<div class="avatar-section">
-			<img id="avatar" src="画像/avater.jpg" alt="avatar">
+			<img id="avatar" src="画像/avater<%=status.getAvatarid()%>.jpg" alt="avatar">
 			<p><%=status.getName()%></p>
 
 			<p>ID :<%=status.getId()%></p>
@@ -66,6 +66,8 @@ item item = (item) request.getAttribute("item");
 				<input type="hidden" name="itemid" value=<%=status.getItemid()%>>
 				<input type="hidden" name="dungeonid"
 					value="<%=status.getDungeonid()%>">
+					<input type="hidden" name="avaterid"
+					value="<%=status.getAvatarid()%>">
 				<button type="submit">ダンジョン</button>
 			</form>
 
@@ -79,6 +81,7 @@ item item = (item) request.getAttribute("item");
 				<input type="hidden" name="itemid" value=<%=status.getItemid()%>>
 				<input type="hidden" name="dungeonid"
 					value="<%=status.getDungeonid()%>">
+				<input type="hidden" name="avaterid" value="<%=status.getAvatarid()%>">
 				<button type="submit">道場</button>
 			</form>
 
@@ -92,6 +95,7 @@ item item = (item) request.getAttribute("item");
 				<input type="hidden" name="itemid" value=<%=status.getItemid()%>>
 				<input type="hidden" name="dungeonid"
 					value="<%=status.getDungeonid()%>">
+				<input type="hidden" name="avaterid" value="<%=status.getAvatarid()%>">
 				<button type="submit">ランキング</button>
 			</form>
 		</div>

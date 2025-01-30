@@ -54,7 +54,7 @@ public class RegisterDao extends BaseDao {
 		}
 	}
 
-	public int registercharacter(String name) {
+	public int registercharacter(String name,int id) {
 		PreparedStatement pstmt = null;
 		ResultSet generatedKeys = null;
 		try {
@@ -63,9 +63,10 @@ public class RegisterDao extends BaseDao {
 			connect();
 
 			// SQL INSERT文の作成
-			String sql = "INSERT INTO character_table (charactername) VALUES (?)";
+			String sql = "INSERT INTO character_table (charactername,avaterid) VALUES (?,?)";
 			pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, name);
+			pstmt.setInt(2, id);
 
 			// SQL文の実行
 			int rowsInserted = pstmt.executeUpdate();

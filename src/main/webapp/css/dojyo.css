@@ -179,15 +179,7 @@ body {
 #link1,
 #link2,
 #link3 {
-	width: 50%;
-	color: white;
-	background: black;
-	border: 2px solid white;
-	padding: 0.5em 1.5em;
-	margin: 43px auto;
-	text-decoration: none;
-	font-size: 1.5em;
-	cursor: pointer;
+
 }
 
 #msg button:hover {
@@ -214,4 +206,32 @@ body {
 
 .mypage button:hover {
 	background-color: grey;
+}
+
+/* ボタン押せる状態 */
+.enabled {
+	width: 50%;
+	color: white;
+	background: black;
+	border: 2px solid white;
+	padding: 0.5em 1.5em;
+	margin: 43px auto;
+	text-decoration: none;
+	font-size: 1.5em;
+	cursor: pointer;
+}
+
+/* ボタン押せない状態 */
+.disabled {
+	width: 50%;
+	background: black;
+	border: 2px solid white;
+	padding: 0.5em 1.5em;
+	margin: 43px auto;
+	text-decoration: none;
+	font-size: 1.5em;
+	background-color: #ccc;
+	color: #666;
+	cursor: not-allowed;
+	opacity: 0.6;
 }

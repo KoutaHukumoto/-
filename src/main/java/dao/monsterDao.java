@@ -8,19 +8,18 @@ import model.monster;
 
 public class monsterDao extends BaseDao {
 
-	public monster getMonster(int monsterid, int bossid) {
+	public monster getMonster(int monsterid) {
 		monster monster = null;
 
 		try {
 			// DB接続
 			this.connect();
 
-			String sql = "SELECT * FROM monster_table WHERE monsterid = ? AND bossid = ?";
+			String sql = "SELECT * FROM monster_table WHERE monsterid = ?";
 
 			try (PreparedStatement ps = con.prepareStatement(sql)) {
 				// 検索条件を設定
 				ps.setInt(1, monsterid);
-				ps.setInt(2, bossid);
 
 				// 検索実行
 				try (ResultSet rs = ps.executeQuery()) {

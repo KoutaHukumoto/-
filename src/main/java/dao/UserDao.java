@@ -78,7 +78,8 @@ public class UserDao extends BaseDao {
 								rs.getInt("defense"),
 								rs.getInt("speed"),
 								rs.getInt("itemid"),
-								rs.getInt("dungeonid"));
+								rs.getInt("dungeonid"),
+								rs.getInt("avaterid"));
 					}
 				}
 			}
@@ -119,7 +120,8 @@ public class UserDao extends BaseDao {
 								rs.getInt("defense"),
 								rs.getInt("speed"),
 								rs.getInt("itemid"),
-								rs.getInt("dungeonid"));
+								rs.getInt("dungeonid"),
+								rs.getInt("avaterid"));
 					}
 				}
 			}

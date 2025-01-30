@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" %>
 <%@ page import="model.Status" %>
-<% Status status = (Status) session.getAttribute("status"); %>
+<% Status status = (Status) session.getAttribute("status");
+%>
 
 
 <!DOCTYPE html>
@@ -21,9 +22,9 @@
 	<h1>登録が完了しました！</h1>
 	</div>
 	
-	<div class="ava">
-	<label>アバター:</label>
-	</div>
+    <div class="avatar-container">
+        <img id="mypic" src="画像/avater<%= status.getAvatarid() %>.jpg"  width= 400px height = 450px >
+    </div>
 	
 	<div class="status">
 	<label class="inp">ID:</label> 
