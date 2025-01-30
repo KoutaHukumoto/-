@@ -28,11 +28,14 @@ public class backServlet extends HttpServlet {
 		Status status = userdao.findname(name);
 		
 		int result = Integer.parseInt(request.getParameter("result"));
+		
+		if(status.getDungeonid() < 5) {
 			if (result != 0) {
 				result = result + status.getDungeonid();
 				boolean isUpdated = userdao.updateDungeon(name, result);
 				status.setDungeonid(result);
 			}
+		}
 
 		
 

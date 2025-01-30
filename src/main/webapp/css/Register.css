@@ -6,6 +6,8 @@ body {
 
 	border: 2px solid white;
 	position: relative;
+	width: 1660px;
+	height: 880px;
 }
 
 .status {

@@ -61,9 +61,11 @@ public class rematchServlet extends HttpServlet {
 		int itemid = statues.getItemid();
 		int dungeonid = statues.getDungeonid();
 		int avaterid = statues.getAvatarid();
+		if(dungeonid < 5) {
 		if (result != 0) {
 			dungeonid = result + dungeonid;
 			boolean isUpdated = userdao.updateDungeon(name, dungeonid);
+		}
 		}
 
 		//アイテムによるステータス上昇の計算処理
