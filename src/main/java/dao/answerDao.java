@@ -110,13 +110,14 @@ public class answerDao extends BaseDao {
 	    try {
 	        connect(); // DB接続
 
-	        String sql = "UPDATE progress_table SET category = ?, difficulty = ? WHERE characterid = ?";
+	        String sql = "UPDATE progress_table SET difficulty = ? WHERE characterid = ? AND category = ?";
 	        
 	        try (PreparedStatement ps = con.prepareStatement(sql)) {
-	            ps.setString(1, category);
-	            ps.setString(2, level);
-	            ps.setInt(3, id);
+	            ps.setString(1, level);
+	            ps.setInt(2, id);
+	            ps.setString(3, category);
 
+	            
 	            int rowsUpdated = ps.executeUpdate(); // SQLを実行
 	            if (rowsUpdated > 0) {
 	                isSuccess = true; // 1行以上更新されたら成功

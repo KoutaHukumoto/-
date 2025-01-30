@@ -76,20 +76,22 @@ public class answerServlet extends HttpServlet {
 		String level = answer.searchclear(id, s_id);
 		
 		System.out.println(level);
+		
+		boolean updateanswer  = false;
 
 		if (d_id.equals("中級")) {
 			total_answer_status = total_answer * 2;
 			if(level.equals("初級")) {
-				boolean updateanswer = answer.updateclear(id, s_id, d_id);
+				updateanswer = answer.updateclear(id, s_id, d_id);
 			}
 		} else if (d_id.equals("上級")) {
 			total_answer_status = total_answer * 3;
 			if(level.equals("中級")) {
-				boolean updateanswer = answer.updateclear(id, s_id, d_id);
+				updateanswer = answer.updateclear(id, s_id, d_id);
 			}
 		}else {
 			if(level.equals("無")) {
-				boolean updateanswer = answer.clear(id, s_id, d_id);
+				updateanswer = answer.clear(id, s_id, d_id);
 				System.out.println(level);
 			}
 		}
@@ -155,6 +157,7 @@ public class answerServlet extends HttpServlet {
 		request.setAttribute("change_status", change_status);
 		request.setAttribute("change_status_id", change_status_id);
 		request.setAttribute("up_status", up_status);
+		request.setAttribute("updateanswer",updateanswer);
 
 		// Statusオブジェクトを作成
 		Status status = new Status(name, id, hp, attack, defense, speed, itemid, dungeonid,avaterid);

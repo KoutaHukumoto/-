@@ -8,6 +8,7 @@
 Status status = (Status) request.getAttribute("status");
 item item = (item) request.getAttribute("item");
 item acquisitionitem = (item) request.getAttribute("acquisitionitem");
+boolean update = (boolean) request.getAttribute("updateanswer");
 %>
 
 <%@ page import="model.answer,java.util.ArrayList"%>
@@ -43,7 +44,7 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 		</div>
 		<div class="character">
 			<div class="avatar-section">
-				<img src="画像/avater.jpg" alt="avatar">
+				<img src="画像/avater<%=status.getAvatarid()%>.jpg" alt="avatar">
 				<p><%=status.getName()%></p>
 				<p>
 					ID :<%=status.getId()%></p>
@@ -121,17 +122,32 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 			<div for="popup" id="bg_gray"></div>
 			<div id="window">
 				<div id="msg">
+					<%-- updateがtrueの場合、新しい難易度の解放メッセージを表示 --%>
+					<%
+					if (update) {
+					%>
+					<p style="color: #ffcc00; font-weight: bold; font-size: 1.5em;">
+						新しく難易度が解放されました！ </p>
+					<hr>
+					<%
+					}
+					%>
+
+					<%-- ここから通常の判定処理 --%>
 					<%
 					if (totalAnswer < 5) {
 					%>
-					報酬を獲得出来ませんでした…
+					<p>報酬を獲得出来ませんでした…</p>
 					<%
 					} else {
+					%>
+					<%
 					if (request.getAttribute("change_status").equals("装備品")) {
 					%>
 					<div class="result_item">
 						<p>
-							装備品：<%=acquisitionitem.getItemName()%>を入手しました！！
+							装備品：<%=acquisitionitem.getItemName()%>
+							を入手しました！！
 						</p>
 						<p>
 							効果：<%=acquisitionitem.getDescription()%></p>
@@ -146,40 +162,44 @@ ArrayList<answer> list = (ArrayList<answer>) request.getAttribute("list");
 								<input type="hidden" name="name" value="<%=status.getName()%>">
 								<input type="hidden" name="id" value="<%=status.getId()%>">
 								<input type="hidden" name="itemId"
-									value=<%=acquisitionitem.getItemId()%>>
+									value="<%=acquisitionitem.getItemId()%>">
 								<button type="submit">はい</button>
 							</form>
 						</div>
 					</div>
+					<%
+					} else {
+					%>
+					<p><%=request.getAttribute("change_status")%>が
+						<%=request.getAttribute("total_answer_status")%>
+						上がった！！
+					</p>
+					<%
+					}
+					%>
+					<%
+					}
+					%>
 				</div>
-
-				<%
-				} else {
-				%>
-				<%=request.getAttribute("change_status")%>が<%=request.getAttribute("total_answer_status")%>上がった！！
-				<%
-				}
-				}
-				%>
 			</div>
 		</div>
-	</div>
 
-	<div id="next">
-		<label for="popup" id="txt_label"
-			onclick="changeDisplay('next');
+
+		<div id="next">
+			<label for="popup" id="txt_label"
+				onclick="changeDisplay('next');
 			<%if (!request.getAttribute("change_status").equals("装備品")) {%>
 			changeColor('up_status_<%=request.getAttribute("change_status_id")%>');
 			<%} else {%>
 			changeDisplay('dojyo');
 			<%}%>">次へ</label>
-	</div>
+		</div>
 
-	<div id="dojyo">
-		<form action="/Dosukoi-Analytics/questionServlet" method="POST">
-			<input type="hidden" name="name" value="<%=status.getName()%>">
-			<button type="submit">道場へ戻る</button>
-	</div>
+		<div id="dojyo">
+			<form action="/Dosukoi-Analytics/questionServlet" method="POST">
+				<input type="hidden" name="name" value="<%=status.getName()%>">
+				<button type="submit">道場へ戻る</button>
+		</div>
 	</div>
 
 </body>
